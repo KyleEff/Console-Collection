@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Console/Console.cpp"
+#include "Console.cpp"
 #include <vector>
 #include <forward_list>
 #include <algorithm>

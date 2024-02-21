@@ -25,8 +25,7 @@ void Collection::test() {
 
     layerOne.push_back(ps2);
 
-    //layerOne.push_back(*(new Console("Atari", "2600", new Cpu("MOS Technology", "6507", "1.19 MHz", 1975), 1977)));
-    
+    layerOne.push_back(*(new Console("Atari", "2600", new Cpu("MOS Technology", "6507", "1.19 MHz", 1975), 1977)));
 }
 
 void Collection::sortByYear()

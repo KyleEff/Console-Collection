@@ -1,5 +1,5 @@
 //#include "Console.cpp"
-#include "Collection/Collection.cpp"
+#include "Collection.cpp"
 #include <iostream>
 
 using namespace std;
@@ -30,14 +30,14 @@ int main() {
     col.test();
     //col.print();
 
-    //col.addItem(*console);
+    col.addItem(*console);
 
     //col.print();
     //col.sortByYear();
-    //col.sortByName();
+    col.sortByName();
 
     //cout << "SORTED" << endl;
-    //col.print();
+    col.print();
 
     return 0;
 }
