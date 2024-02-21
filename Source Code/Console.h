@@ -52,23 +52,24 @@ public:
 // Constructors
     Console();
     Console(string, string, Cpu*, int);
-    Console(const Console& console);
-
+    Console(const Console&);
+// Destructor
     virtual ~Console();
-
+// Exception Object
     class InvalidInput : public domain_error
         { public: InvalidInput(const char* what) : domain_error(what) {} };
-
-    void setManufacturer(string manufacturer) throw(InvalidInput);
-    void setName(string name) throw(InvalidInput);
+// Member Functions
+    // Mutators
+    void setManufacturer(string manufacturer);
+    void setName(string name);
     void setCpu(Cpu* cpu);
-    void setYear(int year) throw(InvalidInput);
-
+    void setYear(int year);
+    // Accessors
     inline string getManufactuer() const;
     inline string getName() const;
     inline Cpu& getCpu() const;
     inline int getYear() const;
-
+    // Display
     void print() const;
 
 };

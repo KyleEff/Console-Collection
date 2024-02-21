@@ -33,14 +33,14 @@ Console::~Console() {
     cpu = nullptr;
 }
 
-void Console::setManufacturer(string manufacturer) throw(InvalidInput) {
+void Console::setManufacturer(string manufacturer) {
 
     if (manufacturer != "")
         this->manufacturer = manufacturer;
     else throw InvalidInput("Invalid Manufacturer");
 }
 
-void Console::setName(string name) throw(InvalidInput) {
+void Console::setName(string name) {
 
     if (name != "")
         this->name = name;
@@ -50,7 +50,7 @@ void Console::setName(string name) throw(InvalidInput) {
 void Console::setCpu(Cpu* cpu)
     { this->cpu = cpu; }
 
-void Console::setYear(int year) throw(InvalidInput) {
+void Console::setYear(int year) {
 
     if (year >= 1972)
         this->year = year;

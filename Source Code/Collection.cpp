@@ -38,7 +38,8 @@ void Collection::sortByName() {
     for (auto i : layerOne)
         hashTable.insert({i.getName(), i});
 
-    if (hashTable.find("PS2") != hashTable.end())
+    //if (hashTable.find("PS2") != hashTable.end())
+    if (hashTable.count("2600"))
         hashTable["2600"].print();
 
     //sort(layerOne.begin(), layerOne.end(), sortName);
