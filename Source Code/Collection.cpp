@@ -1,7 +1,7 @@
 #include "Collection.h"
 
 void Collection::addItem(Console add)
-    { layerOne.push_back(add); }
+    { layerOne.push_front(add); }
 
 void Collection::print() const {
 
@@ -23,13 +23,13 @@ void Collection::test() {
         2000
     );
 
-    layerOne.push_back(ps2);
+    layerOne.push_front(ps2);
 
-    layerOne.push_back(*(new Console("Atari", "2600", new Cpu("MOS Technology", "6507", "1.19 MHz", 1975), 1977)));
+    layerOne.push_front(*(new Console("Atari", "2600", new Cpu("MOS Technology", "6507", "1.19 MHz", 1975), 1977)));
 }
 
 void Collection::sortByYear()
-    { sort(layerOne.begin(), layerOne.end(), sortYear); }
+    { layerOne.sort(sortYear); }
 
 void Collection::sortByName() {
 

@@ -11,7 +11,7 @@ using namespace std;
 
 class Collection {
 
-    vector<Console> layerOne;
+    forward_list<Console> layerOne;
     vector<forward_list<Console>> sortedYear;
 
     unordered_map<string, Console> hashTable;
