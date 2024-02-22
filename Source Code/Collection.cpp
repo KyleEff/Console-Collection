@@ -1,5 +1,8 @@
 #include "Collection.h"
 
+void Collection::addItem(Console* add)
+    { layerOne.push_front(*add); }
+
 void Collection::addItem(Console add)
     { layerOne.push_front(add); }
 

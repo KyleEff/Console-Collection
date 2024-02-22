@@ -25,7 +25,9 @@ public:
         sortYear;
 
 public:
+    inline void addItem(Console*);
     inline void addItem(Console);
+    inline void removeItem(Console*);
     inline void removeItem(Console);
 
     void print() const;
