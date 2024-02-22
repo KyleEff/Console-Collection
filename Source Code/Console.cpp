@@ -8,24 +8,24 @@ Console::Console() :
     manufacturer(""),
     name(""),
     cpu(nullptr),
-    year(0) {}
+    year(0) { }
 
 Console::Console(
         string manufacturer,
         string name,
-        Cpu* cpu,
+        Cpu* cpu = nullptr,
         int year
     ) :
     manufacturer(manufacturer),
     name(name),
     cpu(cpu),
-    year(year) {}
+    year(year) { }
 
 Console::Console(const Console& console) :
     manufacturer(console.manufacturer),
     name(console.name),
     cpu(console.cpu),
-    year(console.year) {}
+    year(console.year) { }
 
 Console::~Console() {
 

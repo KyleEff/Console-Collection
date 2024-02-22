@@ -6,7 +6,7 @@
 class Storage {
 
     string fileName{ "collection.csv" };
-    fstream file(fileName);
+    fstream file;
     Collection* collection;
 
 public:
