@@ -13,13 +13,13 @@ Console::Console() :
 Console::Console(
         string manufacturer,
         string name,
-        Cpu* cpu = nullptr,
-        int year
+        int year = 0,
+        Cpu* cpu = nullptr
     ) :
     manufacturer(manufacturer),
     name(name),
-    cpu(cpu),
-    year(year) { }
+    year(year),
+    cpu(cpu) { }
 
 Console::Console(const Console& console) :
     manufacturer(console.manufacturer),
@@ -34,10 +34,12 @@ Console::~Console() {
 }
 
 void Console::setManufacturer(string manufacturer) {
-
+    // Check if the input manufacturer is not empty
     if (manufacturer != "")
-        this->manufacturer = manufacturer;
-    else throw InvalidInput("Invalid Manufacturer");
+        // If not empty, assign it to the member variable 'manufacturer'
+        this->manufacturer = manufacturer; 
+    // If empty, throw an exception indicating invalid input
+    else throw InvalidInput("Invalid Manufacturer"); 
 }
 
 void Console::setName(string name) {
@@ -78,11 +80,13 @@ void Console::print() const {
 
         << "Name: "
         << name
-        << endl
-
-        << "Year: "
-        << year
         << endl;
+
+    if (year > 0)
+        cout
+            << "Year: "
+            << year
+            << endl;
 
     if (cpu != nullptr)
         cout

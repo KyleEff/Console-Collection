@@ -13,7 +13,10 @@ Storage::Storage(Collection* collection) :
 void Storage::setCollection(Collection* collection)
     { this->collection = collection; }
 
-void Storage::storeCollection() { }
+void Storage::storeCollection() { 
+
+
+}
 
 void Storage::readCollection() {
 
@@ -21,38 +24,27 @@ void Storage::readCollection() {
 
     file.open(fileName, ios::in);
 
-    if (collection != nullptr) {
+    while (file >> line) {
 
-        while (file >> line) {
+        vector<string> row;
+        stringstream buff(line, ios::in);
 
-            vector<string> row;
+        row.clear();
 
-            //char* tokens = strtok(line.c_str(), ',');
-
-            //for (auto i : strtok(line, ',')) row.push_back(i);
-
-            //while (getline(file, line, ',')) row.push_back(line);
-/*
+        while (getline(buff, temp, ',')) 
+            row.push_back(temp);
+        
+        if (collection != nullptr)
             collection->addItem(
                 new Console(
                     row[0],
                     row[1],
-                    new Cpu(
-                        row[2],
-                        row[3],
-                        row[4],
-                        stoi(row[5])
-                    ),
-                    stoi(row[6])
+                    stoi(row[2])
                 )
             );
-            */
-        }
-
-        collection->print();
-        
-        //for (auto i : row) cout << i << endl;
     }
+
+    collection->print();
 
     file.close();
 }

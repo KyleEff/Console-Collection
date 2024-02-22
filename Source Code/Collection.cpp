@@ -17,24 +17,18 @@ void Collection::test() {
     Console ps2(
         "Sony",
         "PlayStation 2",
-        new Cpu(
-            "MIPS",
-            "R5900 Emotion Engine",
-            "294.912 MHz",
-            1999
-        ),
         2000
     );
 
     layerOne.push_front(ps2);
 
-    layerOne.push_front(*(new Console("Atari", "2600", new Cpu("MOS Technology", "6507", "1.19 MHz", 1975), 1977)));
+    layerOne.push_front(*(new Console("Atari", "2600", 1977)));
 }
 
 void Collection::sortByYear()
     { layerOne.sort(sortYear); }
 
-void Collection::sortByName() {
+void Collection::sortByName() { // TESTING
 
     hashTable.clear();
 

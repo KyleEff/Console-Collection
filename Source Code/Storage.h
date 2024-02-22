@@ -2,6 +2,7 @@
 
 #include "Collection.cpp"
 #include <fstream>
+#include <string>
 
 class Storage {
 

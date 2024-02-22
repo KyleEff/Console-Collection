@@ -11,12 +11,12 @@ int main() {
     Console* console = new Console(
         "Nintendo",
         "N64",
-        nullptr, //new Cpu("NEC", "VR4300", "93.75 MHz", 1993),
-        1996
+        1996,
+        nullptr //new Cpu("NEC", "VR4300", "93.75 MHz", 1993),
     );
     //console->print();
 
-    console->setCpu(new Cpu("NEC", "VR4300", "93.75 MHz", 1993));
+    //console->setCpu(new Cpu("NEC", "VR4300", "93.75 MHz", 1993));
     //console->print();
 
     //Console two(*console);
