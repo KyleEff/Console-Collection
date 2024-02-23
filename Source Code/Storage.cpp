@@ -13,8 +13,15 @@ Storage::Storage(Collection* collection) :
 void Storage::setCollection(Collection* collection)
     { this->collection = collection; }
 
-void Storage::storeCollection() { 
+void Storage::storeCollection() { // WORK HERE
 
+    string line, temp;
+
+    file.open(fileName, ios::out);
+
+    cout << collection->size() << endl;
+
+    //for (auto i : ) { }
 
 }
 
@@ -31,17 +38,28 @@ void Storage::readCollection() {
 
         row.clear();
 
-        while (getline(buff, temp, ',')) 
+        while (getline(buff, temp, ','))
             row.push_back(temp);
         
-        if (collection != nullptr)
-            collection->addItem(
-                new Console(
-                    row[0],
-                    row[1],
-                    stoi(row[2])
-                )
-            );
+        if (collection != nullptr) {
+
+            if (stoi(row[2]) > 0)
+                collection->addItem(
+                    new Console(
+                        row[0],
+                        row[1],
+                        stoi(row[2])
+                    )
+                );
+
+            else
+                collection->addItem(
+                    new Console(
+                        row[0],
+                        row[1]
+                    )
+                );
+        }
     }
 
     collection->print();

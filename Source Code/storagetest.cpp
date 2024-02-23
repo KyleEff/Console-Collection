@@ -5,5 +5,6 @@ int main() {
     Collection* col = new Collection();
     Storage building(col);
 
-    building.readCollection();
+    building.storeCollection();
+    //building.readCollection();
 }

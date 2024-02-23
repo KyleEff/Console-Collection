@@ -42,3 +42,5 @@ void Collection::sortByName() { // TESTING
     //sort(layerOne.begin(), layerOne.end(), sortName);
 }
 
+int Collection::size() const
+    { return layerOne.max_size(); }

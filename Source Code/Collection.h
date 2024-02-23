@@ -25,14 +25,16 @@ public:
         sortYear;
 
 public:
+    inline void sortByYear();
+    inline void sortByName();
+
     inline void addItem(Console*);
     inline void addItem(Console);
     inline void removeItem(Console*);
     inline void removeItem(Console);
 
     void print() const;
-    inline void sortByYear();
-    inline void sortByName();
+    int size() const;
 
     void test();
 };
