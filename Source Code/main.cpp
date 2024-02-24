@@ -34,7 +34,7 @@ int main() {
 
     //col.print();
     //col.sortByYear();
-    col.sortByName();
+    //col.sortByName();
 
     //cout << "SORTED" << endl;
     col.print();

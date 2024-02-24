@@ -96,3 +96,18 @@ void Console::print() const {
     else cout << endl;
 }
 
+ostream& operator<<(ostream& out, const Console& c) {
+
+    out
+        << c.getManufactuer()
+        << ','
+        << c.getName()
+        << ',';
+
+    if (c.getYear() > 0)
+        out
+            << c.getYear()
+            << endl;
+    
+    return out;
+}

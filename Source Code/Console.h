@@ -48,7 +48,6 @@ class Console {
     int year; // Year produced
 
     Cpu* cpu; // Optional CPU specs (does not work with file storage)
-
 public:
 // Constructors
     Console();

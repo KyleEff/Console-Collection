@@ -2,7 +2,6 @@
 
 #include "Console.cpp"
 #include <vector>
-#include <forward_list>
 #include <algorithm>
 #include <functional>
 #include <unordered_map>
@@ -11,8 +10,7 @@ using namespace std;
 
 class Collection {
 
-    forward_list<Console> layerOne;
-    vector<forward_list<Console>> sortedYear;
+    vector<Console> layerOne;
 
     unordered_map<string, Console> hashTable;
 public:
@@ -26,7 +24,9 @@ public:
 
 public:
     inline void sortByYear();
+    inline void searchByYear() const;
     inline void sortByName();
+    inline void searchByName() const;
 
     inline void addItem(Console*);
     inline void addItem(Console);
@@ -34,7 +34,8 @@ public:
     inline void removeItem(Console);
 
     void print() const;
-    int size() const;
+    inline int size() const;
+    inline Console getItem(int) const;
 
     void test();
 };

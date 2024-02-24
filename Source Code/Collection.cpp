@@ -1,10 +1,10 @@
 #include "Collection.h"
 
 void Collection::addItem(Console* add)
-    { layerOne.push_front(*add); }
+    { layerOne.push_back(*add); }
 
 void Collection::addItem(Console add)
-    { layerOne.push_front(add); }
+    { layerOne.push_back(add); }
 
 void Collection::print() const {
 
@@ -20,13 +20,13 @@ void Collection::test() {
         2000
     );
 
-    layerOne.push_front(ps2);
+    layerOne.push_back(ps2);
 
-    layerOne.push_front(*(new Console("Atari", "2600", 1977)));
+    layerOne.push_back(*(new Console("Atari", "2600", 1977)));
 }
 
 void Collection::sortByYear()
-    { layerOne.sort(sortYear); }
+    { sort(layerOne.begin(), layerOne.end(), sortYear); }
 
 void Collection::sortByName() { // TESTING
 
@@ -43,4 +43,7 @@ void Collection::sortByName() { // TESTING
 }
 
 int Collection::size() const
-    { return layerOne.max_size(); }
+    { return layerOne.size(); }
+
+Console Collection::getItem(int index) const
+    { return layerOne[index]; }

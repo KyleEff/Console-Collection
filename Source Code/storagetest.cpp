@@ -6,5 +6,5 @@ int main() {
     Storage building(col);
 
     building.storeCollection();
-    //building.readCollection();
+    building.readCollection();
 }
