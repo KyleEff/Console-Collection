@@ -34,3 +34,10 @@
 #vscode files
 .vscode
 *.json
+
+#document files
+*.odt
+*.odt#
+
+#test files
+test.cpp

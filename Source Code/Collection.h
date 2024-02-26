@@ -1,6 +1,7 @@
-#pragma once
+#ifndef COLLECTION_H
+#define COLLECTION_H
 
-#include "Console.cpp"
+#include "Console.h"
 #include <vector>
 #include <algorithm>
 #include <functional>
@@ -12,7 +13,8 @@ class Collection {
 
     vector<Console> layerOne;
 
-    unordered_map<string, Console> hashTable;
+    unordered_map<string, Console> nameTable;
+    unordered_map<int, Console> yearTable;
 public:
     struct
         { bool operator()(const Console& a, const Console& b) const { return a.getName() < b.getName(); } }
@@ -23,19 +25,30 @@ public:
         sortYear;
 
 public:
-    inline void sortByYear();
-    inline void searchByYear() const;
-    inline void sortByName();
-    inline void searchByName() const;
+    void sortByYear();
+    void sortByName();
 
-    inline void addItem(Console*);
-    inline void addItem(Console);
-    inline void removeItem(Console*);
-    inline void removeItem(Console);
+    void addItem(Console*);
+    //inline void addItem(Console* add) { layerOne.push_back(*add); }
 
+    inline void addItem(Console add)
+        { layerOne.push_back(add); }
+
+    void removeItem(int);
+
+    void searchByName() const;
+    void searchByYear() const;
     void print() const;
-    inline int size() const;
-    inline Console getItem(int) const;
+
+    inline int size() const
+        { return layerOne.size(); }
+
+    inline Console getItem(int index) const
+        { return layerOne[index]; }
 
     void test();
 };
+
+#endif
+
+

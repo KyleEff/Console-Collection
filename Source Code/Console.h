@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONSOLE_H
+#define CONSOLE_H
 
 #include <string>
 #include <stdexcept>
@@ -33,43 +34,56 @@ struct Cpu {
             << ", "
             << c.year
             << endl;
-    // OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
+        // OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
         return out;
     }
 };// OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
 
 
 class Console {
-// Attributes
+    // Attributes
     string
         manufacturer, // The company that manufactured the hardware 
         name; // The name of the console
-    
+
     int year; // Year produced
 
     Cpu* cpu; // Optional CPU specs (does not work with file storage)
 public:
-// Constructors
+    // Constructors
     Console();
-    Console(string, string, int, Cpu*);
+    Console(string, string, int);
     Console(const Console&);
-// Destructor
+    // Destructor
     virtual ~Console();
-// Exception Object
+    // Exception Object
     class InvalidInput : public domain_error
         { public: InvalidInput(const char* what) : domain_error(what) {} };
-// Member Functions
-    // Mutators
-    void setManufacturer(string manufacturer);
-    void setName(string name);
-    void setCpu(Cpu* cpu);
-    void setYear(int year);
+    // Member Functions
+        // Mutators
+    void setManufacturer(string);
+    void setName(string);
+    void setCpu(Cpu*);
+    void setYear(int);
     // Accessors
-    inline string getManufactuer() const;
-    inline string getName() const;
-    inline Cpu& getCpu() const;
-    inline int getYear() const;
+    inline string getManufacturer() const
+        { return manufacturer; }
+
+    inline string getName() const
+        { return name; }
+
+    inline Cpu& getCpu() const
+        { return *cpu; }
+
+    inline int getYear() const
+        { return year; }
+
     // Display
     void print() const;
 
+    friend ostream& operator<<(ostream&, const Console&);
+
 };
+
+
+#endif

@@ -1,14 +1,21 @@
 #include "Storage.h"
 #include <vector>
-#include <string>
 #include <sstream>
-#include <cstring>
 
 Storage::Storage() :
     collection(nullptr) { }
 
+Storage::Storage(Collection collection) :
+    collection(&collection) { }
+
 Storage::Storage(Collection* collection) :
     collection(collection) { }
+
+Storage::~Storage() {
+
+    delete collection;
+    collection = nullptr;
+}
 
 void Storage::setCollection(Collection* collection)
     { this->collection = collection; }
@@ -19,33 +26,23 @@ void Storage::storeCollection() {
 
     file.open(fileName, ios::out);
 
-// TEST
-    for (int i = 0; i < 1000; i++)
+    //for (int i = 0; i < 5; i++) // TEST
         collection->addItem(
-            new Console(
+            Console(
                 "Sony",
-                "PlayStation 3",
+                "PlayStation3",
                 2007
             )
         );
 
-    collection->addItem(
-        new Console(
-            "Sony",
-            "PlayStation 3",
-            2007
-        )
-    );
+    if (file)
+        for (auto i = 0; i < collection->size(); i++) {
 
-    for (auto i = 0; i < collection->size(); i++)  {
+            //file << collection->getItem(i);
 
-        file << collection->getItem(i);
-
-        //cout << collection->getItem(i) << endl;
-    }
-
+            //cout << collection->getItem(i);
+        }
     file.close();
-
 }
 
 void Storage::readCollection() {
@@ -57,13 +54,18 @@ void Storage::readCollection() {
     while (file >> line) {
 
         vector<string> row;
-        stringstream buff(line, ios::in);
+        stringstream buff(line);
 
         row.clear();
 
-        while (getline(buff, temp, ','))
+        while (getline(buff, temp, ',')) // NO SPACES
             row.push_back(temp);
-        
+
+    /*          DEBUG STATEMENTS
+        cout << "PRINT ROW" << endl;
+        for (auto i : row)
+            cout << i << endl;
+    */
         if (collection != nullptr) {
 
             try {
@@ -76,20 +78,17 @@ void Storage::readCollection() {
                         )
                     );
 
-                else
-                collection->addItem(
-                    new Console(
-                        row[0],
-                        row[1]
-                    )
-                );
+                //else collection->addItem(new Console(row[0], row[1]));
             }
             catch(exception e)
-                { }//cout << e.what() << endl; }
+                { cout << e.what() << endl; }
         }
     }
 
-    //collection->print();
-
+    collection->print();
     file.close();
 }
+
+
+Collection* Storage::getCollection()
+    { return collection; }

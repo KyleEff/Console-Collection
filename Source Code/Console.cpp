@@ -11,20 +11,17 @@ Console::Console() :
     year(0) { }
 
 Console::Console(
-        string manufacturer,
-        string name,
-        int year = 0,
-        Cpu* cpu = nullptr
-    ) :
+    string manufacturer,
+    string name,
+    int year
+) :
     manufacturer(manufacturer),
     name(name),
-    year(year),
-    cpu(cpu) { }
+    year(year) { }
 
 Console::Console(const Console& console) :
     manufacturer(console.manufacturer),
     name(console.name),
-    cpu(console.cpu),
     year(console.year) { }
 
 Console::~Console() {
@@ -37,9 +34,9 @@ void Console::setManufacturer(string manufacturer) {
     // Check if the input manufacturer is not empty
     if (manufacturer != "")
         // If not empty, assign it to the member variable 'manufacturer'
-        this->manufacturer = manufacturer; 
+        this->manufacturer = manufacturer;
     // If empty, throw an exception indicating invalid input
-    else throw InvalidInput("Invalid Manufacturer"); 
+    else throw InvalidInput("Invalid Manufacturer");
 }
 
 void Console::setName(string name) {
@@ -58,18 +55,6 @@ void Console::setYear(int year) {
         this->year = year;
     else throw InvalidInput("Invalid year");
 }
-
-string Console::getManufactuer() const
-    { return manufacturer; }
-
-string Console::getName() const
-    { return name; }
-
-Cpu& Console::getCpu()  const
-    { return *cpu; }
-
-int Console::getYear() const
-    { return year; }
 
 void Console::print() const {
 
@@ -99,15 +84,14 @@ void Console::print() const {
 ostream& operator<<(ostream& out, const Console& c) {
 
     out
-        << c.getManufactuer()
+        << c.manufacturer
         << ','
-        << c.getName()
-        << ',';
+        << c.name;
 
     if (c.getYear() > 0)
         out
-            << c.getYear()
-            << endl;
-    
+            << ','
+            << to_string(c.year);
+
     return out;
 }

@@ -1,10 +1,33 @@
 #include "Collection.h"
 
-void Collection::addItem(Console* add)
-    { layerOne.push_back(*add); }
+#include <vector>
+#include <sstream>
 
-void Collection::addItem(Console add)
-    { layerOne.push_back(add); }
+void Collection::sortByYear()
+    { sort(layerOne.begin(), layerOne.end(), sortYear); }
+
+void Collection::sortByName() { // TESTING
+
+    nameTable.clear();
+
+    for (auto i : layerOne)
+        nameTable.insert({i.getName(), i});
+
+    //if (hashTable.find("PS2") != hashTable.end())
+    if (nameTable.count("2600"))
+        nameTable["2600"].print();
+
+    //sort(layerOne.begin(), layerOne.end(), sortName);
+}
+
+void Collection::addItem(Console* add)
+    { }//layerOne.push_back(*add); }
+
+void Collection::removeItem(int choice) { }
+
+void Collection::searchByName() const {}
+
+void Collection::searchByYear() const {}
 
 void Collection::print() const {
 
@@ -14,36 +37,4 @@ void Collection::print() const {
 
 void Collection::test() {
 
-    Console ps2(
-        "Sony",
-        "PlayStation 2",
-        2000
-    );
-
-    layerOne.push_back(ps2);
-
-    layerOne.push_back(*(new Console("Atari", "2600", 1977)));
 }
-
-void Collection::sortByYear()
-    { sort(layerOne.begin(), layerOne.end(), sortYear); }
-
-void Collection::sortByName() { // TESTING
-
-    hashTable.clear();
-
-    for (auto i : layerOne)
-        hashTable.insert({i.getName(), i});
-
-    //if (hashTable.find("PS2") != hashTable.end())
-    if (hashTable.count("2600"))
-        hashTable["2600"].print();
-
-    //sort(layerOne.begin(), layerOne.end(), sortName);
-}
-
-int Collection::size() const
-    { return layerOne.size(); }
-
-Console Collection::getItem(int index) const
-    { return layerOne[index]; }
