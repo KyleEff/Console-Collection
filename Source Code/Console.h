@@ -7,37 +7,7 @@
 
 using namespace std;
 
-// CUT DATA STRUCTURE
-struct Cpu {
-    // OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
-    string
-        manufacturer,
-        name,
-        frequency;
 
-    int year;
-    // OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
-    Cpu(string manufacturer, string name, string frequency, int year) :
-        manufacturer(manufacturer),
-        name(name),
-        frequency(frequency),
-        year(year) {}
-    // OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
-    friend ostream& operator<<(ostream& out, const Cpu& c) {
-
-        out
-            << c.manufacturer
-            << ' '
-            << c.name
-            << " @ "
-            << c.frequency
-            << ", "
-            << c.year
-            << endl;
-        // OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
-        return out;
-    }
-};// OBSOLETE OBSOLETE OBSOLETE OBSOLETE OBSOLETE 
 
 
 class Console {
@@ -48,7 +18,6 @@ class Console {
 
     int year; // Year produced
 
-    Cpu* cpu; // Optional CPU specs (does not work with file storage)
 public:
     // Constructors
     Console();
@@ -63,7 +32,6 @@ public:
         // Mutators
     void setManufacturer(string);
     void setName(string);
-    void setCpu(Cpu*);
     void setYear(int);
     // Accessors
     inline string getManufacturer() const
@@ -71,9 +39,6 @@ public:
 
     inline string getName() const
         { return name; }
-
-    inline Cpu& getCpu() const
-        { return *cpu; }
 
     inline int getYear() const
         { return year; }

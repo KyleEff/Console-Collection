@@ -12,11 +12,11 @@ class Storage {
 
     string fileName{ "collection.csv" };
     fstream file;
-    Collection* collection;
+    Collection* collection{ nullptr };
 
 public:
     Storage();
-    Storage(Collection);
+    Storage(Collection&);
     Storage(Collection*);
 
     virtual ~Storage();

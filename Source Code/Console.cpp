@@ -7,7 +7,6 @@ using namespace std;
 Console::Console() :
     manufacturer(""),
     name(""),
-    cpu(nullptr),
     year(0) { }
 
 Console::Console(
@@ -26,8 +25,6 @@ Console::Console(const Console& console) :
 
 Console::~Console() {
 
-    delete cpu;
-    cpu = nullptr;
 }
 
 void Console::setManufacturer(string manufacturer) {
@@ -46,8 +43,6 @@ void Console::setName(string name) {
     else throw InvalidInput("Invalid Console Name");
 }
 
-void Console::setCpu(Cpu* cpu)
-    { this->cpu = cpu; }
 
 void Console::setYear(int year) {
 
@@ -72,13 +67,6 @@ void Console::print() const {
             << "Year: "
             << year
             << endl;
-
-    if (cpu != nullptr)
-        cout
-            << "CPU: "
-            << *cpu
-            << endl;
-    else cout << endl;
 }
 
 ostream& operator<<(ostream& out, const Console& c) {

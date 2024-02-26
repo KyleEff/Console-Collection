@@ -5,7 +5,7 @@
 Storage::Storage() :
     collection(nullptr) { }
 
-Storage::Storage(Collection collection) :
+Storage::Storage(Collection& collection) :
     collection(&collection) { }
 
 Storage::Storage(Collection* collection) :
@@ -26,21 +26,25 @@ void Storage::storeCollection() {
 
     file.open(fileName, ios::out);
 
-    //for (int i = 0; i < 5; i++) // TEST
+    if (file) cout << "FILE OPEN" << endl;
+    cout << "COLLECTION PRINT" << endl;
+    collection->print();
+/*
+    for (int i = 0; i < 5; i++) // TEST
         collection->addItem(
-            Console(
+            new Console(
                 "Sony",
                 "PlayStation3",
                 2007
             )
         );
-
-    if (file)
+*/
+    //if (file)
         for (auto i = 0; i < collection->size(); i++) {
 
-            //file << collection->getItem(i);
+            file << collection->getItem(i);
 
-            //cout << collection->getItem(i);
+            cout << collection->getItem(i);
         }
     file.close();
 }

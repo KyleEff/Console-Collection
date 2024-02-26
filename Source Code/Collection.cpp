@@ -20,9 +20,6 @@ void Collection::sortByName() { // TESTING
     //sort(layerOne.begin(), layerOne.end(), sortName);
 }
 
-void Collection::addItem(Console* add)
-    { }//layerOne.push_back(*add); }
-
 void Collection::removeItem(int choice) { }
 
 void Collection::searchByName() const {}
@@ -31,7 +28,7 @@ void Collection::searchByYear() const {}
 
 void Collection::print() const {
 
-    for (auto i : layerOne)
+    for (Console i : layerOne)
         i.print();
 }
 

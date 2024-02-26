@@ -28,8 +28,8 @@ public:
     void sortByYear();
     void sortByName();
 
-    void addItem(Console*);
-    //inline void addItem(Console* add) { layerOne.push_back(*add); }
+    inline void addItem(Console* add)
+        { layerOne.push_back(*add); }
 
     inline void addItem(Console add)
         { layerOne.push_back(add); }
