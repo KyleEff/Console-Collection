@@ -1,5 +1,4 @@
-#ifndef CONSOLE_H
-#define CONSOLE_H
+
 
 #include <string>
 #include <stdexcept>
@@ -49,6 +48,3 @@ public:
     friend ostream& operator<<(ostream&, const Console&);
 
 };
-
-
-#endif

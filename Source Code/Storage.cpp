@@ -25,27 +25,21 @@ void Storage::storeCollection() {
     string line, temp;
 
     file.open(fileName, ios::out);
+    /*              // TEST
+        for (int i = 0; i < 5; i++)
+            collection->addItem(
+                new Console(
+                    "Sony",
+                    "PlayStation3",
+                    2007
+                )
+            );
+    */
 
-    if (file) cout << "FILE OPEN" << endl;
-    cout << "COLLECTION PRINT" << endl;
-    collection->print();
-/*
-    for (int i = 0; i < 5; i++) // TEST
-        collection->addItem(
-            new Console(
-                "Sony",
-                "PlayStation3",
-                2007
-            )
-        );
-*/
-    //if (file)
-        for (auto i = 0; i < collection->size(); i++) {
-
-            file << collection->getItem(i);
-
-            cout << collection->getItem(i);
-        }
+    if (file)
+        for (auto i = 0; i < collection->size(); i++) 
+            file << collection->getItem(i) << endl;
+        
     file.close();
 }
 
@@ -62,14 +56,14 @@ void Storage::readCollection() {
 
         row.clear();
 
-        while (getline(buff, temp, ',')) // NO SPACES
+        while (getline(buff, temp, ',')) // NO SPACES ALLOWED
             row.push_back(temp);
 
-    /*          DEBUG STATEMENTS
+/*    //          DEBUG STATEMENTS
         cout << "PRINT ROW" << endl;
         for (auto i : row)
             cout << i << endl;
-    */
+*/
         if (collection != nullptr) {
 
             try {
@@ -82,14 +76,19 @@ void Storage::readCollection() {
                         )
                     );
 
-                //else collection->addItem(new Console(row[0], row[1]));
+                else collection->addItem(
+                    new Console(
+                        row[0],
+                        row[1],
+                        0
+                    )
+                );
             }
             catch(exception e)
                 { cout << e.what() << endl; }
         }
     }
 
-    collection->print();
     file.close();
 }
 

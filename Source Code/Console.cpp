@@ -12,7 +12,7 @@ Console::Console() :
 Console::Console(
     string manufacturer,
     string name,
-    int year
+    int year = 0
 ) :
     manufacturer(manufacturer),
     name(name),
@@ -66,7 +66,9 @@ void Console::print() const {
         cout
             << "Year: "
             << year
+            << '\n'
             << endl;
+    else cout << endl;
 }
 
 ostream& operator<<(ostream& out, const Console& c) {

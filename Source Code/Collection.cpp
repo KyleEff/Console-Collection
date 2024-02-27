@@ -28,7 +28,9 @@ void Collection::searchByYear() const {}
 
 void Collection::print() const {
 
-    for (Console i : layerOne)
+    cout << size() << endl;
+
+    for (auto i : layerOne)
         i.print();
 }
 

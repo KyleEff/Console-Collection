@@ -1,5 +1,4 @@
-#ifndef COLLECTION_H
-#define COLLECTION_H
+#pragma once
 
 #include "Console.h"
 #include <vector>
@@ -48,7 +47,3 @@ public:
 
     void test();
 };
-
-#endif
-
-

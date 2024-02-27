@@ -1,5 +1,4 @@
-#ifndef STORAGE_H
-#define STORAGE_H
+#pragma once
 
 #include "Collection.h"
 #include <fstream>
@@ -27,5 +26,3 @@ public:
 
     Collection* getCollection();
 };
-
-#endif
