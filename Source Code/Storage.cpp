@@ -49,45 +49,47 @@ void Storage::readCollection() {
 
     file.open(fileName, ios::in);
 
-    while (file >> line) {
+    if (file) 
+        while (getline(file, line)) {
 
-        vector<string> row;
-        stringstream buff(line);
+            vector<string> row;
+            stringstream buff(line);
 
-        row.clear();
+            row.clear();
 
-        while (getline(buff, temp, ',')) // NO SPACES ALLOWED
-            row.push_back(temp);
-
-/*    //          DEBUG STATEMENTS
-        cout << "PRINT ROW" << endl;
-        for (auto i : row)
-            cout << i << endl;
+            while (getline(buff, line, ',')) 
+                row.push_back(line);
+            
+/*        //          DEBUG STATEMENTS
+            cout << "PRINT ROW" << endl;
+            for (auto i : row)
+                cout << i << endl;
 */
-        if (collection != nullptr) {
+            if (collection != nullptr) {
 
-            try {
-                if (stoi(row[2]) > 0)
-                    collection->addItem(
+                try {
+                    if (stoi(row[2]) > 0)
+                        collection->addItem(
+                            new Console(
+                                row[0],
+                                row[1],
+                                stoi(row[2])
+                            )
+                        );
+
+                    else collection->addItem(
                         new Console(
                             row[0],
                             row[1],
-                            stoi(row[2])
+                            0
                         )
                     );
-
-                else collection->addItem(
-                    new Console(
-                        row[0],
-                        row[1],
-                        0
-                    )
-                );
+                }
+                catch(exception e)
+                    { cout << e.what() << endl; }
             }
-            catch(exception e)
-                { cout << e.what() << endl; }
         }
-    }
+    
 
     file.close();
 }

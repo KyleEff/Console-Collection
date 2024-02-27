@@ -1,37 +1,39 @@
 #include "Collection.h"
 
-#include <vector>
-#include <sstream>
+void Collection::sortByYear(int choice) {
 
-void Collection::sortByYear()
-    { sort(layerOne.begin(), layerOne.end(), sortYear); }
-
-void Collection::sortByName() { // TESTING
-
-    nameTable.clear();
-
-    for (auto i : layerOne)
-        nameTable.insert({i.getName(), i});
-
-    //if (hashTable.find("PS2") != hashTable.end())
-    if (nameTable.count("2600"))
-        nameTable["2600"].print();
-
-    //sort(layerOne.begin(), layerOne.end(), sortName);
+    if (choice == 0)
+        sort(layerOne.begin(), layerOne.end(), sortYearAsc);
+    else sort(layerOne.begin(), layerOne.end(), sortYearDesc);
 }
 
-void Collection::removeItem(int choice) { }
+void Collection::sortByName(int choice) {
 
-void Collection::searchByName() const {}
+    if (choice == 0)
+        sort(layerOne.begin(), layerOne.end(), sortNameAsc);
+    else sort(layerOne.begin(), layerOne.end(), sortNameDesc);
+}
 
-void Collection::searchByYear() const {}
+Console Collection::searchByName(string name) {
 
-void Collection::print() const {
+    if (nameTable.empty())
+        for (auto i : layerOne)
+            nameTable.insert({i.getName(), i});
 
-    cout << size() << endl;
+    if (nameTable.count(name) > 0)
+        return nameTable[name];
+    else throw ItemNotFound("Item Not Found");
+}
 
-    for (auto i : layerOne)
-        i.print();
+Console Collection::searchByYear(int year) { // DOES NOT WORK AS INTENDED
+
+    if (yearTable.empty())
+        for (auto i : layerOne)
+            yearTable.insert({i.getYear(), i});
+
+    if (yearTable.count(year) > 0)
+        return yearTable[year];
+    else throw ItemNotFound("Item Not Found");
 }
 
 void Collection::test() {
