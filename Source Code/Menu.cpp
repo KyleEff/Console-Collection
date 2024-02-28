@@ -4,6 +4,16 @@
 
 using namespace std;
 
+Menu::Menu() : choice(0) {
+
+    disk.setCollection(&collection);
+
+    greeting();
+
+    while (choice >= 0)
+        mainMenu();
+}
+
 void Menu::greeting() const {
 
     cout
@@ -15,8 +25,6 @@ void Menu::greeting() const {
 
 void Menu::mainMenu() {
 
-    choice = 0;
-
     cout
         << "Select an operation to perform:\n"
         << "1: View Collection\n"
@@ -26,7 +34,6 @@ void Menu::mainMenu() {
 
     cin >> choice;
 
-    while (choice != 3)
     switch(choice) {
 
         case 1:
@@ -36,13 +43,66 @@ void Menu::mainMenu() {
             editCollection();
             break;
         case 3:
-            assert(false);
+            cout << "Program exiting..." << endl;
+            exit(0);
+            break;
         default:
+            cout << "Invaid Input! Try again." << endl;
             break;
     }
 
 }
 
-void Menu::viewCollection() const {}
+void Menu::viewCollection() {
+    cout << "Hey look its your collection" << endl;
 
-void Menu::editCollection() {}
+    if (collection.size() > 0) {
+
+        cout
+            << "How would you like to view your collection?\n"
+            << "1: View by year, ascending\n"
+            << "2: View by year, descending\n"
+            << "3: View by name, ascending\n"
+            << "4: View by name, descending\n"
+            << "5: Return to the main menu"
+            << endl;
+
+        cin >> choice;
+
+        switch (choice) {
+
+            case 1:
+                collection.sortByYear(0);
+                collection.print();
+                break;
+            case 2:
+                collection.sortByYear(1);
+                collection.print();
+                break;
+            case 3:
+                collection.sortByName(0);
+                collection.print();
+                break;
+            case 4:
+                collection.sortByName(1);
+                collection.print();
+                break;
+            case 5:
+                return;
+                break;
+        }
+    }
+
+    else {
+
+        cout
+            << "There are no items in your collection!\n"
+            << "Try editing your collection and adding an item"
+            << endl;
+
+        return;
+    }
+
+}
+
+void Menu::editCollection() { cout << "You're editing your collection rn" << endl; }
