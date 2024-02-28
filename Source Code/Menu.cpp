@@ -14,21 +14,13 @@ Menu::Menu() : choice(0) {
         mainMenu();
 }
 
-void Menu::greeting() const {
-
-    cout
-        << "Welcome to the Console Collection Manager!\n"
-        << "This software is used to manage the user's collection of video game consoles.\n"
-        << "Feel free to have a look around."
-        << endl;
-}
-
 void Menu::mainMenu() {
 
     cout
         << "Select an operation to perform:\n"
         << "1: View Collection\n"
         << "2: Edit Collection\n"
+        << "3: \n"
         << "3: Exit Program"
         << endl;
 

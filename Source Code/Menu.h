@@ -11,7 +11,14 @@ class Menu {
 public:
     Menu();
 
-    void greeting() const;
+    inline void greeting() const {
+        cout
+            << "Welcome to the Console Collection Manager!\n"
+            << "This software is used to manage the user's collection of video game consoles.\n"
+            << "Feel free to have a look around."
+            << endl;
+    }
+    
     void mainMenu(); // The "main lobby" of the program.
     void viewCollection(); // View information about the collection
     void editCollection(); // Make changes to the collection
