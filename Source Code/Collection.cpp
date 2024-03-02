@@ -1,15 +1,15 @@
 #include "Collection.h"
 
-void Collection::sortByYear(int choice) {
+void Collection::sortByYear(bool choice) {
 
-    if (choice == 0)
+    if (choice)
         sort(layerOne.begin(), layerOne.end(), sortYearAsc);
     else sort(layerOne.begin(), layerOne.end(), sortYearDesc);
 }
 
-void Collection::sortByName(int choice) {
+void Collection::sortByName(bool choice) {
 
-    if (choice == 0)
+    if (choice)
         sort(layerOne.begin(), layerOne.end(), sortNameAsc);
     else sort(layerOne.begin(), layerOne.end(), sortNameDesc);
 }

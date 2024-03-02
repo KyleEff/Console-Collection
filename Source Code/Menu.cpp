@@ -4,15 +4,16 @@
 
 using namespace std;
 
-Menu::Menu() : choice(0) {
+Menu::Menu() :
+    choice(0) {
 
-    disk.setCollection(&collection);
+        disk.setCollection(&collection);
 
-    greeting();
+        greeting();
 
-    while (choice >= 0)
-        mainMenu();
-}
+        while (choice >= 0)
+            mainMenu();
+    }
 
 void Menu::mainMenu() {
 
@@ -20,9 +21,9 @@ void Menu::mainMenu() {
         << "Select an operation to perform:\n"
         << "1: View Collection\n"
         << "2: Edit Collection\n"
-        << "3: \n"
         << "3: Exit Program"
-        << endl;
+        << endl
+        << ">> ";
 
     cin >> choice;
 
@@ -42,11 +43,10 @@ void Menu::mainMenu() {
             cout << "Invaid Input! Try again." << endl;
             break;
     }
-
 }
 
 void Menu::viewCollection() {
-    cout << "Hey look its your collection" << endl;
+    cout << "------------ View Collection ------------" << endl;
 
     if (collection.size() > 0) {
 
@@ -57,30 +57,30 @@ void Menu::viewCollection() {
             << "3: View by name, ascending\n"
             << "4: View by name, descending\n"
             << "5: Return to the main menu"
-            << endl;
+            << endl
+            << ">> ";
 
         cin >> choice;
 
         switch (choice) {
 
             case 1:
-                collection.sortByYear(0);
+                collection.sortByYear(true);
                 collection.print();
                 break;
             case 2:
-                collection.sortByYear(1);
+                collection.sortByYear(false);
                 collection.print();
                 break;
             case 3:
-                collection.sortByName(0);
+                collection.sortByName(true);
                 collection.print();
                 break;
             case 4:
-                collection.sortByName(1);
+                collection.sortByName(false);
                 collection.print();
                 break;
             case 5:
-                return;
                 break;
         }
     }
@@ -91,10 +91,82 @@ void Menu::viewCollection() {
             << "There are no items in your collection!\n"
             << "Try editing your collection and adding an item"
             << endl;
+    }
+}
 
-        return;
+void Menu::editCollection() {
+
+    cout
+        << "------------ Edit Collection ------------" << endl
+        << "Choose how you would like to edit your collection:\n"
+        << "1: Add Console\n"
+        << "2: Remove Console\n"
+        << "3: Load Collection From File\n"
+        << "4: Save Collection To File\n"
+        << "5: Return to Main Menu"
+        << endl
+        << ">> ";
+
+    cin >> choice;
+
+    switch (choice) {
+
+        case 1:
+            addToCollection();
+            break;
+
+        case 2:
+            removeFromCollection();
+            break;
+
+        case 3:
+            cout << "Loading Collection From Disk..." << endl;
+            disk.readCollection();
+            break;
+
+        case 4:
+            cout << "Saving Collection To Disk..." << endl;
+            disk.storeCollection();
+            break;
+
+        case 5:
+            break;
+
+        default:
+            cout << "ERROR" << endl;
+            break;
     }
 
 }
 
-void Menu::editCollection() { cout << "You're editing your collection rn" << endl; }
+void Menu::addToCollection() {
+
+    string
+        manufacturer,
+        name;
+    int year = 0;
+
+    cout << "Enter the manufacturer of the console: ";
+    cin >> manufacturer;
+
+    cout << "Enter the name of the console: ";
+    cin >> name;
+
+    cout << "If you know the year of release, enter it here. Otherwise enter zero: ";
+    cin >> year;
+
+    collection.addItem(
+        new Console(
+            manufacturer,
+            name,
+            year
+        )
+    );
+}
+
+void Menu::removeFromCollection() {
+
+
+}
+
+

@@ -43,8 +43,8 @@ public:
     class ItemNotFound : public invalid_argument
         { public: ItemNotFound(const char* what) : invalid_argument(what) {} };
 
-    void sortByYear(int);
-    void sortByName(int);
+    void sortByYear(bool);
+    void sortByName(bool);
 
     Console searchByName(string);
     Console searchByYear(int); // DOES NOT WORK AS INTENDED
@@ -58,9 +58,13 @@ public:
     inline void removeItem(int choice)
         { layerOne.erase(layerOne.begin() + (choice - 1)); }
 
-    inline void print() const 
-        { for (auto i : layerOne) i.print(); }
-
+    inline void print() const {
+        
+        for (auto i{0}; i < layerOne.size(); i++) {
+            cout << i + 1 << ": ";
+            layerOne[i].print();
+        }
+    }
     inline int size() const
         { return layerOne.size(); }
 

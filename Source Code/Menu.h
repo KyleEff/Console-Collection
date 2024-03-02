@@ -23,6 +23,9 @@ public:
     void viewCollection(); // View information about the collection
     void editCollection(); // Make changes to the collection
 
+    void addToCollection();
+    void removeFromCollection();
+
     inline Collection& getCollection()
         { return collection; } // DEBUG FUNCTION
 };
