@@ -16,20 +16,12 @@ void Collection::sortByName(bool choice) {
 
 Console Collection::searchByName(string name) {
 
-    if (nameTable.empty())
-        for (auto i : layerOne)
-            nameTable.insert({i.getName(), i});
-
     if (nameTable.count(name) > 0)
         return nameTable[name];
     else throw ItemNotFound("Item Not Found");
 }
 
 Console Collection::searchByYear(int year) { // DOES NOT WORK AS INTENDED
-
-    if (yearTable.empty())
-        for (auto i : layerOne)
-            yearTable.insert({i.getYear(), i});
 
     if (yearTable.count(year) > 0)
         return yearTable[year];

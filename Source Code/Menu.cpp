@@ -17,6 +17,8 @@ Menu::Menu() :
 
 void Menu::mainMenu() {
 
+    cout << "\n------------ Main Menu ------------" << endl;
+
     cout
         << "Select an operation to perform:\n"
         << "1: View Collection\n"
@@ -32,13 +34,16 @@ void Menu::mainMenu() {
         case 1:
             viewCollection();
             break;
+
         case 2:
             editCollection();
             break;
+
         case 3:
             cout << "Program exiting..." << endl;
             exit(0);
             break;
+
         default:
             cout << "Invaid Input! Try again." << endl;
             break;
@@ -46,17 +51,18 @@ void Menu::mainMenu() {
 }
 
 void Menu::viewCollection() {
-    cout << "------------ View Collection ------------" << endl;
 
     if (collection.size() > 0) {
 
         cout
+            << "\n------------ View Collection ------------\n"
             << "How would you like to view your collection?\n"
             << "1: View by year, ascending\n"
             << "2: View by year, descending\n"
             << "3: View by name, ascending\n"
             << "4: View by name, descending\n"
-            << "5: Return to the main menu"
+            << "5: Search Collection\n"
+            << "6: Return to the main menu"
             << endl
             << ">> ";
 
@@ -66,32 +72,49 @@ void Menu::viewCollection() {
 
             case 1:
                 collection.sortByYear(true);
+                cout << "\n------------ Collection By Year, Ascending ------------" << endl;
                 collection.print();
                 break;
+
             case 2:
                 collection.sortByYear(false);
+                cout << "\n------------ Collection By Year, Descending ------------" << endl;
                 collection.print();
                 break;
+
             case 3:
                 collection.sortByName(true);
+                cout << "\n------------ Collection By Name, Ascending ------------" << endl;
                 collection.print();
                 break;
+
             case 4:
                 collection.sortByName(false);
+                cout << "\n------------ Collection By Name, Descending ------------" << endl;
                 collection.print();
                 break;
+
             case 5:
+                searchCollection();
+                break;
+
+            case 6:
+                break;
+
+            default:
+                cout << "Invalid Input. Try again.\n" << endl;
                 break;
         }
     }
 
-    else {
-
+    else
         cout
+            << "\n------------ WARNING ------------\n"
             << "There are no items in your collection!\n"
-            << "Try editing your collection and adding an item"
+            << "Try editing your collection and adding an item\n"
+            << "------------ WARNING ------------"
             << endl;
-    }
+    
 }
 
 void Menu::editCollection() {
@@ -120,12 +143,10 @@ void Menu::editCollection() {
             break;
 
         case 3:
-            cout << "Loading Collection From Disk..." << endl;
             disk.readCollection();
             break;
 
         case 4:
-            cout << "Saving Collection To Disk..." << endl;
             disk.storeCollection();
             break;
 
@@ -136,7 +157,6 @@ void Menu::editCollection() {
             cout << "ERROR" << endl;
             break;
     }
-
 }
 
 void Menu::addToCollection() {
@@ -144,29 +164,82 @@ void Menu::addToCollection() {
     string
         manufacturer,
         name;
+
     int year = 0;
+    Console* temp{ nullptr };
 
-    cout << "Enter the manufacturer of the console: ";
-    cin >> manufacturer;
+    cout << "Enter the manufacturer of the console\n>> ";
+    cin.ignore();
+    getline(cin, manufacturer);
 
-    cout << "Enter the name of the console: ";
-    cin >> name;
+    cout << "Enter the name of the console\n>> ";
+    getline(cin, name);
 
-    cout << "If you know the year of release, enter it here. Otherwise enter zero: ";
+    cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
-    collection.addItem(
-        new Console(
-            manufacturer,
-            name,
-            year
-        )
-    );
+    temp = new Console(manufacturer, name, year);
+
+    if (collection.search(temp))
+        cout << "!!! Item already exists inside collection !!!" << endl;
+    else
+        collection.addItem(temp);
+
+    collection.print();
+
+    delete temp; // garbage collection
 }
 
 void Menu::removeFromCollection() {
 
+    collection.print();
 
+    cout << "Enter the list number of the item to remove\n>>";
+    cin >> choice;
+
+    collection.removeItem(choice);
+    cout << "\n------------ Edited Collection ------------" << endl;
+    collection.print();
 }
 
+void Menu::searchCollection() {
 
+    string nameSearch;
+    choice = 0;
+
+    while (choice >= 0) {
+        cout
+            << "\n------------ Search Collection ------------\n"
+            << "How would you like to search?\n"
+            << "1: By Name\n"
+            << "2: By Year\n"
+            << "3: Back to Main Menu"
+            << endl
+            << ">> ";
+        cin >> choice;
+
+        switch (choice) {
+
+            case 1:
+                cout << "Enter the name\n>> ";
+                cin >> nameSearch;
+                try {
+
+                    cout
+                        << "Searching...\n"
+                        << endl;
+
+                    collection.searchByName(nameSearch).print();
+                }
+                catch (Collection::ItemNotFound e) { cout << e.what() << endl; }
+                break;
+
+            case 2: // NEED TO SET UP THE NEW DATA STRUCTURE
+                cout << "Enter the year\n>> ";
+                cin >> choice;
+            
+            case 3:
+                return;
+        }
+    }
+}

@@ -36,11 +36,17 @@ void Storage::storeCollection() {
             );
     */
 
+    cout << "Saving Collection To Disk..." << endl;
+
     if (file)
         for (auto i = 0; i < collection->size(); i++) 
             file << collection->getItem(i) << endl;
+    else
+        cout << "!!! PROBLEM WITH FILE !!!" << endl;
         
     file.close();
+    
+    cout << "!!! Collection Saved !!!" << endl;
 }
 
 void Storage::readCollection() {
@@ -48,6 +54,8 @@ void Storage::readCollection() {
     string line, temp;
 
     file.open(fileName, ios::in);
+
+    cout << "Loading Collection From Disk..." << endl;
 
     if (file) 
         while (getline(file, line)) {
@@ -90,8 +98,9 @@ void Storage::readCollection() {
             }
         }
     
-
     file.close();
+
+    cout << "!!! Collection Loaded !!!" << endl;
 }
 
 

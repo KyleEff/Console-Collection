@@ -41,5 +41,5 @@ public:
     void print() const;
 
     friend ostream& operator<<(ostream&, const Console&);
-
+    friend bool operator<(const Console&, const Console&);
 };

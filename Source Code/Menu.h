@@ -5,7 +5,6 @@ class Menu {
 // Attributes
     Collection collection;
     Storage disk;
-
     int choice;
 
 public:
@@ -13,7 +12,7 @@ public:
 
     inline void greeting() const {
         cout
-            << "Welcome to the Console Collection Manager!\n"
+            << "\n------------ Welcome to the Console Collection Manager ------------\n"
             << "This software is used to manage the user's collection of video game consoles.\n"
             << "Feel free to have a look around."
             << endl;
@@ -25,6 +24,7 @@ public:
 
     void addToCollection();
     void removeFromCollection();
+    void searchCollection();
 
     inline Collection& getCollection()
         { return collection; } // DEBUG FUNCTION

@@ -49,11 +49,23 @@ public:
     Console searchByName(string);
     Console searchByYear(int); // DOES NOT WORK AS INTENDED
 
-    inline void addItem(Console* add)
-        { layerOne.push_back(*add); }
+    inline bool search(Console* value) {
 
-    inline void addItem(Console add)
-        { layerOne.push_back(add); }
+        sortByName(true);
+        return binary_search(layerOne.begin(), layerOne.end(), *value);
+    }
+
+    inline void addItem(Console* add) {
+
+        layerOne.push_back(*add);
+        nameTable.insert({ add->getName(), *add });
+    }
+
+    inline void addItem(Console add) {
+
+        layerOne.push_back(add);
+        nameTable.insert({ add.getName(), add });
+    }
 
     inline void removeItem(int choice)
         { layerOne.erase(layerOne.begin() + (choice - 1)); }
