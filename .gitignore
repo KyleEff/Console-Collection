@@ -38,6 +38,8 @@
 #document files
 *.odt
 *.odt#
+*.txt
 
 #test files
 test.cpp
+
