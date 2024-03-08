@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <stdexcept>
 #include <iostream>
@@ -19,9 +21,6 @@ public:
     Console(string, string, int); // Parameterized constructor
     Console(const Console&); // Copy constructor
 
-    // Destructor
-    virtual ~Console();
-
     // Exception Object
     class InvalidInput : public domain_error
         { public: InvalidInput(const char* what) : domain_error(what) {} };
@@ -30,7 +29,7 @@ public:
     void setManufacturer(string); // Setter for manufacturer
     void setName(string); // Setter for name
     void setYear(int); // Setter for year
-    
+
     // Accessors
     inline string getManufacturer() const // Getter for manufacturer
         { return manufacturer; }

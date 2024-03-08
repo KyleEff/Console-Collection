@@ -13,11 +13,13 @@ class Collection {
 
     vector<Console> layerOne;
     unordered_map<string, Console> nameTable; // Search by name
+
     unordered_map<int, Console> yearTable; // Does not work as intended
 
     vector<vector<Console>*> yearTable2; // TEST (POSSIBLY CREATE A CUSTOM NODE)
 
     // Function objects for sort function
+    // NOTE: !!! I did not know what a function object was until this project !!!
     struct {
         bool operator()(const Console& a, const Console& b) const
             { return a.getYear() < b.getYear(); }
@@ -51,7 +53,7 @@ public:
     Console searchByName(string);
     Console searchByYear(int); // DOES NOT WORK AS INTENDED
 
-    inline bool search(Console* value) {
+    inline bool search(Console* value) { // default binary search by name
 
         sortByName(true);
         return binary_search(layerOne.begin(), layerOne.end(), *value);
@@ -69,10 +71,10 @@ public:
         nameTable.insert({ add.getName(), add });
     }
 
-    inline void removeItem(int choice) {
+    inline void removeItem(int choice) { // FIX THIS (MAJOR PROBLEM)
         
         //nameTable.erase();
-        throw new int(556546);
+        throw int(556546);
         layerOne.erase(layerOne.begin() + (choice - 1));
     }
 
@@ -97,5 +99,4 @@ public:
     inline Console getItem(int index) const
         { return layerOne[index]; }
 
-    void test();
 };

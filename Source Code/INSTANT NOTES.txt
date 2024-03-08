@@ -1,0 +1,2 @@
+In the Collection class, I need to work on the removeItem(int) function. The function needs to erase the vector element AS WELL AS the corresponding hash table element.
+

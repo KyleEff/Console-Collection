@@ -27,7 +27,3 @@ Console Collection::searchByYear(int year) { // DOES NOT WORK AS INTENDED
         return yearTable[year];
     else throw ItemNotFound("Item Not Found");
 }
-
-void Collection::test() {
-
-}

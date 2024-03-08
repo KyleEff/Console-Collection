@@ -27,11 +27,6 @@ Console::Console(const Console& console) :
     name(console.name),
     year(console.year) { }
 
-// Destructor
-Console::~Console() {
-
-}
-
 // Setter for manufacturer
 void Console::setManufacturer(string manufacturer) {
     // Check if the input manufacturer is not empty

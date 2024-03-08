@@ -56,7 +56,7 @@ void Menu::viewCollection() {
         collection.size(); // Throws an exception
 
         while (choice >= 0) {
-            
+
             cout
                 << "\n------------ View Collection ------------\n"
                 << "How would you like to view your collection?\n"
@@ -202,10 +202,11 @@ void Menu::removeFromCollection() {
 
     collection.print();
 
-    cout << "Enter the list number of the item to remove\n>>";
+    cout << "Enter the list number of the item to remove\n>> ";
     cin >> choice;
 
-    collection.removeItem(choice);
+    collection.removeItem(choice); // FIGURE THIS SHIT OUT
+
     cout << "\n------------ Edited Collection ------------" << endl;
     collection.print();
 }
@@ -220,7 +221,7 @@ void Menu::searchCollection() {
             << "\n------------ Search Collection ------------\n"
             << "How would you like to search?\n"
             << "1: By Name\n"
-            << "2: By Year\n"
+            << "2: By Year (UNDER CONSTRUCTION)\n"
             << "3: Back to Main Menu"
             << endl
             << ">> ";
@@ -231,6 +232,7 @@ void Menu::searchCollection() {
             case 1:
                 cout << "Enter the name\n>> ";
                 cin >> nameSearch;
+
                 try {
 
                     cout
@@ -239,11 +241,12 @@ void Menu::searchCollection() {
 
                     collection.searchByName(nameSearch).print();
                 }
-                catch (Collection::ItemNotFound e) { cout << e.what() << endl; }
+                catch (Collection::ItemNotFound e)
+                    { cout << e.what() << endl; }
                 break;
 
             case 2: // NEED TO SET UP THE NEW DATA STRUCTURE
-                cout << "Enter the year\n>> ";
+                cout << "Enter the year\n>> (UNDER CONSTRUCTION)";
                 cin >> choice;
             
             case 3:
