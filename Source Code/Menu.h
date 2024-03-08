@@ -2,7 +2,7 @@
 #include "Storage.h"
 
 class Menu {
-// Attributes
+    // Attributes
     Collection collection;
     Storage disk;
     int choice;
@@ -11,6 +11,7 @@ public:
     Menu();
 
     inline void greeting() const {
+        
         cout
             << "\n------------ Welcome to the Console Collection Manager ------------\n"
             << "This software is used to manage the user's collection of video game consoles.\n"

@@ -17,9 +17,8 @@ Menu::Menu() :
 
 void Menu::mainMenu() {
 
-    cout << "\n------------ Main Menu ------------" << endl;
-
     cout
+        << "\n------------ Main Menu ------------\n"
         << "Select an operation to perform:\n"
         << "1: View Collection\n"
         << "2: Edit Collection\n"
@@ -40,7 +39,7 @@ void Menu::mainMenu() {
             break;
 
         case 3:
-            cout << "Program exiting..." << endl;
+            cout << "!!! Program exiting... !!!" << endl;
             exit(0);
             break;
 
@@ -52,17 +51,83 @@ void Menu::mainMenu() {
 
 void Menu::viewCollection() {
 
-    if (collection.size() > 0) {
+    try {
+
+        collection.size(); // Throws an exception
+
+        while (choice >= 0) {
+            
+            cout
+                << "\n------------ View Collection ------------\n"
+                << "How would you like to view your collection?\n"
+                << "1: View by year, ascending\n"
+                << "2: View by year, descending\n"
+                << "3: View by name, ascending\n"
+                << "4: View by name, descending\n"
+                << "5: Search Collection\n"
+                << "6: Return to the main menu"
+                << endl
+                << ">> ";
+
+            cin >> choice;
+
+            switch (choice) {
+
+                case 1:
+                    collection.sortByYear(true);
+                    cout << "\n------------ Collection By Year, Ascending ------------" << endl;
+                    collection.print();
+                    break;
+
+                case 2:
+                    collection.sortByYear(false);
+                    cout << "\n------------ Collection By Year, Descending ------------" << endl;
+                    collection.print();
+                    break;
+
+                case 3:
+                    collection.sortByName(true);
+                    cout << "\n------------ Collection By Name, Ascending ------------" << endl;
+                    collection.print();
+                    break;
+
+                case 4:
+                    collection.sortByName(false);
+                    cout << "\n------------ Collection By Name, Descending ------------" << endl;
+                    collection.print();
+                    break;
+
+                case 5:
+                    searchCollection();
+                    break;
+
+                case 6:
+                    return;
+
+                default:
+                    cout << "Invalid Input. Try again.\n" << endl;
+                    break;
+            }
+        }
+    }
+
+    catch (Collection::EmptyCollection e)
+        { cout << e.what() << endl; }
+    
+}
+
+void Menu::editCollection() {
+
+    while (choice >= 0) {
 
         cout
-            << "\n------------ View Collection ------------\n"
-            << "How would you like to view your collection?\n"
-            << "1: View by year, ascending\n"
-            << "2: View by year, descending\n"
-            << "3: View by name, ascending\n"
-            << "4: View by name, descending\n"
-            << "5: Search Collection\n"
-            << "6: Return to the main menu"
+            << "\n------------ Edit Collection ------------" << endl
+            << "Choose how you would like to edit your collection:\n"
+            << "1: Add Console\n"
+            << "2: Remove Console\n"
+            << "3: Load Collection From File\n"
+            << "4: Save Collection To File\n"
+            << "5: Return to Main Menu"
             << endl
             << ">> ";
 
@@ -71,91 +136,34 @@ void Menu::viewCollection() {
         switch (choice) {
 
             case 1:
-                collection.sortByYear(true);
-                cout << "\n------------ Collection By Year, Ascending ------------" << endl;
-                collection.print();
+                addToCollection();
                 break;
 
             case 2:
-                collection.sortByYear(false);
-                cout << "\n------------ Collection By Year, Descending ------------" << endl;
-                collection.print();
+                removeFromCollection();
                 break;
 
             case 3:
-                collection.sortByName(true);
-                cout << "\n------------ Collection By Name, Ascending ------------" << endl;
-                collection.print();
+                try
+                    { disk.readCollection(); }
+                catch (Storage::InvalidFile e)
+                    { cout << e.what() << endl; }
                 break;
 
             case 4:
-                collection.sortByName(false);
-                cout << "\n------------ Collection By Name, Descending ------------" << endl;
-                collection.print();
+                try
+                    { disk.storeCollection(); }
+                catch (Storage::InvalidFile e)
+                    { cout << e.what() << endl; }
                 break;
 
             case 5:
-                searchCollection();
-                break;
-
-            case 6:
-                break;
+                return;
 
             default:
-                cout << "Invalid Input. Try again.\n" << endl;
+                cout << "ERROR" << endl;
                 break;
         }
-    }
-
-    else
-        cout
-            << "\n------------ WARNING ------------\n"
-            << "There are no items in your collection!\n"
-            << "Try editing your collection and adding an item\n"
-            << "------------ WARNING ------------"
-            << endl;
-    
-}
-
-void Menu::editCollection() {
-
-    cout
-        << "------------ Edit Collection ------------" << endl
-        << "Choose how you would like to edit your collection:\n"
-        << "1: Add Console\n"
-        << "2: Remove Console\n"
-        << "3: Load Collection From File\n"
-        << "4: Save Collection To File\n"
-        << "5: Return to Main Menu"
-        << endl
-        << ">> ";
-
-    cin >> choice;
-
-    switch (choice) {
-
-        case 1:
-            addToCollection();
-            break;
-
-        case 2:
-            removeFromCollection();
-            break;
-
-        case 3:
-            disk.readCollection();
-            break;
-
-        case 4:
-            disk.storeCollection();
-            break;
-
-        case 5:
-            break;
-
-        default:
-            cout << "ERROR" << endl;
-            break;
     }
 }
 

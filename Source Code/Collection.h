@@ -12,13 +12,12 @@ using namespace std;
 class Collection {
 
     vector<Console> layerOne;
-
-    unordered_map<string, Console> nameTable;
+    unordered_map<string, Console> nameTable; // Search by name
     unordered_map<int, Console> yearTable; // Does not work as intended
 
     vector<vector<Console>*> yearTable2; // TEST (POSSIBLY CREATE A CUSTOM NODE)
 
-// Function objects for sorting
+    // Function objects for sort function
     struct {
         bool operator()(const Console& a, const Console& b) const
             { return a.getYear() < b.getYear(); }
@@ -43,8 +42,11 @@ public:
     class ItemNotFound : public invalid_argument
         { public: ItemNotFound(const char* what) : invalid_argument(what) {} };
 
-    void sortByYear(bool);
-    void sortByName(bool);
+    class EmptyCollection : public range_error
+        { public: EmptyCollection(const char* what) : range_error(what) {} };
+
+    void sortByName(bool); // True if ascending, false if descending
+    void sortByYear(bool); 
 
     Console searchByName(string);
     Console searchByYear(int); // DOES NOT WORK AS INTENDED
@@ -67,8 +69,12 @@ public:
         nameTable.insert({ add.getName(), add });
     }
 
-    inline void removeItem(int choice)
-        { layerOne.erase(layerOne.begin() + (choice - 1)); }
+    inline void removeItem(int choice) {
+        
+        //nameTable.erase();
+        throw new int(556546);
+        layerOne.erase(layerOne.begin() + (choice - 1));
+    }
 
     inline void print() const {
         
@@ -77,8 +83,16 @@ public:
             layerOne[i].print();
         }
     }
-    inline int size() const
-        { return layerOne.size(); }
+
+    inline int size() const {
+
+        if (layerOne.size() < 1 )
+            throw EmptyCollection(
+                "!!! There are no items in your collection!\nTry editing your collection and adding an item !!!"
+            );
+        else
+            return layerOne.size();
+    }
 
     inline Console getItem(int index) const
         { return layerOne[index]; }

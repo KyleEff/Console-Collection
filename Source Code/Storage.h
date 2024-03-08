@@ -20,6 +20,9 @@ public:
 
     virtual ~Storage();
 
+    class InvalidFile : public invalid_argument
+        { public: InvalidFile(const char* what) : invalid_argument(what) { } };
+
     void setCollection(Collection*);
     void storeCollection();
     void readCollection();

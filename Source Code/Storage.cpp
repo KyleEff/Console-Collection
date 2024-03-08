@@ -25,6 +25,7 @@ void Storage::storeCollection() {
     string line, temp;
 
     file.open(fileName, ios::out);
+
     /*              // TEST
         for (int i = 0; i < 5; i++)
             collection->addItem(
@@ -36,13 +37,13 @@ void Storage::storeCollection() {
             );
     */
 
-    cout << "Saving Collection To Disk..." << endl;
+    cout << "\nSaving Collection To Disk..." << endl;
 
     if (file)
         for (auto i = 0; i < collection->size(); i++) 
             file << collection->getItem(i) << endl;
     else
-        cout << "!!! PROBLEM WITH FILE !!!" << endl;
+        throw InvalidFile("!!! Invalid File !!!");
         
     file.close();
     
@@ -55,7 +56,7 @@ void Storage::readCollection() {
 
     file.open(fileName, ios::in);
 
-    cout << "Loading Collection From Disk..." << endl;
+    cout << "\nLoading Collection From Disk..." << endl;
 
     if (file) 
         while (getline(file, line)) {
@@ -97,6 +98,9 @@ void Storage::readCollection() {
                     { cout << e.what() << endl; }
             }
         }
+
+    else
+        throw InvalidFile("!!! Invalid File !!!");
     
     file.close();
 
