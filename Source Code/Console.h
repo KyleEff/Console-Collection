@@ -31,13 +31,13 @@ public:
     void setYear(int); // Setter for year
 
     // Accessors
-    inline string getManufacturer() const // Getter for manufacturer
+    string getManufacturer() const // Getter for manufacturer
         { return manufacturer; }
 
-    inline string getName() const // Getter for name
+    string getName() const // Getter for name
         { return name; }
 
-    inline int getYear() const // Getter for year
+    int getYear() const // Getter for year
         { return year; }
 
     // Display

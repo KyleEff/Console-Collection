@@ -53,32 +53,33 @@ public:
     Console searchByName(string);
     Console searchByYear(int); // DOES NOT WORK AS INTENDED
 
-    inline bool search(Console* value) { // default binary search by name
+    bool search(Console* value) { // default binary search by name
 
         sortByName(true);
         return binary_search(layerOne.begin(), layerOne.end(), *value);
     }
 
-    inline void addItem(Console* add) {
+    void addItem(Console* add) {
 
         layerOne.push_back(*add);
         nameTable.insert({ add->getName(), *add });
     }
 
-    inline void addItem(Console add) {
+    void addItem(Console add) {
 
         layerOne.push_back(add);
         nameTable.insert({ add.getName(), add });
     }
 
-    inline void removeItem(int choice) { // FIX THIS (MAJOR PROBLEM)
+    void removeItem(int choice) { // FIX THIS (MAJOR PROBLEM)
         
         //nameTable.erase();
+        // nameTable.erase(layerOne.begin() + (choice - 1));
         throw int(556546);
         layerOne.erase(layerOne.begin() + (choice - 1));
     }
 
-    inline void print() const {
+    void print() const {
         
         for (auto i{0}; i < layerOne.size(); i++) {
             cout << i + 1 << ": ";
@@ -86,7 +87,7 @@ public:
         }
     }
 
-    inline int size() const {
+    int size() const { // LOOK INTO MOVING OUT INTO CPP FILE
 
         if (layerOne.size() < 1 )
             throw EmptyCollection(
@@ -96,7 +97,7 @@ public:
             return layerOne.size();
     }
 
-    inline Console getItem(int index) const
+    Console getItem(int index) const
         { return layerOne[index]; }
 
 };

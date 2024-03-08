@@ -39,20 +39,27 @@ void Storage::storeCollection() {
 
     cout << "\nSaving Collection To Disk..." << endl;
 
-    if (file)
-        for (auto i = 0; i < collection->size(); i++) 
-            file << collection->getItem(i) << endl;
+    if (file) {
+
+        try {
+
+            for (auto i = 0; i < collection->size(); i++) 
+                file << collection->getItem(i) << endl;
+
+            cout << "!!! Collection Saved !!!" << endl;
+        }
+        catch (Collection::EmptyCollection e)
+            { cout << e.what() << endl; }
+    }
     else
         throw InvalidFile("!!! Invalid File !!!");
         
     file.close();
-    
-    cout << "!!! Collection Saved !!!" << endl;
 }
 
 void Storage::readCollection() {
 
-    string line, temp;
+    string line;
 
     file.open(fileName, ios::in);
 
@@ -77,6 +84,7 @@ void Storage::readCollection() {
             if (collection != nullptr) {
 
                 try {
+
                     if (stoi(row[2]) > 0)
                         collection->addItem(
                             new Console(
@@ -94,7 +102,7 @@ void Storage::readCollection() {
                         )
                     );
                 }
-                catch(exception e)
+                catch(exception e) // stoi() was throwing an exception. Problem solved.
                     { cout << e.what() << endl; }
             }
         }
