@@ -10,7 +10,7 @@ class Menu {
 public:
     Menu();
 
-    inline void greeting() const {
+    void greeting() const {
         
         cout
             << "\n------------ Welcome to the Console Collection Manager ------------\n"

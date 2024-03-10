@@ -54,7 +54,7 @@ void Console::setYear(int year) {
         // If valid, assign it to the member variable 'year'
         this->year = year;
     // If not valid, throw an exception indicating invalid input
-    else throw InvalidInput("Invalid year");
+    else throw InvalidInput("Invalid Year");
 }
 
 // Print console details

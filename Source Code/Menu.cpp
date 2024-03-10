@@ -200,15 +200,21 @@ void Menu::addToCollection() {
 
 void Menu::removeFromCollection() {
 
-    collection.print();
+    try {
 
-    cout << "Enter the list number of the item to remove\n>> ";
-    cin >> choice;
+        collection.size(); // check size
+        collection.print();
 
-    collection.removeItem(choice); // FIGURE THIS SHIT OUT
+        cout << "Enter the list number of the item to remove\n>> ";
+        cin >> choice;
+        
+        collection.removeItem(choice);
 
-    cout << "\n------------ Edited Collection ------------" << endl;
-    collection.print();
+        cout << "\n------------ Edited Collection ------------" << endl;
+        collection.print();
+    }
+    catch (Collection::EmptyCollection e)
+        { cout << e.what() << endl; }
 }
 
 void Menu::searchCollection() {
