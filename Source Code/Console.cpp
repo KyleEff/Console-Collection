@@ -97,7 +97,7 @@ ostream& operator<<(ostream& out, const Console& c) {
     return out;
 }
 
-// Overloaded less than operator for Console class (used for sorting)
+// Overloaded less than operator for Console class (used for binary search)
 bool operator<(const Console& c1, const Console& c2) {
     // Compare the names of the consoles
     return c1.name < c2.name;

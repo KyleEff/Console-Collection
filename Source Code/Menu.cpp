@@ -1,20 +1,21 @@
-#include "Menu.h"
-#include <iostream>
-#include <cassert>
+#include "Menu.h" // Including the header file for the Menu class
+#include <iostream> // Input/output stream
+#include <cassert> // Assertion support
 
-using namespace std;
-
+// Constructor
 Menu::Menu() :
     choice(0) {
 
-        disk.setCollection(&collection);
+        disk.setCollection(&collection); // Setting the collection for storage
 
-        greeting();
+        greeting(); // Displaying greeting message
 
+        // Main menu loop
         while (choice >= 0)
             mainMenu();
     }
 
+// Method to display the main menu
 void Menu::mainMenu() {
 
     cout
@@ -28,32 +29,34 @@ void Menu::mainMenu() {
 
     cin >> choice;
 
+    // Switch statement to handle user choice
     switch(choice) {
 
         case 1:
-            viewCollection();
+            viewCollection(); // View collection
             break;
 
         case 2:
-            editCollection();
+            editCollection(); // Edit collection
             break;
 
         case 3:
             cout << "!!! Program exiting... !!!" << endl;
-            exit(0);
+            exit(0); // Exit program
             break;
 
         default:
-            cout << "Invaid Input! Try again." << endl;
+            cout << "Invalid Input! Try again." << endl;
             break;
     }
 }
 
+// Method to view information about the collection
 void Menu::viewCollection() {
 
     try {
 
-        collection.size(); // Throws an exception
+        collection.size(); // Throws an exception if the collection is empty
 
         while (choice >= 0) {
 
@@ -98,11 +101,11 @@ void Menu::viewCollection() {
                     break;
 
                 case 5:
-                    searchCollection();
+                    searchCollection(); // Search collection
                     break;
 
                 case 6:
-                    return;
+                    return; // Return to main menu
 
                 default:
                     cout << "Invalid Input. Try again.\n" << endl;
@@ -116,6 +119,7 @@ void Menu::viewCollection() {
     
 }
 
+// Method to edit the collection
 void Menu::editCollection() {
 
     while (choice >= 0) {
@@ -136,29 +140,29 @@ void Menu::editCollection() {
         switch (choice) {
 
             case 1:
-                addToCollection();
+                addToCollection(); // Add console to collection
                 break;
 
             case 2:
-                removeFromCollection();
+                removeFromCollection(); // Remove console from collection
                 break;
 
             case 3:
                 try
-                    { disk.readCollection(); }
+                    { disk.readCollection(); } // Read collection from file
                 catch (Storage::InvalidFile e)
                     { cout << e.what() << endl; }
                 break;
 
             case 4:
                 try
-                    { disk.storeCollection(); }
+                    { disk.storeCollection(); } // Store collection to file
                 catch (Storage::InvalidFile e)
                     { cout << e.what() << endl; }
                 break;
 
             case 5:
-                return;
+                return; // Return to main menu
 
             default:
                 cout << "ERROR" << endl;
@@ -167,6 +171,7 @@ void Menu::editCollection() {
     }
 }
 
+// Method to add a console to the collection
 void Menu::addToCollection() {
 
     string
@@ -189,26 +194,26 @@ void Menu::addToCollection() {
     temp = new Console(manufacturer, name, year);
 
     if (collection.search(temp))
-        cout << "!!! Item already exists inside collection !!!" << endl;
+        cout << "\n!!! Item already exists inside collection !!!" << endl;
     else
         collection.addItem(temp);
 
     collection.print();
 
-    delete temp; // garbage collection
+    delete temp; // Deallocating memory for temporary console object
 }
 
+// Method to remove a console from the collection
 void Menu::removeFromCollection() {
 
     try {
 
-        collection.size(); // check size
         collection.print();
 
         cout << "Enter the list number of the item to remove\n>> ";
         cin >> choice;
         
-        collection.removeItem(choice);
+        collection.removeItem(choice); // Remove console from collection
 
         cout << "\n------------ Edited Collection ------------" << endl;
         collection.print();
@@ -217,12 +222,14 @@ void Menu::removeFromCollection() {
         { cout << e.what() << endl; }
 }
 
+// Method to search the collection for a console
 void Menu::searchCollection() {
 
     string nameSearch;
     choice = 0;
 
     while (choice >= 0) {
+
         cout
             << "\n------------ Search Collection ------------\n"
             << "How would you like to search?\n"
@@ -254,9 +261,9 @@ void Menu::searchCollection() {
             case 2: // NEED TO SET UP THE NEW DATA STRUCTURE
                 cout << "Enter the year\n>> (UNDER CONSTRUCTION)";
                 cin >> choice;
-            
+                cout << "UNDERCONSTRUCTIONUNDERCONSTRUCTIONUNDERCONSTRUCTIONUNDERCONSTRUCTION" << endl;
             case 3:
-                return;
+                return; // Return to main menu
         }
     }
 }

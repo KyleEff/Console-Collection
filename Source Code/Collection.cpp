@@ -39,3 +39,28 @@ Console Collection::searchByYear(int year) { // DOES NOT WORK AS INTENDED
     else
         throw ItemNotFound("!!! Item Not Found !!!"); // Throwing an exception if not found
 }
+
+// Method to print all consoles in the collection
+void Collection::print() const {
+    
+    try {
+
+        for (auto i{0}; i < size(); i++) {
+            cout << i + 1 << ": ";
+            layerOne[i].print();
+        }
+    }
+    catch (EmptyCollection e)
+        { cout << e.what() << endl; }
+}
+
+// Method to get the size of the collection
+int Collection::size() const {
+
+    if (layerOne.size() < 1 )
+        throw EmptyCollection(
+            "\n!!! There are no items in your collection!\nTry editing your collection and adding an item !!!"
+        );
+    else
+        return layerOne.size();
+}

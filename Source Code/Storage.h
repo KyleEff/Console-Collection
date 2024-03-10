@@ -1,31 +1,35 @@
 #pragma once
 
-#include "Collection.h"
-#include <fstream>
-#include <string>
+#include "Collection.h" // Including the header file for the Collection class
+#include <fstream> // File stream operations
+#include <string> // String manipulation
 
 using namespace std;
 
-
 class Storage {
 
-    string fileName{ "collection.csv" };
-    fstream file;
-    Collection* collection{ nullptr };
+    string fileName{ "collection.csv" }; // File name for storing collection data
+    fstream file; // File stream for reading/writing to the file
+    Collection* collection{ nullptr }; // Pointer to the collection object
 
 public:
-    Storage();
-    Storage(Collection&);
-    Storage(Collection*);
+    // Constructors
+    Storage(); // Default constructor
+    Storage(Collection&); // Constructor with reference to Collection object
+    Storage(Collection*); // Constructor with pointer to Collection object
 
-    virtual ~Storage();
+    virtual ~Storage(); // Virtual destructor
 
+    // Custom exception class for invalid file
     class InvalidFile : public invalid_argument
         { public: InvalidFile(const char* what) : invalid_argument(what) { } };
 
+    // Method to set the collection for storage
     void setCollection(Collection*);
-    void storeCollection();
-    void readCollection();
 
-    Collection* getCollection();
+    // Method to store the collection data to a file
+    void storeCollection();
+
+    // Method to read the collection data from a file
+    void readCollection();
 };

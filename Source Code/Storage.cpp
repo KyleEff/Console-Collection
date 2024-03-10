@@ -1,70 +1,73 @@
-#include "Storage.h"
-#include <vector>
-#include <sstream>
+#include "Storage.h" // Including the header file for the Storage class
+#include <vector> // Standard vector container
+#include <sstream> // String stream operations
 
+// Default constructor
 Storage::Storage() :
     collection(nullptr) { }
 
+// Constructor with reference to Collection object
 Storage::Storage(Collection& collection) :
     collection(&collection) { }
 
+// Constructor with pointer to Collection object
 Storage::Storage(Collection* collection) :
     collection(collection) { }
 
+// Destructor
 Storage::~Storage() {
 
-    delete collection;
-    collection = nullptr;
+    delete collection; // Deallocating memory for the collection
+    collection = nullptr; // Resetting pointer to nullptr
 }
 
+// Method to set the collection for storage
 void Storage::setCollection(Collection* collection)
     { this->collection = collection; }
 
+// Method to store the collection data to a file
 void Storage::storeCollection() {
 
     string line, temp;
 
+    // Opening the file for writing
     file.open(fileName, ios::out);
 
-    /*              // TEST
-        for (int i = 0; i < 5; i++)
-            collection->addItem(
-                new Console(
-                    "Sony",
-                    "PlayStation3",
-                    2007
-                )
-            );
-    */
-
-    cout << "\nSaving Collection To Disk..." << endl;
-
+    // Writing collection data to the file
     if (file) {
+
+        cout << "\nSaving Collection To Disk..." << endl;
 
         try {
 
-            for (auto i = 0; i < collection->size(); i++) 
+            for (auto i = 0; i < collection->size(); i++) // Throws exception if collection is empty
                 file << collection->getItem(i) << endl;
 
             cout << "!!! Collection Saved !!!" << endl;
         }
-        catch (Collection::EmptyCollection e)
-            { cout << e.what() << endl; }
+        catch (Collection::EmptyCollection e) {
+
+            cout << e.what() << endl;
+            file.close();
+        }
     }
     else
         throw InvalidFile("!!! Invalid File !!!");
         
-    file.close();
+    file.close(); // Closing the file
 }
 
+// Method to read the collection data from a file
 void Storage::readCollection() {
 
     string line;
 
+    // Opening the file for reading
     file.open(fileName, ios::in);
 
     cout << "\nLoading Collection From Disk..." << endl;
 
+    // Reading collection data from the file
     if (file) 
         while (getline(file, line)) {
 
@@ -73,14 +76,10 @@ void Storage::readCollection() {
 
             row.clear();
 
+            // Parsing the CSV line into tokens
             while (getline(buff, line, ',')) 
                 row.push_back(line);
-            
-/*        //          DEBUG STATEMENTS
-            cout << "PRINT ROW" << endl;
-            for (auto i : row)
-                cout << i << endl;
-*/
+
             if (collection != nullptr) {
 
                 try {
@@ -102,7 +101,7 @@ void Storage::readCollection() {
                         )
                     );
                 }
-                catch(exception e) // stoi() was throwing an exception. Problem solved.
+                catch(exception e) // Handling exception thrown by stoi() function
                     { cout << e.what() << endl; }
             }
         }
@@ -110,11 +109,7 @@ void Storage::readCollection() {
     else
         throw InvalidFile("!!! Invalid File !!!");
     
-    file.close();
+    file.close(); // Closing the file
 
     cout << "!!! Collection Loaded !!!" << endl;
 }
-
-
-Collection* Storage::getCollection()
-    { return collection; }

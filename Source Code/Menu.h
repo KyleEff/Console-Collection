@@ -1,15 +1,17 @@
-#include "Collection.h"
-#include "Storage.h"
+#include "Collection.h" // Including the header file for the Collection class
+#include "Storage.h" // Including the header file for the Storage class
 
 class Menu {
     // Attributes
-    Collection collection;
-    Storage disk;
-    int choice;
+    Collection collection; // Object to manage the collection of consoles
+    Storage disk; // Object to manage storing and retrieving collection data from disk
+    int choice; // User's menu choice
 
 public:
+    // Constructor
     Menu();
 
+    // Method to display greeting message
     void greeting() const {
         
         cout
@@ -19,14 +21,21 @@ public:
             << endl;
     }
     
+    // Method to display the main menu
     void mainMenu(); // The "main lobby" of the program.
-    void viewCollection(); // View information about the collection
-    void editCollection(); // Make changes to the collection
 
+    // Method to view information about the collection
+    void viewCollection();
+
+    // Method to make changes to the collection
+    void editCollection();
+
+    // Method to add a console to the collection
     void addToCollection();
-    void removeFromCollection();
-    void searchCollection();
 
-    inline Collection& getCollection()
-        { return collection; } // DEBUG FUNCTION
+    // Method to remove a console from the collection
+    void removeFromCollection();
+
+    // Method to search the collection for a console
+    void searchCollection();
 };

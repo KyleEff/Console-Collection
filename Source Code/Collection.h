@@ -86,24 +86,10 @@ public:
     }
 
     // Method to print all consoles in the collection
-    void print() const {
-        
-        for (auto i{0}; i < layerOne.size(); i++) {
-            cout << i + 1 << ": ";
-            layerOne[i].print();
-        }
-    }
+    void print() const;
 
     // Method to get the size of the collection
-    int size() const { 
-
-        if (layerOne.size() < 1 )
-            throw EmptyCollection(
-                "\n!!! There are no items in your collection!\nTry editing your collection and adding an item !!!"
-            );
-        else
-            return layerOne.size();
-    }
+    int size() const;
 
     // Method to get a console at a specific index
     Console getItem(int index) const
