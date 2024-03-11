@@ -25,7 +25,8 @@ public:
         { public: InvalidFile(const char* what) : invalid_argument(what) { } };
 
     // Method to set the collection for storage
-    void setCollection(Collection*);
+    void setCollection(Collection* collection)
+        { this->collection = collection; }
 
     // Method to store the collection data to a file
     void storeCollection();

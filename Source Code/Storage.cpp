@@ -21,14 +21,10 @@ Storage::~Storage() {
     collection = nullptr; // Resetting pointer to nullptr
 }
 
-// Method to set the collection for storage
-void Storage::setCollection(Collection* collection)
-    { this->collection = collection; }
-
 // Method to store the collection data to a file
 void Storage::storeCollection() {
 
-    string line, temp;
+    string line;
 
     // Opening the file for writing
     file.open(fileName, ios::out);

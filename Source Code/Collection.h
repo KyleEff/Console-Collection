@@ -1,11 +1,10 @@
 #pragma once
 
 #include "Console.h"
-#include <stdexcept>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <unordered_map>
+#include <stdexcept> // Standard Exception classes
+#include <vector> // Vector (dynamic storage array)
+#include <algorithm> // Sorting algorithms (sort() and binary_search())
+#include <unordered_map> // Hash table
 
 using namespace std;
 
@@ -13,7 +12,7 @@ using namespace std;
 class Collection {
 
     vector<Console> layerOne; // Vector to store Console objects
-    unordered_map<string, Console> nameTable; // Hash table for fast lookup by name
+    unordered_map<string, Console> nameTable; // Hash table for fast search by name
 
     unordered_map<int, Console> yearTable; // Hash table for lookup by year (currently not working as intended)
 

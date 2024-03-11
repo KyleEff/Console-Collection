@@ -17,7 +17,8 @@ public:
         cout
             << "\n------------ Welcome to the Console Collection Manager ------------\n"
             << "This software is used to manage the user's collection of video game consoles.\n"
-            << "Feel free to have a look around."
+            << "Start off by editing your collection to either add a Console, or load a \n"
+            << "collection if there is one saved to disk."
             << endl;
     }
     

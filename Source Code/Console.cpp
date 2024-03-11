@@ -16,7 +16,7 @@ Console::Console(
     string manufacturer,
     string name,
     int year = 0 // default value for year
-) :
+  ) :
     manufacturer(manufacturer),
     name(name),
     year(year) { }
