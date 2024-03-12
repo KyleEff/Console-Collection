@@ -1,5 +1,6 @@
 #include "Collection.h" // Including the header file for the Collection class
 #include "Storage.h" // Including the header file for the Storage class
+#include <iostream>
 
 class Menu {
     // Attributes
@@ -14,12 +15,12 @@ public:
     // Method to display greeting message
     void greeting() const {
         
-        cout
+        std::cout
             << "\n------------ Welcome to the Console Collection Manager ------------\n"
             << "This software is used to manage the user's collection of video game consoles.\n"
             << "Start off by editing your collection to either add a Console, or load a \n"
             << "collection if there is one saved to disk."
-            << endl;
+            << std::endl;
     }
     
     // Method to display the main menu

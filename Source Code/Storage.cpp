@@ -1,6 +1,9 @@
 #include "Storage.h" // Including the header file for the Storage class
 #include <vector> // Standard vector container
 #include <sstream> // String stream operations
+#include <iostream>
+
+using namespace std;
 
 // Default constructor
 Storage::Storage() :
@@ -9,11 +12,11 @@ Storage::Storage() :
 // Constructor with reference to Collection object
 Storage::Storage(Collection& collection) :
     collection(&collection) { }
-
+/*
 // Constructor with pointer to Collection object
 Storage::Storage(Collection* collection) :
     collection(collection) { }
-
+*/
 // Destructor
 Storage::~Storage() {
 

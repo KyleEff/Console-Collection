@@ -21,12 +21,6 @@ Console::Console(
     name(name),
     year(year) { }
 
-// Copy constructor
-Console::Console(const Console& console) :
-    manufacturer(console.manufacturer),
-    name(console.name),
-    year(console.year) { }
-
 // Setter for manufacturer
 void Console::setManufacturer(string manufacturer) {
     // Check if the input manufacturer is not empty
@@ -65,14 +59,14 @@ void Console::print() const {
         << manufacturer
         << endl
 
-        << "Name: "
+        << "\tName: "
         << name
         << endl;
 
     // Output the year if it's valid (greater than 0)
     if (year > 0)
         cout
-            << "Year: "
+            << "\tYear: "
             << year
             << '\n'
             << endl;

@@ -1,4 +1,5 @@
 #include "Collection.h" // Including the header file for the Collection class
+#include <iostream>
 
 // Method to sort the collection by year
 void Collection::sortByYear(bool choice) {
@@ -46,12 +47,13 @@ void Collection::print() const {
     try {
 
         for (auto i{0}; i < size(); i++) {
-            cout << i + 1 << ": ";
+            
+            std::cout << i + 1 << ": ";
             layerOne[i].print();
         }
     }
     catch (EmptyCollection e)
-        { cout << e.what() << endl; }
+        { std::cout << e.what() << endl; }
 }
 
 // Method to get the size of the collection

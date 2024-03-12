@@ -6,8 +6,6 @@
 #include <algorithm> // Sorting algorithms (sort() and binary_search())
 #include <unordered_map> // Hash table
 
-using namespace std;
-
 // Class representing a collection of consoles
 class Collection {
 
@@ -19,7 +17,7 @@ class Collection {
     vector<vector<Console>*> yearTable2; // Test vector of vectors, possibly for future use with custom node
 
     // Function objects for sort function
-    // NOTE: Function objects are used for custom comparison functions for sorting
+    // NOTE: Function objects are used for custom comparison functions for the sort() function
     struct {
         bool operator()(const Console& a, const Console& b) const
             { return a.getYear() < b.getYear(); }

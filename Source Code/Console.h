@@ -2,7 +2,6 @@
 
 #include <string>
 #include <stdexcept>
-#include <iostream>
 
 using namespace std;
 
@@ -19,7 +18,6 @@ public:
     // Constructors
     Console(); // Default constructor
     Console(string, string, int); // Parameterized constructor
-    Console(const Console&); // Copy constructor
 
     // Exception Object
     class InvalidInput : public domain_error

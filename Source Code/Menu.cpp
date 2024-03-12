@@ -2,6 +2,8 @@
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
 
+using namespace std;
+
 // Constructor
 Menu::Menu() :
     choice(0) {
@@ -262,6 +264,8 @@ void Menu::searchCollection() {
                 cout << "Enter the year\n>> (UNDER CONSTRUCTION)";
                 cin >> choice;
                 cout << "UNDERCONSTRUCTIONUNDERCONSTRUCTIONUNDERCONSTRUCTIONUNDERCONSTRUCTION" << endl;
+                break;
+                
             case 3:
                 return; // Return to main menu
         }
