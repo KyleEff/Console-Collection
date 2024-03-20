@@ -13,8 +13,8 @@ Menu::Menu() :
         greeting(); // Displaying greeting message
 
         // Main menu loop
-        while (choice >= 0)
-            mainMenu();
+        //while (choice >= 0)
+            //mainMenu();
     }
 
 // Method to display the main menu
@@ -184,7 +184,7 @@ void Menu::addToCollection() {
     Console* temp{ nullptr };
 
     cout << "Enter the manufacturer of the console\n>> ";
-    cin.ignore();
+    cin.ignore(); // Ignore leading whitespace on the input buffer
     getline(cin, manufacturer);
 
     cout << "Enter the name of the console\n>> ";
@@ -195,10 +195,12 @@ void Menu::addToCollection() {
 
     temp = new Console(manufacturer, name, year);
 
-    if (collection.search(temp))
+    if (collection.quickSearch(temp))
         cout << "\n!!! Item already exists inside collection !!!" << endl;
-    else
+    else {
+
         collection.addItem(temp);
+    }
 
     collection.print();
 
@@ -250,9 +252,7 @@ void Menu::searchCollection() {
 
                 try {
 
-                    cout
-                        << "Searching...\n"
-                        << endl;
+                    cout << "Searching...\n" << endl;
 
                     collection.searchByName(nameSearch).print();
                 }
@@ -263,7 +263,18 @@ void Menu::searchCollection() {
             case 2: // NEED TO SET UP THE NEW DATA STRUCTURE
                 cout << "Enter the year\n>> (UNDER CONSTRUCTION)";
                 cin >> choice;
-                cout << "UNDERCONSTRUCTIONUNDERCONSTRUCTIONUNDERCONSTRUCTIONUNDERCONSTRUCTION" << endl;
+                
+                try {
+
+                    cout << "Searching...\n" << endl;
+
+                    vector<Console>* temp = collection.searchByYear(choice);
+                    for (auto i : *temp)
+                        i.print();
+                }
+                catch (Collection::ItemNotFound e)
+                    { cout << e.what() << endl; }
+
                 break;
                 
             case 3:

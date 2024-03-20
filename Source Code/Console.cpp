@@ -96,3 +96,8 @@ bool operator<(const Console& c1, const Console& c2) {
     // Compare the names of the consoles
     return c1.name < c2.name;
 }
+
+bool operator==(const Console& c1, const Console& c2) {
+
+    return c1.name == c2.name;
+}
