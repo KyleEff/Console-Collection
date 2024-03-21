@@ -13,9 +13,12 @@ void Collection::sortByYear(bool choice) {
 
 void Collection::sortYearTable() {
 
-    for (auto& i : yearTable) {
-        sort(*i.second->begin(), *i.second->end(), sortNameAsc);
-    }
+    cout << "!!! SORT YEAR TABLE!!! " << endl;
+
+    for (auto& i : yearTable)
+        sort(i.second->begin(), i.second->end(), sortNameAsc);
+    
+    //yearTablePrint();
 }
 
 // Method to sort the collection by name
@@ -48,28 +51,24 @@ vector<Console>* Collection::searchByYear(int year) { // DOES NOT WORK AS INTEND
         throw ItemNotFound("!!! Item Not Found !!!"); // Throwing an exception if not found
 }
 
-int Collection::binarySearch(Console* value) {
+int Collection::yearTableBinarySearch(Console& value) {
 
-    int low{ 0 };
-    int high{ size() };
+    cout << "!!! YEAR TABLE BINARY SEARCH !!!" << endl;
 
-    while (low <= high) {
+    sortYearTable();
 
-        int mid{ (low + high) / 2 };
-        Console* guess{ &yearTable[value->getYear()]->at(mid) };
+    auto it{ yearTable.find(value.getYear()) };
+    if (it == yearTable.end())
+        return -1;
 
-        if (*guess == *value)
-            return mid;
-        else if (*guess < *value)
-            low = mid + 1;
-        else
-            high = mid - 1;
-    }
+    auto result{ lower_bound(it->second->begin(), it->second->end(), value) };
+
+    if (result != it->second->end() && *result == value)
+        return distance(it->second->begin(), result);
+    else
+        throw ItemNotFound("!!! Item Not Found !!!");
     
-    // If the index is not returned from the while loop, an exception is thrown
-    throw ItemNotFound("!!! Item Not Found !!!");
-    
-    return 0; // Fail safe
+    return -1; // Fail safe
 }
 
 void Collection::addItem(Console* add) {
@@ -100,8 +99,13 @@ void Collection::addItem(Console add) {
 
 void Collection::removeItem(int choice) {
 
-    int tempIndex{ binarySearch((layerOne.begin() + (choice - 1))) };
-    yearTable[layerOne[choice - 1].getYear()]->erase(layerOne.begin() + tempIndex);
+    int
+        tempIndex{ yearTableBinarySearch(*(layerOne.begin() + (choice - 1))) },
+        tempYear{ layerOne[choice - 1].getYear() };
+
+    yearTable[tempYear]->erase(
+        yearTable[tempYear]->begin() + tempIndex
+    );
 
     nameTable.erase((layerOne.data() + (choice - 1))->getName());
     layerOne.erase(layerOne.begin() + (choice - 1));
@@ -152,6 +156,20 @@ void Collection::yearTableTest() {
 
     //for (auto& i : *yearTable[1977]) i.print();
 
+    //cout << yearTableBinarySearch(&temp->at(0)) << endl;
+}
 
-    //cout << binarySearch(&temp->at(0)) << endl;
+void Collection::yearTablePrint() { // DEBUG FUNCITON
+
+    cout << "!!! YEAR TABLE PRINT !!!" << endl;
+
+    for (const auto& i : yearTable) {
+        cout
+            << "Year: " << i.first
+            << endl
+            << "Consoles: \n";
+        
+        for (const auto& j : *i.second)
+            j.print();
+    }
 }

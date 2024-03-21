@@ -51,7 +51,7 @@ public:
     // Methods to search for a console by name or year
     Console searchByName(string);
     vector<Console>* searchByYear(int); // CURRENTLY NOT WORKING AS INTENDED
-    int binarySearch(Console* value);
+    int yearTableBinarySearch(Console&);
 
     // Method to search for a console by binary search (default: by name)
     bool quickSearch(Console* value) {
@@ -61,13 +61,13 @@ public:
     }
 
     // Method to add a console to the collection using a pointer
-    void addItem(Console* add);
+    void addItem(Console*);
 
     // Overloaded method to add a console to the collection
-    void addItem(Console add); // NOT USED
+    void addItem(Console); // NOT USED
 
     // Method to remove a console from the collection
-    void removeItem(int choice);
+    void removeItem(int);
 
     // Method to print all consoles in the collection
     void print() const;
@@ -80,5 +80,6 @@ public:
         { return layerOne[index]; }
 
     void yearTableTest();
+    void yearTablePrint();
 
 };
