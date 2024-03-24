@@ -1,5 +1,6 @@
 #include "Console.h" // Include the header file for Console class
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -54,21 +55,23 @@ void Console::setYear(int year) {
 // Print console details
 void Console::print() const {
     // Output the manufacturer and name
-    cout
-        << "Manufacturer: "
-        << manufacturer
-        << endl
 
-        << "\tName: "
+    cout
+        << setw(15)
+        << left
+        << manufacturer
+        << '|'
+
+        << setw(20)
+        << left
         << name
-        << endl;
+        << '|';
 
     // Output the year if it's valid (greater than 0)
     if (year > 0)
-        cout
-            << "\tYear: "
+        cout 
+            << ' '
             << year
-            << '\n'
             << endl;
     // Otherwise, just output a newline for formatting
     else cout << endl;

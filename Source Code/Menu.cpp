@@ -13,8 +13,8 @@ Menu::Menu() :
         greeting(); // Displaying greeting message
 
         // Main menu loop
-        //while (choice >= 0)
-            //mainMenu();
+        while (choice >= 0)
+            mainMenu();
     }
 
 // Method to display the main menu
@@ -25,7 +25,7 @@ void Menu::mainMenu() {
         << "Select an operation to perform:\n"
         << "1: View Collection\n"
         << "2: Edit Collection\n"
-        << "3: Exit Program"
+        << "0: Exit Program"
         << endl
         << ">> ";
 
@@ -42,7 +42,7 @@ void Menu::mainMenu() {
             editCollection(); // Edit collection
             break;
 
-        case 3:
+        case 0:
             cout << "!!! Program exiting... !!!" << endl;
             exit(0); // Exit program
             break;
@@ -70,7 +70,7 @@ void Menu::viewCollection() {
                 << "3: View by name, ascending\n"
                 << "4: View by name, descending\n"
                 << "5: Search Collection\n"
-                << "6: Return to the main menu"
+                << "0: Return to the main menu"
                 << endl
                 << ">> ";
 
@@ -80,25 +80,25 @@ void Menu::viewCollection() {
 
                 case 1:
                     collection.sortByYear(true);
-                    cout << "\n------------ Collection By Year, Ascending ------------" << endl;
+                    cout << "\n--------- Collection By Year, Ascending --------" << endl;
                     collection.print();
                     break;
 
                 case 2:
                     collection.sortByYear(false);
-                    cout << "\n------------ Collection By Year, Descending ------------" << endl;
+                    cout << "\n-------- Collection By Year, Descending --------" << endl;
                     collection.print();
                     break;
 
                 case 3:
                     collection.sortByName(true);
-                    cout << "\n------------ Collection By Name, Ascending ------------" << endl;
+                    cout << "\n--------- Collection By Name, Ascending --------" << endl;
                     collection.print();
                     break;
 
                 case 4:
                     collection.sortByName(false);
-                    cout << "\n------------ Collection By Name, Descending ------------" << endl;
+                    cout << "\n-------- Collection By Name, Descending --------" << endl;
                     collection.print();
                     break;
 
@@ -106,7 +106,7 @@ void Menu::viewCollection() {
                     searchCollection(); // Search collection
                     break;
 
-                case 6:
+                case 0:
                     return; // Return to main menu
 
                 default:
@@ -133,7 +133,7 @@ void Menu::editCollection() {
             << "2: Remove Console\n"
             << "3: Load Collection From File\n"
             << "4: Save Collection To File\n"
-            << "5: Return to Main Menu"
+            << "0: Return to Main Menu"
             << endl
             << ">> ";
 
@@ -163,7 +163,7 @@ void Menu::editCollection() {
                     { cout << e.what() << endl; }
                 break;
 
-            case 5:
+            case 0:
                 return; // Return to main menu
 
             default:
@@ -195,12 +195,10 @@ void Menu::addToCollection() {
 
     temp = new Console(manufacturer, name, year);
 
-    if (collection.quickSearch(temp))
-        cout << "\n!!! Item already exists inside collection !!!" << endl;
-    else {
-
-        collection.addItem(temp);
-    }
+    try
+        { collection.addItem(temp); }
+    catch (Console::InvalidInput e)
+        { cout << e.what() << endl; }
 
     collection.print();
 
@@ -238,8 +236,8 @@ void Menu::searchCollection() {
             << "\n------------ Search Collection ------------\n"
             << "How would you like to search?\n"
             << "1: By Name\n"
-            << "2: By Year (UNDER CONSTRUCTION)\n"
-            << "3: Back to Main Menu"
+            << "2: By Year\n"
+            << "0: Back to Main Menu"
             << endl
             << ">> ";
         cin >> choice;
@@ -251,7 +249,6 @@ void Menu::searchCollection() {
                 cin >> nameSearch;
 
                 try {
-
                     cout << "Searching...\n" << endl;
 
                     collection.searchByName(nameSearch).print();
@@ -260,16 +257,14 @@ void Menu::searchCollection() {
                     { cout << e.what() << endl; }
                 break;
 
-            case 2: // NEED TO SET UP THE NEW DATA STRUCTURE
-                cout << "Enter the year\n>> (UNDER CONSTRUCTION)";
+            case 2:
+                cout << "Enter the year\n>> ";
                 cin >> choice;
                 
                 try {
-
                     cout << "Searching...\n" << endl;
 
-                    vector<Console>* temp = collection.searchByYear(choice);
-                    for (auto i : *temp)
+                    for (const auto i : *collection.searchByYear(choice))
                         i.print();
                 }
                 catch (Collection::ItemNotFound e)
@@ -277,7 +272,7 @@ void Menu::searchCollection() {
 
                 break;
                 
-            case 3:
+            case 0:
                 return; // Return to main menu
         }
     }

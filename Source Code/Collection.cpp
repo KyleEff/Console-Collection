@@ -1,5 +1,8 @@
 #include "Collection.h" // Including the header file for the Collection class
 #include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 // Method to sort the collection by year
 void Collection::sortByYear(bool choice) {
@@ -73,16 +76,22 @@ int Collection::yearTableBinarySearch(Console& value) {
 
 void Collection::addItem(Console* add) {
 
-    if (yearTable.count(add->getYear()) == 0) 
-        yearTable.insert({
-            add->getYear(),
-            new vector<Console>(1, *add)
-        });
-    else
-        yearTable[add->getYear()]->push_back(*add);
+    if (!quickSearch(add)) {
 
-    layerOne.push_back(*add);
-    nameTable.insert({ add->getName(), *add });
+        if (yearTable.count(add->getYear()) == 0) 
+            yearTable.insert({
+                add->getYear(),
+                new vector<Console>(1, *add)
+            });
+        else
+            yearTable[add->getYear()]->push_back(*add);
+
+        layerOne.push_back(*add);
+        nameTable.insert({ add->getName(), *add });
+    }
+
+    else
+        throw Console::InvalidInput("\n!!! Item already exists inside collection !!!");
 }
 
 // NOT USED
@@ -116,14 +125,24 @@ void Collection::print() const {
     
     try {
 
+        cout
+            << " # |  Manufacturer |         Name       | Year \n"
+            << "------------------------------------------------"
+            << endl;
+
         for (auto i{0}; i < size(); i++) {
             
-            std::cout << i + 1 << ": ";
+            cout
+                << right
+                << setw(3)
+                << i + 1
+                << '|';
+            
             layerOne[i].print();
         }
     }
     catch (EmptyCollection e)
-        { std::cout << e.what() << endl; }
+        { cout << e.what() << endl; }
 }
 
 // Method to get the size of the collection
