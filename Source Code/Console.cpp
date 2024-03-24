@@ -25,18 +25,15 @@ Console::Console(
 // Setter for manufacturer
 void Console::setManufacturer(string manufacturer) {
     // Check if the input manufacturer is not empty
-    if (manufacturer != "")
-        // If not empty, assign it to the member variable 'manufacturer'
-        this->manufacturer = manufacturer;
-    // If empty, throw an exception indicating invalid input
-    else throw InvalidInput("Invalid Manufacturer");
+    if (manufacturer != "") // If not empty, assign it to the member variable 'manufacturer'
+        this->manufacturer = manufacturer; 
+    else throw InvalidInput("Invalid Manufacturer"); // If empty, throw an exception indicating invalid input
 }
 
 // Setter for name
 void Console::setName(string name) {
     // Check if the input name is not empty
-    if (name != "")
-        // If not empty, assign it to the member variable 'name'
+    if (name != "") // If not empty, assign it to the member variable 'name'
         this->name = name;
     // If empty, throw an exception indicating invalid input
     else throw InvalidInput("Invalid Console Name");
@@ -104,5 +101,3 @@ bool operator==(const Console& c1, const Console& c2) {
 
     return c1.name == c2.name;
 }
-
-//bool operator!=(const Console& c1, const Console& c2) { return c1.name != c2.name; }

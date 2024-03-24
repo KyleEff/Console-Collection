@@ -12,11 +12,7 @@ Storage::Storage() :
 // Constructor with reference to Collection object
 Storage::Storage(Collection& collection) :
     collection(&collection) { }
-/*
-// Constructor with pointer to Collection object
-Storage::Storage(Collection* collection) :
-    collection(collection) { }
-*/
+
 // Destructor
 Storage::~Storage() {
 
@@ -27,7 +23,7 @@ Storage::~Storage() {
 // Method to store the collection data to a file
 void Storage::storeCollection() {
 
-    string line;
+    string line; // string to place the data that is written to disk
 
     // Opening the file for writing
     file.open(fileName, ios::out);
@@ -39,6 +35,7 @@ void Storage::storeCollection() {
 
         try {
 
+            // Iterating over each item in the collection
             for (auto i = 0; i < collection->size(); i++) // Throws exception if collection is empty
                 file << collection->getItem(i) << endl;
 
@@ -46,6 +43,7 @@ void Storage::storeCollection() {
         }
         catch (Collection::EmptyCollection e) {
 
+            // Handling empty collection exception
             cout << e.what() << endl;
             file.close();
         }
@@ -53,13 +51,14 @@ void Storage::storeCollection() {
     else
         throw InvalidFile("!!! Invalid File !!!");
         
-    file.close(); // Closing the file
+    // Closing the file
+    file.close(); 
 }
 
 // Method to read the collection data from a file
 void Storage::readCollection() {
 
-    string line;
+    string line; // string containing the csv line
 
     // Opening the file for reading
     file.open(fileName, ios::in);
@@ -82,26 +81,32 @@ void Storage::readCollection() {
             if (collection != nullptr) {
 
                 try {
-
-                    if (stoi(row[2]) > 0)
-                        collection->addItem(
+                    // Adding console to collection based on CSV data
+                    if (stoi(row[2]) > 0) // If the year value is greater than zero
+                        collection->addItem( // Add Item
                             new Console(
-                                row[0],
-                                row[1],
-                                stoi(row[2])
+                                row[0],      // Manufacturer
+                                row[1],      // Name
+                                stoi(row[2]) // use the year value
                             )
                         );
 
-                    else collection->addItem(
-                        new Console(
-                            row[0],
-                            row[1],
-                            0
-                        )
-                    );
+                    else // else year is less than zero
+                        collection->addItem(
+                            new Console(
+                                row[0], // Manufacturer
+                                row[1], // Name
+                                0       // Put a zero as a year value
+                            )
+                        );
                 }
-                catch(exception e) // Handling exception thrown by stoi() function
+                // If a console exists already, catch the exception
+                catch (Console::InvalidInput e)
                     { cout << e.what() << endl; }
+
+                // Handling exception thrown by stoi() function
+                catch (exception e)
+                    { cout << "YEAR MALFUNCTION" << endl; }
             }
         }
 

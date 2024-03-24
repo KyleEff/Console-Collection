@@ -55,44 +55,59 @@ vector<Console>* Collection::searchByYear(int year) { // DOES NOT WORK AS INTEND
 }
 
 int Collection::yearTableBinarySearch(Console& value) {
-
+    // Display a message indicating that the binary search is being performed
     cout << "!!! YEAR TABLE BINARY SEARCH !!!" << endl;
 
+    // Sort the year table to ensure binary search works correctly
     sortYearTable();
 
+    // Find the entry for the specified year in the year table
     auto it{ yearTable.find(value.getYear()) };
+    // If the entry is not found, return -1
     if (it == yearTable.end())
         return -1;
 
+    // Perform a binary search within the vector associated with the year
     auto result{ lower_bound(it->second->begin(), it->second->end(), value) };
 
+    // If the element is found, return its index in the vector
     if (result != it->second->end() && *result == value)
         return distance(it->second->begin(), result);
     else
+        // If the element is not found, throw an exception
         throw ItemNotFound("!!! Item Not Found !!!");
-    
+
+    // This line is never reached due to the throw statement above
     return -1; // Fail safe
 }
 
+
 void Collection::addItem(Console* add) {
 
+    // Check if the console already exists in the collection
     if (!quickSearch(add)) {
 
+        // Check if the year table has an entry for the console's year
         if (yearTable.count(add->getYear()) == 0) 
+            // If not, create a new entry with the console as the first element of a vector
             yearTable.insert({
                 add->getYear(),
                 new vector<Console>(1, *add)
             });
         else
+            // If an entry already exists, push the console into the vector for that year
             yearTable[add->getYear()]->push_back(*add);
 
+        // Add the console to the main vector and name table
         layerOne.push_back(*add);
         nameTable.insert({ add->getName(), *add });
     }
 
     else
+        // If the console already exists, throw an exception
         throw Console::InvalidInput("\n!!! Item already exists inside collection !!!");
 }
+
 
 // NOT USED
 void Collection::addItem(Console add) { 
@@ -107,57 +122,70 @@ void Collection::addItem(Console add) {
 }
 
 void Collection::removeItem(int choice) {
+    // Find the index of the console to be removed in the vector
+    int tempIndex{ yearTableBinarySearch(*(layerOne.begin() + (choice - 1))) };
+    // Get the release year of the console to be removed
+    int tempYear{ layerOne[choice - 1].getYear() };
 
-    int
-        tempIndex{ yearTableBinarySearch(*(layerOne.begin() + (choice - 1))) },
-        tempYear{ layerOne[choice - 1].getYear() };
-
+    // Erase the console from the vector associated with its release year
     yearTable[tempYear]->erase(
         yearTable[tempYear]->begin() + tempIndex
     );
 
+    // If the vector associated with the release year becomes empty, erase the entry from the year table
+    if (yearTable[tempYear]->size() == 0)
+        yearTable.erase(tempYear);
+
+    // Erase the console from the name table
     nameTable.erase((layerOne.data() + (choice - 1))->getName());
+    // Erase the console from the main collection vector
     layerOne.erase(layerOne.begin() + (choice - 1));
 }
 
+
 // Method to print all consoles in the collection
 void Collection::print() const {
-    
+    // Displaying header for the console listing
+    cout
+        << " # |  Manufacturer |         Name       | Year \n"
+        << "------------------------------------------------"
+        << endl;
+
     try {
-
-        cout
-            << " # |  Manufacturer |         Name       | Year \n"
-            << "------------------------------------------------"
-            << endl;
-
+        // Iterate through the collection
         for (auto i{0}; i < size(); i++) {
-            
+            // Displaying the index of the console
             cout
                 << right
                 << setw(3)
                 << i + 1
                 << '|';
-            
+            // Printing the details of the console using its print method
             layerOne[i].print();
         }
     }
-    catch (EmptyCollection e)
-        { cout << e.what() << endl; }
+    // Catching exception if the collection is empty
+    catch (EmptyCollection e) {
+        cout << e.what() << endl;
+    }
 }
+
 
 // Method to get the size of the collection
 int Collection::size() const {
-
-    if (layerOne.size() < 1 )
+    // Check if the collection is empty
+    if (layerOne.size() < 1) {
+        // Throw exception if the collection is empty
         throw EmptyCollection(
             "\n!!! There are no items in your collection!\nTry editing your collection and adding an item !!!"
         );
-    else
+    } else {
+        // Return the size of the collection
         return layerOne.size();
+    }
 }
 
-
-void Collection::yearTableTest() {
+void Collection::yearTableTest() { // DEBUG FUNCTION
 
     cout << "!!!!!!!!!!!!!!! YEAR TABLE TEST !!!!!!!!!!!!!!!" << endl;
     /*

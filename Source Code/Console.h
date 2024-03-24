@@ -43,6 +43,5 @@ public:
 
     friend ostream& operator<<(ostream&, const Console&); // Overloaded output operator
     friend bool operator<(const Console&, const Console&); // Overloaded less than operator
-    friend bool operator==(const Console&, const Console&);
-    //friend bool operator!=(const Console&, const Console&);
+    friend bool operator==(const Console&, const Console&); // Needed for custom binary search
 };

@@ -16,7 +16,6 @@ public:
     // Constructors
     Storage(); // Default constructor
     Storage(Collection&); // Constructor with reference to Collection object
-    Storage(Collection*); // Constructor with pointer to Collection object
 
     virtual ~Storage(); // Virtual destructor
 

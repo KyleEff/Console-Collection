@@ -249,6 +249,7 @@ void Menu::searchCollection() {
                 cin >> nameSearch;
 
                 try {
+                    
                     cout << "Searching...\n" << endl;
 
                     collection.searchByName(nameSearch).print();
@@ -262,6 +263,7 @@ void Menu::searchCollection() {
                 cin >> choice;
                 
                 try {
+
                     cout << "Searching...\n" << endl;
 
                     for (const auto i : *collection.searchByYear(choice))
