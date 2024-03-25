@@ -41,7 +41,7 @@ void Storage::storeCollection() {
 
             cout << "!!! Collection Saved !!!" << endl;
         }
-        catch (Collection::EmptyCollection e) {
+        catch (Collection::EmptyCollection& e) {
 
             // Handling empty collection exception
             cout << e.what() << endl;
@@ -101,11 +101,11 @@ void Storage::readCollection() {
                         );
                 }
                 // If a console exists already, catch the exception
-                catch (Console::InvalidInput e)
+                catch (Console::InvalidInput& e)
                     { cout << e.what() << endl; }
 
                 // Handling exception thrown by stoi() function
-                catch (exception e)
+                catch (exception& e)
                     { cout << "YEAR MALFUNCTION" << endl; }
             }
         }

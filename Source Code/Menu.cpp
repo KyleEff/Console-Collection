@@ -116,7 +116,7 @@ void Menu::viewCollection() {
         }
     }
 
-    catch (Collection::EmptyCollection e)
+    catch (Collection::EmptyCollection& e)
         { cout << e.what() << endl; }
     
 }
@@ -152,14 +152,14 @@ void Menu::editCollection() {
             case 3:
                 try
                     { disk.readCollection(); } // Read collection from file
-                catch (Storage::InvalidFile e)
+                catch (Storage::InvalidFile& e)
                     { cout << e.what() << endl; }
                 break;
 
             case 4:
                 try
                     { disk.storeCollection(); } // Store collection to file
-                catch (Storage::InvalidFile e)
+                catch (Storage::InvalidFile& e)
                     { cout << e.what() << endl; }
                 break;
 
@@ -197,7 +197,7 @@ void Menu::addToCollection() {
 
     try
         { collection.addItem(temp); }
-    catch (Console::InvalidInput e)
+    catch (Console::InvalidInput& e)
         { cout << e.what() << endl; }
 
     collection.print();
@@ -220,7 +220,7 @@ void Menu::removeFromCollection() {
         cout << "\n------------ Edited Collection ------------" << endl;
         collection.print();
     }
-    catch (Collection::EmptyCollection e)
+    catch (Collection::EmptyCollection& e)
         { cout << e.what() << endl; }
 }
 
@@ -249,13 +249,14 @@ void Menu::searchCollection() {
                 cin >> nameSearch;
 
                 try {
-                    
+
                     cout << "Searching...\n" << endl;
 
                     collection.searchByName(nameSearch).print();
                 }
-                catch (Collection::ItemNotFound e)
+                catch (Collection::ItemNotFound& e)
                     { cout << e.what() << endl; }
+                
                 break;
 
             case 2:
@@ -266,16 +267,19 @@ void Menu::searchCollection() {
 
                     cout << "Searching...\n" << endl;
 
-                    for (const auto i : *collection.searchByYear(choice))
+                    for (const auto& i : *collection.searchByYear(choice))
                         i.print();
                 }
-                catch (Collection::ItemNotFound e)
+                catch (Collection::ItemNotFound& e)
                     { cout << e.what() << endl; }
 
                 break;
                 
             case 0:
                 return; // Return to main menu
+            
+            default:
+                return; // Fail safe
         }
     }
 }

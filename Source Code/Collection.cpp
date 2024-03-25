@@ -165,7 +165,7 @@ void Collection::print() const {
         }
     }
     // Catching exception if the collection is empty
-    catch (EmptyCollection e) {
+    catch (EmptyCollection& e) {
         cout << e.what() << endl;
     }
 }
