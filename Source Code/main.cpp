@@ -1,6 +1,6 @@
 /*
 Kyle Free
-Professor Gandy
+Professor Alan Gandy
 Computer Science 2436: Programming Fundamentals III
 MM / DD / 2024
 */

@@ -14,16 +14,6 @@ void Collection::sortByYear(bool choice) {
         sort(layerOne.begin(), layerOne.end(), sortYearDesc); // Sorting in descending order
 }
 
-void Collection::sortYearTable() {
-
-    cout << "!!! SORT YEAR TABLE!!! " << endl;
-
-    for (auto& i : yearTable)
-        sort(i.second->begin(), i.second->end(), sortNameAsc);
-    
-    //yearTablePrint();
-}
-
 // Method to sort the collection by name
 void Collection::sortByName(bool choice) {
 
@@ -45,7 +35,7 @@ Console Collection::searchByName(string name) {
 }
 
 // Method to search for a console by year
-vector<Console>* Collection::searchByYear(int year) { // DOES NOT WORK AS INTENDED
+vector<Console>* Collection::searchByYear(int year) {
 
     // Checking if the console with the given year exists in the collection
     if (yearTable.count(year) > 0)
@@ -55,9 +45,6 @@ vector<Console>* Collection::searchByYear(int year) { // DOES NOT WORK AS INTEND
 }
 
 int Collection::yearTableBinarySearch(Console& value) {
-    // Display a message indicating that the binary search is being performed
-    cout << "!!! YEAR TABLE BINARY SEARCH !!!" << endl;
-
     // Sort the year table to ensure binary search works correctly
     sortYearTable();
 
@@ -81,7 +68,7 @@ int Collection::yearTableBinarySearch(Console& value) {
     return -1; // Fail safe
 }
 
-
+// Method that uses a pointer to add a Console object to the collection
 void Collection::addItem(Console* add) {
 
     // Check if the console already exists in the collection
@@ -103,8 +90,7 @@ void Collection::addItem(Console* add) {
         nameTable.insert({ add->getName(), *add });
     }
 
-    else
-        // If the console already exists, throw an exception
+    else // If the console already exists, throw an exception
         throw Console::InvalidInput("\n!!! Item already exists inside collection !!!");
 }
 
@@ -121,6 +107,7 @@ void Collection::addItem(Console add) {
     nameTable.insert({ add.getName(), add });
 }
 
+// Method to remove an item from 
 void Collection::removeItem(int choice) {
     // Find the index of the console to be removed in the vector
     int tempIndex{ yearTableBinarySearch(*(layerOne.begin() + (choice - 1))) };
@@ -153,7 +140,7 @@ void Collection::print() const {
 
     try {
         // Iterate through the collection
-        for (auto i{0}; i < size(); i++) {
+        for (auto i{0}; i < size(); i++) { // size() throws an exception
             // Displaying the index of the console
             cout
                 << right
@@ -165,11 +152,9 @@ void Collection::print() const {
         }
     }
     // Catching exception if the collection is empty
-    catch (EmptyCollection& e) {
-        cout << e.what() << endl;
-    }
+    catch (EmptyCollection& e)
+        { cout << e.what() << endl; }
 }
-
 
 // Method to get the size of the collection
 int Collection::size() const {
@@ -185,6 +170,7 @@ int Collection::size() const {
     }
 }
 
+// DEBUG FUNCTIONS NOT USED IN NORMAL OPERATIONS
 void Collection::yearTableTest() { // DEBUG FUNCTION
 
     cout << "!!!!!!!!!!!!!!! YEAR TABLE TEST !!!!!!!!!!!!!!!" << endl;

@@ -46,18 +46,24 @@ public:
     // Methods to sort the collection by name or year
     void sortByName(bool); // True if ascending, false if descending
     void sortByYear(bool);
-    void sortYearTable();
+
+    // Inline Method to sort the hash table full of vectors
+    void sortYearTable() {
+
+        for (auto& i : yearTable) // For each vector in the table
+            sort(i.second->begin(), i.second->end(), sortNameAsc); // Sort by name ascending
+    }
 
     // Methods to search for a console by name or year
     Console searchByName(string);
-    vector<Console>* searchByYear(int); // CURRENTLY NOT WORKING AS INTENDED
+    vector<Console>* searchByYear(int);
     int yearTableBinarySearch(Console&);
 
-    // Method to search for a console by binary search (default: by name)
+    // Inline Method to search for a console by binary search (default: by name)
     bool quickSearch(Console* value) {
 
         sortByName(true); // Ensure collection is sorted by name for binary search
-        return binary_search(layerOne.begin(), layerOne.end(), *value);
+        return binary_search(layerOne.begin(), layerOne.end(), *value); // Binary search
     }
 
     // Method to add a console to the collection using a pointer
@@ -79,6 +85,7 @@ public:
     Console getItem(int index) const
         { return layerOne[index]; }
 
+    // DEBUG FUNCTIONS NOT USED IN NORMAL OPERATIONS
     void yearTableTest();
     void yearTablePrint();
 
