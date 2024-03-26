@@ -82,10 +82,10 @@ This project is dedicated to the public domain under the [Unlicense](https://unl
 ## 12. Class and Object Specifications
 ### Console Class
 
-## Introduction
+#### Introduction
 The `Console` class represents a video game console, storing information such as the manufacturer, name, and year of production. This guide provides an overview of the class structure, its member functions, and usage.
 
-## Class Structure
+#### Class Structure
 The `Console` class is defined in the header file `Console.h` and consists of the following components:
 
 - **Attributes**:
@@ -110,7 +110,7 @@ The `Console` class is defined in the header file `Console.h` and consists of th
   - `operator<`: Overloaded less than operator used for sorting and searching operations.
   - `operator==`: Overloaded equality operator to compare consoles.
 
-## Usage
+#### Usage
 To use the `Console` class, follow these steps:
 
 1. Include the header file `Console.h` in your source files.
@@ -120,7 +120,7 @@ To use the `Console` class, follow these steps:
 5. Utilize the `print()` method to display console details.
 6. Optionally, use the overloaded operators (`<<`, `<`, `==`) for output, sorting, and comparison operations.
 
-## Time Complexity Analysis
+#### Time Complexity Analysis
 The time complexity of various operations involving the `Console` class depends on the specific implementation details of the member functions. Here's an analysis of key operations:
 
 - **Setter and Getter Methods**: 
