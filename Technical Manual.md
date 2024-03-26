@@ -80,7 +80,7 @@ Contributions to the project are welcome! Feel free to fork the repository, make
 This project is dedicated to the public domain under the [Unlicense](https://unlicense.org/). You are free to use, modify, and distribute the software without any restrictions.
 
 ## 12. Class and Object Specifications
-### Console Class
+### 12.A Console Class
 
 #### Introduction
 The `Console` class represents a video game console, storing information such as the manufacturer, name, and year of production. This guide provides an overview of the class structure, its member functions, and usage.
@@ -141,4 +141,62 @@ The time complexity of various operations involving the `Console` class depends 
 
 Overall, the `Console` class is designed to provide efficient access and manipulation of console data with consistent time complexity across operations.
 
+### Collection Class
+
+#### Introduction
+The `Collection` class represents a collection of video game consoles, providing functionalities for managing, searching, and printing console data. This guide provides an overview of the class structure, its member functions, and usage, along with a detailed analysis of time complexities for key operations.
+
+#### Class Structure
+The `Collection` class is defined in the header file `Collection.h` and consists of the following components:
+
+- **Attributes**:
+  - `layerOne`: Vector to store `Console` objects.
+  - `nameTable`: Hash table for fast search by console name.
+  - `yearTable`: Hash table for fast search by release year, with vectors of consoles for each year.
+
+- **Custom Exception Classes**:
+  - `ItemNotFound`: Derived from `invalid_argument`, thrown when an item is not found in the collection.
+  - `EmptyCollection`: Derived from `range_error`, thrown when attempting operations on an empty collection.
+
+- **Sorting Function Objects**:
+  - Custom comparison functions for sorting consoles by year and name.
+
+- **Member Functions**:
+
+| Function           | Description                                         | Time Complexity |
+|--------------------|-----------------------------------------------------|-----------------|
+| `sortByName`       | Sorts the collection by console name.               | O(n log n)      |
+| `sortByYear`       | Sorts the collection by release year.               | O(n log n)      |
+| `searchByName`     | Searches for a console by name.                     | O(1) to O(n)    |
+| `searchByYear`     | Searches for consoles released in a given year.     | O(1) to O(n)    |
+| `yearTableBinarySearch` | Performs binary search within year table.      | O(log n)        |
+| `addItem`          | Adds a console to the collection.                   | O(1) to O(n)    |
+| `removeItem`       | Removes a console from the collection.              | O(1) to O(n)    |
+| `print`            | Prints all consoles in the collection.              | O(n)            |
+| `size`             | Returns the size of the collection.                 | O(1)            |
+
+- **Debug Functions** (Not used in normal operations):
+  - `yearTableTest`: Debug function to test year table operations.
+  - `yearTablePrint`: Debug function to print the contents of the year table.
+
+#### Usage
+To use the `Collection` class, follow these steps:
+
+1. Include the header file `Collection.h` in your source files.
+2. Create an instance of the `Collection` class.
+3. Use the provided methods to add, remove, search, and print consoles in the collection.
+4. Optionally, utilize the debug functions for testing and debugging purposes.
+
+#### Time Complexity Analysis
+The time complexity of various operations involving the `Collection` class depends on the specific implementation details of the member functions. Here's a detailed analysis of time complexities for key operations:
+
+- **Sorting Methods** (`sortByName`, `sortByYear`): These methods use sorting algorithms with a time complexity of O(n log n), where n is the number of consoles in the collection.
+
+- **Search Methods** (`searchByName`, `searchByYear`, `yearTableBinarySearch`): Searching operations have time complexities ranging from O(1) to O(n), depending on the size of the collection and the search criteria. Binary search in `yearTableBinarySearch` has a time complexity of O(log n) after sorting.
+
+- **Add and Remove Methods** (`addItem`, `removeItem`): Adding or removing a console involves insertion or deletion in the vectors and hash tables, generally with time complexities of O(1) for average cases but may degrade to O(n) in worst-case scenarios.
+
+- **Printing Method** (`print`): Printing all consoles in the collection requires iterating through the entire collection, resulting in a time complexity of O(n), where n is the number of consoles.
+
+Overall, the `Collection` class provides efficient operations for managing collections of consoles, with time complexity varying based on the specific operation and data size.
 
