@@ -6,24 +6,25 @@ Currently, the user can only add and remove entire data sets of Consoles, and no
 
 ## Features
 
-- **View Collection**: View the entire collection of gaming consoles.
-- **Edit Collection**: Add new consoles to the collection, remove existing consoles, or edit console information.
-- **Search Collection**: Search for a specific console by name or year.
+- **View Collection**: Users can view the entire collection of gaming consoles. They have the option to sort the consoles by release year or name in both ascending and descending orders.
+
+- **Edit Collection**: The program allows users to edit the collection by adding new consoles, removing existing ones, or performing other operations such as loading or saving the collection to/from a file.
+
+- **Search Collection**: Users can search for specific consoles within the collection based on their names or release years. This feature helps users quickly locate consoles of interest.
+
 - **Load/Save Collection**: Load the collection from a file or save the collection to a file for future use.
 
 ## Usage
 
-To use the console program, follow these steps:
+Upon running the program, you will be presented with a main menu.
+Choose an operation to perform:
+- **View Collection**
+- **Edit Collection**
+- **Exit Program**
 
-1. Run the program.
-2. Choose an operation from the main menu:
-   - View Collection
-   - Edit Collection
-   - Search Collection
-   - Load Collection From File
-   - Save Collection To File
-   - Exit Program
-3. Follow the on-screen prompts to perform the chosen operation.
+Follow the on-screen prompts to interact with the program.
+
+No operations can or will be performed if the collection is empty. Either load a collection from file, or enter a Console manually using the interface.
 
 ## Installation
 
@@ -55,4 +56,4 @@ To install and run the program:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is dedicated to the public domain under the [Unlicense](https://unlicense.org/). You are free to use, modify, and distribute the software without any restrictions.
