@@ -1,8 +1,8 @@
 # Compiler
-CXX = g++
+CXX = c++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++23 -Wall
 
 # Source files
 SRCS := $(wildcard *.cpp)
@@ -11,7 +11,7 @@ SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:.cpp=.o)
 
 # Output executable
-EXEC = k
+EXEC = ConsoleCollection
 
 # Default target
 all: $(EXEC)

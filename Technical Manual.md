@@ -12,12 +12,13 @@
 9. Extending the Program
 10. Contributing
 11. License
+12. Class / Object Specifications
 
 ## 1. Introduction
 The Console Collection program is a command-line application designed to manage a collection of video game consoles. It provides functionalities to view, edit, search, save, and load the collection from a file.
 
 ## 2. System Requirements
-- Operating System: Any platform with a C++11 compatible compiler
+- Operating System: Any platform with a C++11 or later compatible compiler
 - Compiler: C++11 compatible compiler (e.g., GCC, Clang, Visual C++)
 - Standard Template Library (STL) support
 
@@ -77,3 +78,67 @@ Contributions to the project are welcome! Feel free to fork the repository, make
 
 ## 11. License
 This project is dedicated to the public domain under the [Unlicense](https://unlicense.org/). You are free to use, modify, and distribute the software without any restrictions.
+
+## 12. Class and Object Specifications
+### Console Class
+
+## Introduction
+The `Console` class represents a video game console, storing information such as the manufacturer, name, and year of production. This guide provides an overview of the class structure, its member functions, and usage.
+
+## Class Structure
+The `Console` class is defined in the header file `Console.h` and consists of the following components:
+
+- **Attributes**:
+  - `manufacturer`: Represents the company that manufactured the console.
+  - `name`: Represents the name of the console.
+  - `year`: Represents the year the console was produced.
+
+- **Constructors**:
+  - `Console()`: Default constructor initializing attributes to default values.
+  - `Console(string, string, int)`: Parameterized constructor allowing initialization of attributes with provided values.
+
+- **Exception Object**:
+  - `InvalidInput`: Custom exception class derived from `domain_error` to handle invalid input during attribute setting.
+
+- **Member Functions**:
+  - Setter methods (`setManufacturer`, `setName`, `setYear`) to modify attribute values.
+  - Getter methods (`getManufacturer`, `getName`, `getYear`) to access attribute values.
+  - `print()`: Outputs console details to the standard output.
+  
+- **Friend Functions**:
+  - `operator<<`: Overloaded output operator to facilitate output of console details.
+  - `operator<`: Overloaded less than operator used for sorting and searching operations.
+  - `operator==`: Overloaded equality operator to compare consoles.
+
+## Usage
+To use the `Console` class, follow these steps:
+
+1. Include the header file `Console.h` in your source files.
+2. Create instances of the `Console` class using either the default constructor or the parameterized constructor.
+3. Use setter methods (`setManufacturer`, `setName`, `setYear`) to modify console attributes.
+4. Use getter methods (`getManufacturer`, `getName`, `getYear`) to access console attributes.
+5. Utilize the `print()` method to display console details.
+6. Optionally, use the overloaded operators (`<<`, `<`, `==`) for output, sorting, and comparison operations.
+
+## Time Complexity Analysis
+The time complexity of various operations involving the `Console` class depends on the specific implementation details of the member functions. Here's an analysis of key operations:
+
+- **Setter and Getter Methods**: 
+  - Time complexity: O(1)
+  - Explanation: These methods directly access or modify the attribute values, requiring constant time regardless of the size of the data.
+
+- **Printing Console Details (`print()`)**:
+  - Time complexity: O(1)
+  - Explanation: The `print()` method outputs fixed-format console details and does not involve any iterations or data traversal, resulting in constant time complexity.
+
+- **Comparison Operations (`operator<`, `operator==`)**:
+  - Time complexity: O(1)
+  - Explanation: These comparison operations involve comparing attributes of two console objects, which can be performed in constant time.
+
+- **Exception Handling**:
+  - Time complexity: O(1)
+  - Explanation: Throwing and catching exceptions involve minimal overhead and do not depend on the size of the data.
+
+Overall, the `Console` class is designed to provide efficient access and manipulation of console data with consistent time complexity across operations.
+
+
