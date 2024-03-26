@@ -24,28 +24,35 @@ Follow the on-screen prompts to interact with the program.
 No operations can or will be performed if the collection is empty. Either load a collection from file, or enter a Console manually using the interface.
 
 ## Installation
+There are two options to choose from:
 
-To install and run the program:
-
+The first option is to compile and run the program locally:
 1. Clone the repository to your local machine.
 2. Compile the source code using a C++ compiler.
 3. Run the compiled executable file.
 
+The second option is to download the .exe file in the release.
+
 ## Dependencies
 
-- C++ compiler
+- C++ compiler (for Linux users)
+or 
+- Windows Machine
 
 ## File Structure
 
-- `Menu.h`: Header file for the Menu class, which handles user interaction and menu navigation.
-- `Menu.cpp`: Implementation file for the Menu class.
-- `Console.h`: Header file for the Console class, which represents a video game console.
-- `Console.cpp`: Implementation file for the Console class.
-- `Collection.h`: Header file for the Collection class, which manages the collection of consoles.
-- `Collection.cpp`: Implementation file for the Collection class.
-- `Storage.h`: Header file for the Storage class, which handles file I/O operations.
-- `Storage.cpp`: Implementation file for the Storage class.
-- `main.cpp`: Main program file containing the `main()` function.
+| File             | Description                                                                                   |
+|------------------|-----------------------------------------------------------------------------------------------|
+| `Menu.h`         | Header file for the Menu class, which handles user interaction and menu navigation.           |
+| `Menu.cpp`       | Implementation file for the Menu class.                                                       |
+| `Console.h`      | Header file for the Console class, which represents a video game console.                     |
+| `Console.cpp`    | Implementation file for the Console class.                                                    |
+| `Collection.h`   | Header file for the Collection class, which manages the collection of consoles.               |
+| `Collection.cpp` | Implementation file for the Collection class.                                                  |
+| `Storage.h`      | Header file for the Storage class, which handles file I/O operations.                          |
+| `Storage.cpp`    | Implementation file for the Storage class.                                                     |
+| `main.cpp`       | Main program file containing the `main()` function.                                            |
+
 
 ## Contributors
 
