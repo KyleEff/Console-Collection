@@ -2,8 +2,6 @@
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
 
-using namespace std;
-
 // Constructor
 Menu::Menu() :
     choice(0) {
@@ -209,6 +207,8 @@ void Menu::addToCollection() {
 void Menu::removeFromCollection() {
 
     try {
+
+        collection.size(); // Will throw an exception if the collection is empty
 
         collection.print();
 

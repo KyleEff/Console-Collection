@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class Console;
+
 // Class representing a console
 class Console {
     // Attributes
@@ -27,6 +29,7 @@ public:
     void setManufacturer(string); // Setter for manufacturer
     void setName(string); // Setter for name
     void setYear(int); // Setter for year
+    void print() const; // Print console details
 
     // Accessors
     string getManufacturer() const // Getter for manufacturer
@@ -38,10 +41,7 @@ public:
     int getYear() const // Getter for year
         { return year; }
 
-    // Display
-    void print() const; // Print console details
-
-    friend ostream& operator<<(ostream&, const Console&); // Overloaded output operator
+    friend ostream& operator<<(ostream&, const Console&); // Overloaded output operator for storage
     friend bool operator<(const Console&, const Console&); // Overloaded less than operator
     friend bool operator==(const Console&, const Console&); // Needed for custom binary search
 };

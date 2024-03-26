@@ -3,8 +3,6 @@
 #include <sstream> // String stream operations
 #include <iostream>
 
-using namespace std;
-
 // Default constructor
 Storage::Storage() :
     collection(nullptr) { }

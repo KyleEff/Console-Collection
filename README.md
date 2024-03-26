@@ -7,11 +7,8 @@ Currently, the user can only add and remove entire data sets of Consoles, and no
 ## Features
 
 - **View Collection**: Users can view the entire collection of gaming consoles. They have the option to sort the consoles by release year or name in both ascending and descending orders.
-
 - **Edit Collection**: The program allows users to edit the collection by adding new consoles, removing existing ones, or performing other operations such as loading or saving the collection to/from a file.
-
 - **Search Collection**: Users can search for specific consoles within the collection based on their names or release years. This feature helps users quickly locate consoles of interest.
-
 - **Load/Save Collection**: Load the collection from a file or save the collection to a file for future use.
 
 ## Usage

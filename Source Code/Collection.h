@@ -6,6 +6,8 @@
 #include <algorithm> // sort() and binary_search()
 #include <unordered_map> // Hash table
 
+using namespace std;
+
 // Class representing a collection of consoles
 class Collection {
 

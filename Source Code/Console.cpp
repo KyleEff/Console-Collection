@@ -2,10 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 // Constructor definitions
-
 // Default constructor
 Console::Console() :
     manufacturer(""),
@@ -17,10 +14,10 @@ Console::Console(
     string manufacturer,
     string name,
     int year = 0 // default value for year
-  ) :
-    manufacturer(manufacturer),
-    name(name),
-    year(year) { }
+    ) :
+        manufacturer(manufacturer),
+        name(name),
+        year(year) { }
 
 // Setter for manufacturer
 void Console::setManufacturer(string manufacturer) {

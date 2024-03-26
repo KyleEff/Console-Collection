@@ -2,8 +2,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 // Method to sort the collection by year
 void Collection::sortByYear(bool choice) {
 
@@ -16,7 +14,6 @@ void Collection::sortByYear(bool choice) {
 
 // Method to sort the collection by name
 void Collection::sortByName(bool choice) {
-
     // Sorting the collection based on the choice (ascending or descending)
     if (choice)
         sort(layerOne.begin(), layerOne.end(), sortNameAsc); // Sorting in ascending order

@@ -35,9 +35,9 @@ The Console Collection program is a command-line application designed to manage 
 
 ## 4. Usage
 Upon running the program, you will be presented with a main menu where you can choose various operations:
-- View Collection: View the collection sorted by year or name.
-- Edit Collection: Add, remove, or edit consoles in the collection.
-- Exit Program: Terminate the program.
+- **View Collection:** View the collection sorted by year or name.
+- **Edit Collection:** Add, remove, or edit consoles in the collection.
+- **Exit Program:** Terminate the program.
 
 Follow the on-screen prompts to interact with the program and navigate through the menu options.
 

@@ -43,3 +43,6 @@
 #test files
 test.cpp
 
+#powershell scripts
+*.ps1
+
