@@ -26,6 +26,7 @@ $(EXEC): $(OBJS)
 
 run: $(EXEC)
 	./$(EXEC)
+	rm -f $(OBJS) $(EXEC)
 
 # Clean up generated files
 clean:

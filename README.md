@@ -35,7 +35,7 @@ The second option is to download the .exe file in the release.
 
 ## Dependencies
 
-- C++ compiler (for Linux users)
+- C++ compiler
 or 
 - Windows Machine
 
