@@ -32,7 +32,6 @@ void Storage::storeCollection() {
         cout << "\nSaving Collection To Disk..." << endl;
 
         try {
-
             // Iterating over each item in the collection
             for (auto i = 0; i < collection->size(); i++) // Throws exception if collection is empty
                 file << collection->getItem(i) << endl;
@@ -40,7 +39,6 @@ void Storage::storeCollection() {
             cout << "!!! Collection Saved !!!" << endl;
         }
         catch (Collection::EmptyCollection& e) {
-
             // Handling empty collection exception
             cout << e.what() << endl;
             file.close();

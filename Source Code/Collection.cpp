@@ -4,7 +4,6 @@
 
 // Method to sort the collection by year
 void Collection::sortByYear(bool choice) {
-
     // Sorting the collection based on the choice (ascending or descending)
     if (choice)
         sort(layerOne.begin(), layerOne.end(), sortYearAsc); // Sorting in ascending order
@@ -22,8 +21,7 @@ void Collection::sortByName(bool choice) {
 }
 
 // Method to search for a console by name
-Console Collection::searchByName(string name) {
-
+Console& Collection::searchByName(string name) {
     // Checking if the console with the given name exists in the collection
     if (nameTable.count(name) > 0)
         return nameTable[name]; // Returning the console if found
@@ -33,7 +31,6 @@ Console Collection::searchByName(string name) {
 
 // Method to search for a console by year
 vector<Console>* Collection::searchByYear(int year) {
-
     // Checking if the console with the given year exists in the collection
     if (yearTable.count(year) > 0)
         return yearTable[year]; // Returning vector of consoles 
@@ -57,8 +54,7 @@ int Collection::yearTableBinarySearch(Console& value) {
     // If the element is found, return its index in the vector
     if (result != it->second->end() && *result == value)
         return distance(it->second->begin(), result);
-    else
-        // If the element is not found, throw an exception
+    else // If the element is not found, throw an exception
         throw ItemNotFound("!!! Item Not Found !!!");
 
     // This line is never reached due to the throw statement above
@@ -67,10 +63,8 @@ int Collection::yearTableBinarySearch(Console& value) {
 
 // Method that uses a pointer to add a Console object to the collection
 void Collection::addItem(Console* add) {
-
     // Check if the console already exists in the collection
     if (!quickSearch(add)) {
-
         // Check if the year table has an entry for the console's year
         if (yearTable.count(add->getYear()) == 0) 
             // If not, create a new entry with the console as the first element of a vector
@@ -90,7 +84,6 @@ void Collection::addItem(Console* add) {
     else // If the console already exists, throw an exception
         throw Console::InvalidInput("\n!!! Item already exists inside collection !!!");
 }
-
 
 // NOT USED
 void Collection::addItem(Console add) { 

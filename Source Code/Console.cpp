@@ -49,7 +49,6 @@ void Console::setYear(int year) {
 // Print console details
 void Console::print() const {
     // Output the manufacturer and name
-
     cout
         << setw(15)
         << left
@@ -95,6 +94,6 @@ bool operator<(const Console& c1, const Console& c2) {
 }
 
 bool operator==(const Console& c1, const Console& c2) {
-
+    // Compare the names of the consoles
     return c1.name == c2.name;
 }

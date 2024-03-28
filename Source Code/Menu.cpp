@@ -53,55 +53,53 @@ void Menu::mainMenu() {
 
 // Method to view information about the collection
 void Menu::viewCollection() {
-
     try {
 
         collection.size(); // Throws an exception if the collection is empty
 
+        // Display menu options until the user chooses to return to the main menu
         while (choice >= 0) {
+            // Displaying the menu options for viewing the collection
+            cout << "\n------------ View Collection ------------\n"
+                 << "How would you like to view your collection?\n"
+                 << "1: View by year, ascending\n"
+                 << "2: View by year, descending\n"
+                 << "3: View by name, ascending\n"
+                 << "4: View by name, descending\n"
+                 << "5: Search Collection\n"
+                 << "0: Return to the main menu"
+                 << endl
+                 << ">> ";
 
-            cout
-                << "\n------------ View Collection ------------\n"
-                << "How would you like to view your collection?\n"
-                << "1: View by year, ascending\n"
-                << "2: View by year, descending\n"
-                << "3: View by name, ascending\n"
-                << "4: View by name, descending\n"
-                << "5: Search Collection\n"
-                << "0: Return to the main menu"
-                << endl
-                << ">> ";
-
-            cin >> choice;
+            cin >> choice; // Get user's choice
 
             switch (choice) {
-
-                case 1:
+                case 1: // Sort and print the collection by year in ascending order
                     collection.sortByYear(true);
                     cout << "\n--------- Collection By Year, Ascending --------" << endl;
                     collection.print();
                     break;
 
-                case 2:
+                case 2: // Sort and print the collection by year in descending order
                     collection.sortByYear(false);
                     cout << "\n-------- Collection By Year, Descending --------" << endl;
                     collection.print();
                     break;
 
-                case 3:
+                case 3: // Sort and print the collection by name in ascending order
                     collection.sortByName(true);
                     cout << "\n--------- Collection By Name, Ascending --------" << endl;
                     collection.print();
                     break;
 
-                case 4:
+                case 4: // Sort and print the collection by name in descending order
                     collection.sortByName(false);
                     cout << "\n-------- Collection By Name, Descending --------" << endl;
                     collection.print();
                     break;
 
                 case 5:
-                    searchCollection(); // Search collection
+                    searchCollection(); // Call function to search the collection
                     break;
 
                 case 0:
@@ -114,10 +112,10 @@ void Menu::viewCollection() {
         }
     }
 
-    catch (Collection::EmptyCollection& e)
+    catch (Collection::EmptyCollection& e) // Catch and handle the exception if the collection is empty
         { cout << e.what() << endl; }
-    
 }
+
 
 // Method to edit the collection
 void Menu::editCollection() {
@@ -231,55 +229,57 @@ void Menu::searchCollection() {
     choice = 0;
 
     while (choice >= 0) {
-
-        cout
-            << "\n------------ Search Collection ------------\n"
-            << "How would you like to search?\n"
-            << "1: By Name\n"
-            << "2: By Year\n"
-            << "0: Back to Main Menu"
-            << endl
-            << ">> ";
-        cin >> choice;
+        // Displaying the menu options for searching the collection
+        cout << "\n------------ Search Collection ------------\n"
+             << "How would you like to search?\n"
+             << "1: By Name\n"
+             << "2: By Year\n"
+             << "0: Back to Main Menu"
+             << endl
+             << ">> ";
+        cin >> choice; // Get user's choice
 
         switch (choice) {
 
-            case 1:
+            case 1: // Search for consoles by name
                 cout << "Enter the name\n>> ";
-                cin >> nameSearch;
+                cin.ignore();
+                getline(cin, nameSearch);
 
                 try {
-
+                    
                     cout << "Searching...\n" << endl;
-
+                    // Search for consoles by name and print the details
                     collection.searchByName(nameSearch).print();
                 }
-                catch (Collection::ItemNotFound& e)
+                catch (Collection::ItemNotFound& e) // Catch and handle the exception if console not found
                     { cout << e.what() << endl; }
-                
+                catch (exception& e)// Catch and handle any other exceptions
+                    { cout << e.what() << endl; }
                 break;
 
-            case 2:
+            case 2: // Search for consoles by year
                 cout << "Enter the year\n>> ";
                 cin >> choice;
-                
+
                 try {
 
                     cout << "Searching...\n" << endl;
-
+                    // Search for consoles by year and print the details
                     for (const auto& i : *collection.searchByYear(choice))
                         i.print();
                 }
-                catch (Collection::ItemNotFound& e)
-                    { cout << e.what() << endl; }
-
-                break;
                 
+                catch (Collection::ItemNotFound& e) // Catch and handle the exception if console not found
+                    { cout << e.what() << endl; }
+                break;
+
             case 0:
                 return; // Return to main menu
-            
+
             default:
                 return; // Fail safe
         }
     }
 }
+

@@ -2,7 +2,7 @@
 
 This console program is designed to manage a collection of video game consoles. It allows users to add, remove, view, and edit information about various gaming consoles, including their manufacturer, name, and year of release.
 
-Currently, the user can only add and remove entire data sets of Consoles, and not edit the data of singular Consoles within the collection.
+Currently, the user can only add and remove entire data sets of Consoles, meaning the data of singular Consoles within the collection cannot be edited. The entire Console must be deleted and re-entered.
 
 ## Features
 

@@ -57,8 +57,10 @@ public:
     }
 
     // Methods to search for a console by name or year
-    Console searchByName(string);
-    vector<Console>* searchByYear(int);
+    Console& searchByName(string); // NOT WORKING NEED TO DEBUG
+    vector<Console>* searchByYear(int); // Returns a pointer to the vector containing all the consoles from the same year
+
+    // Custom Binary Search that returns an index instead of bool
     int yearTableBinarySearch(Console&);
 
     // Inline Method to search for a console by binary search (default: by name)
@@ -90,5 +92,4 @@ public:
     // DEBUG FUNCTIONS NOT USED IN NORMAL OPERATIONS
     void yearTableTest();
     void yearTablePrint();
-
 };
