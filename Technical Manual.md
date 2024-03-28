@@ -141,7 +141,7 @@ The time complexity of various operations involving the `Console` class depends 
 
 Overall, the `Console` class is designed to provide efficient access and manipulation of console data with consistent time complexity across operations.
 
-### Collection Class
+### 12.B Collection Class
 
 #### Introduction
 The `Collection` class represents a collection of video game consoles, providing functionalities for managing, searching, and printing console data. This guide provides an overview of the class structure, its member functions, and usage, along with a detailed analysis of time complexities for key operations.
@@ -200,3 +200,97 @@ The time complexity of various operations involving the `Collection` class depen
 
 Overall, the `Collection` class provides efficient operations for managing collections of consoles, with time complexity varying based on the specific operation and data size.
 
+### 12.C Storage Class
+
+#### Overview
+The `Storage` class in the Console Collection program is responsible for managing the storage and retrieval of collection data to and from a file. It provides methods to store the collection data to a file and read the collection data from a file. This class plays a crucial role in persisting the collection data between program executions.
+
+#### Constructors
+- **Storage()**: Default constructor initializes the `collection` pointer to `nullptr`.
+- **Storage(Collection&)**: Constructor that takes a reference to a `Collection` object and initializes the `collection` pointer to point to it.
+
+#### Destructor
+- **~Storage()**: Virtual destructor deallocates memory for the `Collection` object and resets the `collection` pointer to `nullptr`.
+
+#### Methods
+- **setCollection(Collection*)**: Sets the `collection` pointer to point to the provided `Collection` object.
+- **storeCollection()**: Writes the collection data to a file named "collection.csv". It iterates over each item in the collection and writes its details to the file. Throws an `InvalidFile` exception if the file cannot be opened for writing.
+- **readCollection()**: Reads the collection data from the "collection.csv" file. It parses each line of the file as a CSV record, creates `Console` objects from the parsed data, and adds them to the collection. Throws an `InvalidFile` exception if the file cannot be opened for reading.
+
+#### Exception Handling
+- **InvalidFile**: Custom exception class derived from `invalid_argument`. It is thrown when the file operation (reading or writing) fails due to an invalid file.
+
+#### File Operations
+- The class uses the `fstream` class to perform file I/O operations.
+- The default file name for storing collection data is "collection.csv".
+
+#### Dependencies
+- **Collection**: The `Storage` class depends on the `Collection` class to store and retrieve collection data.
+
+#### Example Usage
+```cpp
+// Creating a Storage object with a Collection object
+Collection myCollection;
+Storage storage(myCollection);
+
+// Storing collection data to file
+storage.storeCollection();
+
+// Reading collection data from file
+storage.readCollection();
+```
+
+#### Time Complexity Analysis
+- The time complexity of the `storeCollection()` method is O(n), where n is the number of items in the collection.
+- The time complexity of the `readCollection()` method depends on the size of the collection and the number of records in the file. In the worst-case scenario, where the file contains m records and each record results in the creation of a new `Console` object, the time complexity is O(m).
+
+#### File Format
+- The collection data is stored in a CSV (Comma-Separated Values) format.
+- Each line in the file represents a console, with attributes separated by commas.
+- The format is as follows: `manufacturer, name, year`.
+
+### 12.D Menu Class
+
+#### Overview
+The `Menu` class is the central component of the Console Collection Manager program. It provides a user-friendly interface for managing the collection of video game consoles. The class includes methods for displaying menus, adding and removing consoles from the collection, searching the collection, and interacting with storage for persistent data.
+
+#### Attributes
+- **collection**: An object of the `Collection` class used to manage the collection of consoles.
+- **disk**: An object of the `Storage` class used for storing and retrieving collection data from disk.
+- **choice**: An integer variable representing the user's menu choice.
+
+#### Constructor
+- **Menu()**: Default constructor initializes the `choice` variable to 0, sets the collection for storage, and displays a greeting message. It then enters a loop to display the main menu until the user chooses to exit the program.
+
+#### Methods
+- **greeting()**: Displays a greeting message to the user upon program initialization.
+- **mainMenu()**: Displays the main menu options and handles user input to navigate through different functionalities of the program.
+- **viewCollection()**: Displays the collection to the user based on different sorting options (by year or by name) and provides an option to search the collection.
+- **editCollection()**: Allows the user to edit the collection by adding or removing consoles, loading the collection from a file, or saving the collection to a file.
+- **addToCollection()**: Prompts the user to enter details of a new console and adds it to the collection.
+- **removeFromCollection()**: Allows the user to remove a console from the collection.
+- **searchCollection()**: Provides options to search the collection by name or year and displays the details of the consoles matching the search criteria.
+
+#### Constructor Details
+- The constructor initializes the `choice` variable to 0 and sets the collection for storage by calling the `setCollection()` method of the `Storage` object.
+- After initialization, the constructor displays a greeting message using the `greeting()` method and enters a loop to display the main menu until the user chooses to exit the program.
+
+#### Method Details
+- **viewCollection()**: The method first checks if the collection is empty using the `size()` method of the `Collection` class and displays the menu options for viewing the collection. It then handles user input to sort and display the collection based on different criteria.
+- **editCollection()**: This method provides options for adding or removing consoles, loading the collection from a file, or saving the collection to a file. It utilizes exception handling to catch any errors that may occur during file operations.
+- **addToCollection()**: Prompts the user to enter details of a new console and adds it to the collection using the `addItem()` method of the `Collection` class.
+- **removeFromCollection()**: Allows the user to select a console to remove from the collection and removes it using the `removeItem()` method of the `Collection` class.
+- **searchCollection()**: Provides options for searching the collection by name or year and displays the details of the consoles matching the search criteria. It handles exceptions for item not found and other errors that may occur during the search process.
+
+#### Dependencies
+- The `Menu` class depends on the `Collection` and `Storage` classes for managing the collection of consoles and storing/retrieving collection data from disk, respectively.
+
+#### Example Usage
+```cpp
+// Creating a Menu object
+Menu menu;
+```
+This single line of code runs the whole program due to the loop in the constructor.
+
+#### Time Complexity Analysis
+- The time complexity of each method depends on the operations performed within them and the size of the collection. Methods involving sorting or searching the collection may have time complexities of O(n log n) or O(n) depending on the algorithm used. Methods involving file I/O operations may have time complexities proportional to the size of the file or collection data.
