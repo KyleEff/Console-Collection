@@ -1,58 +1,46 @@
-# Console Collection Program
+# Console Collection Manager
 
-This console program is designed to manage a collection of video game consoles. It allows users to add, remove, view, and edit information about various gaming consoles, including their manufacturer, name, and year of release.
-
-Currently, the user can only add and remove entire data sets of Consoles, meaning the data of singular Consoles within the collection cannot be edited. The entire Console must be deleted and re-entered.
+Welcome to the Console Collection Manager! This command-line application helps you manage your collection of video game consoles with ease. Whether you're an avid collector or just starting out, this program has got you covered.
 
 ## Features
 
-- **View Collection**: Users can view the entire collection of gaming consoles. They have the option to sort the consoles by release year or name in both ascending and descending orders.
-- **Edit Collection**: The program allows users to edit the collection by adding new consoles, removing existing ones, or performing other operations such as loading or saving the collection to/from a file.
-- **Search Collection**: Users can search for specific consoles within the collection based on their names or release years. This feature helps users quickly locate consoles of interest.
-- **Load/Save Collection**: Load the collection from a file or save the collection to a file for future use.
+- **View Collection**: Take a peek at your collection sorted by year or name, in ascending or descending order.
+- **Edit Collection**: Add new consoles, remove existing ones, or save/load your collection data to/from disk.
+- **Search Collection**: Quickly find consoles by name or year.
 
-## Usage
+## How to Use
 
-Upon running the program, you will be presented with a main menu.
-Choose an operation to perform:
-- **View Collection**
-- **Edit Collection**
-- **Exit Program**
+1. **Run the Program**: Launch the Console Collection Manager on your computer.
 
-Follow the on-screen prompts to interact with the program.
+2. **Main Menu**: The main menu will greet you and present several options:
+   - View your collection
+   - Edit your collection (add/remove consoles, save/load collection data)
+   - Exit the program
 
-No operations can or will be performed if the collection is empty. Either load a collection from file, or enter a Console manually using the interface.
+3. **View Collection**: Choose this option to see your consoles sorted the way you like it.
+
+4. **Edit Collection**: Add a new console to your collection, remove an existing one, or save/load your collection data to/from disk.
+
+5. **Search Collection**: Looking for a specific console? Use this option to find consoles by name or year.
 
 ## Installation
-There are two options to choose from:
 
-The first option is to compile and run the program locally:
-1. Clone the repository to your local machine.
-2. Compile the source code using a C++ compiler.
-3. Run the compiled executable file.
+1. **Clone the Repository**: Copy the repository to your local machine.
+   
+2. **Compile the Source Files**: Use a C++ compiler to compile the source files.
 
-The second option is to download the .exe file in the release.
+3. **Run the Executable**: Execute the compiled program to start using the Console Collection Manager.
 
 ## Dependencies
 
-- C++ compiler
-or 
-- Windows Machine
+The Console Collection Manager relies on the following classes:
+- Menu: Handles user interaction and menu navigation.
+- Collection: Manages the collection of consoles.
+- Storage: Manages storing and retrieving collection data from disk.
 
-## File Structure
+## Customization
 
-| File             | Description                                                                                   |
-|------------------|-----------------------------------------------------------------------------------------------|
-| `Menu.h`         | Header file for the Menu class, which handles user interaction and menu navigation.           |
-| `Menu.cpp`       | Implementation file for the Menu class.                                                       |
-| `Console.h`      | Header file for the Console class, which represents a video game console.                     |
-| `Console.cpp`    | Implementation file for the Console class.                                                    |
-| `Collection.h`   | Header file for the Collection class, which manages the collection of consoles.               |
-| `Collection.cpp` | Implementation file for the Collection class.                                                  |
-| `Storage.h`      | Header file for the Storage class, which handles file I/O operations.                          |
-| `Storage.cpp`    | Implementation file for the Storage class.                                                     |
-| `main.cpp`       | Main program file containing the `main()` function.                                            |
-
+Feel free to customize the program according to your preferences. You can modify the classes, add new features, or improve existing ones.
 
 ## Contributors
 
@@ -60,4 +48,7 @@ or
 
 ## License
 
-This project is dedicated to the public domain under the [Unlicense](https://unlicense.org/). You are free to use, modify, and distribute the software without any restrictions.
+This project is licensed under the [Unlicense](https://unlicense.org/). Enjoy managing your console collection stress-free!
+
+---
+We hope you enjoy using the Console Collection Manager. If you have any questions or feedback, don't hesitate to reach out. Happy collecting!
