@@ -76,25 +76,25 @@ void Menu::viewCollection() {
             switch (choice) {
                 case 1: // Sort and print the collection by year in ascending order
                     collection.sortByYear(true);
-                    cout << "\n--------- Collection By Year, Ascending --------" << endl;
+                    cout << "\n----------------------------------------- Collection By Year, Ascending ----------------------------------------" << endl;
                     collection.print();
                     break;
 
                 case 2: // Sort and print the collection by year in descending order
                     collection.sortByYear(false);
-                    cout << "\n-------- Collection By Year, Descending --------" << endl;
+                    cout << "\n---------------------------------------- Collection By Year, Descending ----------------------------------------" << endl;
                     collection.print();
                     break;
 
                 case 3: // Sort and print the collection by name in ascending order
                     collection.sortByName(true);
-                    cout << "\n--------- Collection By Name, Ascending --------" << endl;
+                    cout << "\n---------------------------------------- Collection By Name, Ascending -----------------------------------------" << endl;
                     collection.print();
                     break;
 
                 case 4: // Sort and print the collection by name in descending order
                     collection.sortByName(false);
-                    cout << "\n-------- Collection By Name, Descending --------" << endl;
+                    cout << "\n---------------------------------------- Collection By Name, Descending ----------------------------------------" << endl;
                     collection.print();
                     break;
 

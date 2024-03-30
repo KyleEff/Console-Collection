@@ -50,12 +50,12 @@ void Console::setYear(int year) {
 void Console::print() const {
     // Output the manufacturer and name
     cout
-        << setw(15)
+        << setw(50)
         << left
         << manufacturer
         << '|'
 
-        << setw(20)
+        << setw(50)
         << left
         << name
         << '|';

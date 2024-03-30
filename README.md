@@ -6,7 +6,7 @@ Welcome to the Console Collection Manager! This command-line application helps y
 
 - **View Collection**: Take a peek at your collection sorted by year or name, in ascending or descending order.
 - **Edit Collection**: Add new consoles, remove existing ones, or save/load your collection data to/from disk.
-- **Search Collection**: Quickly find consoles by name or year.
+- **Search Collection**: Quickly find consoles by name or year. Names are case sensitive and must be exact.
 
 ## How to Use
 
@@ -31,6 +31,10 @@ Welcome to the Console Collection Manager! This command-line application helps y
 
 3. **Run the Executable**: Execute the compiled program to start using the Console Collection Manager.
 
+OR
+
+1. **Download the Executable**: There is an executable included in the release.
+
 ## Dependencies
 
 The Console Collection Manager relies on the following classes:
@@ -45,6 +49,19 @@ Feel free to customize the program according to your preferences. You can modify
 ## Contributors
 
 - [Kyle Free](https://github.com/KyleEff)
+
+## Supplemental Documentation
+unordered_map
+https://en.cppreference.com/w/cpp/container/unordered_map
+
+vector
+https://en.cppreference.com/w/cpp/container/vector
+
+sort
+https://en.cppreference.com/w/cpp/algorithm/sort
+
+binary_search
+https://en.cppreference.com/w/cpp/algorithm/binary_search
 
 ## License
 
