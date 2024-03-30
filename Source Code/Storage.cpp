@@ -38,8 +38,8 @@ void Storage::storeCollection() {
 
             cout << "!!! Collection Saved !!!" << endl;
         }
-        catch (Collection::EmptyCollection& e) {
-            // Handling empty collection exception
+        catch (Collection::EmptyCollection& e) { // Handling empty collection exception
+        
             cout << e.what() << endl;
             file.close();
         }

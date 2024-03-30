@@ -15,6 +15,7 @@ EXEC = ConsoleCollection
 
 # Default target
 all: $(EXEC)
+	rm -f $(OBJS)
 
 # Compile source files into object files
 %.o: %.cpp
@@ -26,8 +27,8 @@ $(EXEC): $(OBJS)
 
 run: $(EXEC)
 	./$(EXEC)
-	rm -f $(OBJS) $(EXEC)
+	rm -f $(OBJS) $(EXEC).exe
 
 # Clean up generated files
 clean:
-	rm -f $(OBJS) $(EXEC)
+	rm -f $(OBJS) $(EXEC).exe

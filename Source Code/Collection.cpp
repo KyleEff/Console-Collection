@@ -39,8 +39,8 @@ vector<Console>* Collection::searchByYear(int year) {
 }
 
 int Collection::yearTableBinarySearch(Console& value) {
-    // Sort the year table to ensure binary search works correctly
-    sortYearTable();
+    
+    sortYearTable(); // Sort the year table to ensure binary search works correctly
 
     // Find the entry for the specified year in the year table
     auto it{ yearTable.find(value.getYear()) };
@@ -49,6 +49,7 @@ int Collection::yearTableBinarySearch(Console& value) {
         return -1;
 
     // Perform a binary search within the vector associated with the year
+    // The data type returned from lower_bound is of type Iterator
     auto result{ lower_bound(it->second->begin(), it->second->end(), value) };
 
     // If the element is found, return its index in the vector
@@ -72,8 +73,7 @@ void Collection::addItem(Console* add) {
                 add->getYear(),
                 new vector<Console>(1, *add)
             });
-        else
-            // If an entry already exists, push the console into the vector for that year
+        else // If an entry already exists, push the console into the vector for that year
             yearTable[add->getYear()]->push_back(*add);
 
         // Add the console to the main vector and name table
@@ -86,13 +86,13 @@ void Collection::addItem(Console* add) {
 }
 
 // NOT USED
-void Collection::addItem(Console add) { 
+void Collection::addItem(Console add) {
 
     if (yearTable.count(add.getYear()) == 0) 
         yearTable.insert({ add.getYear(), new vector<Console>(1, add) });
-    else 
+    else
         yearTable[add.getYear()]->push_back(add);
-    
+
     layerOne.push_back(add);
     nameTable.insert({ add.getName(), add });
 }
@@ -119,8 +119,7 @@ void Collection::removeItem(int choice) {
     layerOne.erase(layerOne.begin() + (choice - 1));
 }
 
-
-// Method to print all consoles in the collection
+// Method to print all Consoles in the collection
 void Collection::print() const {
     // Displaying header for the console listing
     cout
