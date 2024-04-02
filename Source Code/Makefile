@@ -2,7 +2,7 @@
 CXX = c++
 
 # Compiler flags
-CXXFLAGS = -std=c++23 -Wall
+CXXFLAGS = -std=c++11 -Wall
 
 # Source files
 SRCS := $(wildcard *.cpp)

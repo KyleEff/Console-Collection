@@ -234,7 +234,7 @@ void Menu::searchCollection() {
              << "How would you like to search?\n"
              << "1: By Name\n"
              << "2: By Year\n"
-             << "0: Back to Main Menu"
+             << "0: Back to previous menu"
              << endl
              << ">> ";
         cin >> choice; // Get user's choice
