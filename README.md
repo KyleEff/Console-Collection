@@ -63,6 +63,9 @@ https://en.cppreference.com/w/cpp/algorithm/sort
 binary_search
 https://en.cppreference.com/w/cpp/algorithm/binary_search
 
+lower_bound
+https://en.cppreference.com/w/cpp/algorithm/lower_bound
+
 ## License
 
 This project is licensed under the [Unlicense](https://unlicense.org/). Enjoy managing your console collection stress-free!

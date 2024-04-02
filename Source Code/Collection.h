@@ -57,7 +57,7 @@ public:
     }
 
     // Methods to search for a console by name or year
-    Console& searchByName(string); // NOT WORKING NEED TO DEBUG
+    Console& searchByName(string); // Returns a reference to a Console matched by name
     vector<Console>* searchByYear(int); // Returns a pointer to the vector containing all the consoles from the same year
 
     // Custom Binary Search that returns an index instead of bool
