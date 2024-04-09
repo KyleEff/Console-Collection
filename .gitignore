@@ -46,3 +46,7 @@ test.cpp
 #powershell scripts
 *.ps1
 
+.ccls-cache/
+.replit
+ConsoleCollection
+replit.nix

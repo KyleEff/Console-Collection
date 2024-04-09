@@ -5,8 +5,6 @@
 
 using namespace std;
 
-class Console;
-
 // Class representing a console
 class Console {
     // Attributes
