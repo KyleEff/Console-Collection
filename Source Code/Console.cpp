@@ -50,15 +50,15 @@ void Console::setYear(int year) {
 void Console::print() const {
     // Output the manufacturer and name
     cout
-        << setw(50)
+        << setw(49)
         << left
         << manufacturer
-        << '|'
+        << " | "
 
-        << setw(50)
+        << setw(48)
         << left
         << name
-        << '|';
+        << "| ";
 
     // Output the year if it's valid (greater than 0)
     if (year > 0)

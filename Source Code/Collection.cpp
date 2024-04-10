@@ -135,7 +135,7 @@ void Collection::print() const {
                 << right
                 << setw(3)
                 << i + 1
-                << '|';
+                << "| ";
             // Printing the details of the console using its print method
             layerOne[i].print();
         }
