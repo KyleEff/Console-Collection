@@ -123,7 +123,7 @@ void Collection::removeItem(int choice) {
 void Collection::print() const {
     // Displaying header for the console listing
     cout
-        << " # |                   Manufacturer                   |                       Name                       | Year \n"
+        << " #  |                   Manufacturer                  |                     Name                        | Year \n"
         << "----------------------------------------------------------------------------------------------------------------"
         << endl;
 
@@ -135,7 +135,7 @@ void Collection::print() const {
                 << right
                 << setw(3)
                 << i + 1
-                << "| ";
+                << " | ";
             // Printing the details of the console using its print method
             layerOne[i].print();
         }

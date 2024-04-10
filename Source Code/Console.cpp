@@ -50,15 +50,15 @@ void Console::setYear(int year) {
 void Console::print() const {
     // Output the manufacturer and name
     cout
-        << setw(49)
+        << setw(48)
         << left
         << manufacturer
-        << " | "
+        << "| "
 
         << setw(48)
         << left
         << name
-        << "| ";
+        << '|';
 
     // Output the year if it's valid (greater than 0)
     if (year > 0)
@@ -68,6 +68,14 @@ void Console::print() const {
             << endl;
     // Otherwise, just output a newline for formatting
     else cout << endl;
+
+    // Divider
+    cout
+        << "----+"
+        << "-------------------------------------------------+"
+        << "-------------------------------------------------+"
+        << "-------"
+        << endl;
 }
 
 // Overloaded output operator for Console class

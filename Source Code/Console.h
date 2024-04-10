@@ -39,6 +39,8 @@ public:
     int getYear() const // Getter for year
         { return year; }
 
+    
+
     friend ostream& operator<<(ostream&, const Console&); // Overloaded output operator for storage
     friend bool operator<(const Console&, const Console&); // Overloaded less than operator
     friend bool operator==(const Console&, const Console&); // Needed for custom binary search
