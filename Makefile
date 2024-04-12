@@ -20,13 +20,11 @@ all: $(EXEC)
 
 # Clean
 clean:
-	rm -rf $(BUILD_DIR) $(EXEC)
+	rm -rf $(BUILD_DIR) $(EXEC).exe
 
 run: $(EXEC)
 	./$(EXEC)
-	clean
 	
-
 # Main target
 $(EXEC): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -40,8 +38,6 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.tpp
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
-
-
 
 # Phony target
 .PHONY: clean

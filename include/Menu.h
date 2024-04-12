@@ -1,6 +1,6 @@
 #include "Collection.h" // Including the header file for the Collection class
 #include "Storage.h" // Including the header file for the Storage class
-#include "../src/Exceptions.cpp"
+#include "Exceptions.h"
 #include <iostream>
 
 template <typename T>
