@@ -31,11 +31,6 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
-# Rule for compiling .tpp files
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.tpp
-	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
-
 clean:
 	rm -rf $(BUILD_DIR) $(EXEC).exe
 
