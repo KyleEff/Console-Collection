@@ -13,7 +13,6 @@ EXEC := ConsoleCollection
 
 # Files
 SRCS := $(wildcard $(SRC_DIR)/*.cpp)
-TPPS := $(wildcard $(SRC_DIR)/*.tpp)
 OBJS := $(patsubst $(SRC_DIR)/%,$(BUILD_DIR)/%,$(SRCS:.cpp=.o)) $(patsubst $(SRC_DIR)/%,$(BUILD_DIR)/%,$(TPPS:.tpp=.o))
 
 all: $(EXEC)
