@@ -1,4 +1,5 @@
-#include "Collection.h" // Including the header file for the Collection class
+#include "../include/Collection.h" // Including the header file for the Collection class
+#include "../include/Console.h"
 #include <iostream>
 #include <iomanip>
 
@@ -209,3 +210,5 @@ void Collection<T>::yearTablePrint() { // DEBUG FUNCITON
             j.print();
     }
 }
+
+template class Collection<Console>;

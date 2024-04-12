@@ -1,4 +1,5 @@
-#include "Storage.h" // Including the header file for the Storage class
+#include "../include/Storage.h" // Including the header file for the Storage class
+#include "../include/Console.h"
 #include <vector> // Standard vector container
 #include <sstream> // String stream operations
 #include <iostream>
@@ -86,7 +87,7 @@ void Storage<T>::readCollection() {
 
                 try {
                     // Adding console to collection based on CSV data
-                    if (stoi(row[2]) > 0 || stoi(row[2]) < (int)chrono::system_clock::now()) // If the year value is greater than zero
+                    if (stoi(row[2]) > 0)// || stoi(row[2]) < (int)chrono::system_clock::now()) // If the year value is greater than zero
                         collection->addItem( // Add Item
                             new T(
                                 row[0],      // Manufacturer
@@ -121,3 +122,5 @@ void Storage<T>::readCollection() {
 
     cout << "!!! Collection Loaded !!!" << endl;
 }
+
+template class Storage<Console>;

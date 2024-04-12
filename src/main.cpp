@@ -5,8 +5,8 @@ Computer Science 2436: Programming Fundamentals III
 04 / 28 / 2024
 */
 
-#include "Console.h"
-#include "Menu.h"
+#include "../include/Console.h"
+#include "../include/Menu.h"
 
 int main() {
 

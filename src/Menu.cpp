@@ -1,4 +1,5 @@
-#include "Menu.h" // Including the header file for the Menu class
+#include "../include/Menu.h" // Including the header file for the Menu class
+#include "../include/Console.h"
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
 
@@ -278,3 +279,4 @@ void Menu<T>::searchCollection() {
     }
 }
 
+template class Menu<Console>;

@@ -1,14 +1,14 @@
 #pragma once
 
 #include "Collection.h" // Including the header file for the Collection class
-#include "Exceptions.cpp"
+#include "../src/Exceptions.cpp"
 #include <fstream> // File stream operations
 #include <string> // String manipulation
 
 template <typename T>
 class Storage {
 
-    std::string fileName{ "collection.csv" }; // File name for storing collection data
+    std::string fileName{ "../collection.csv" }; // File name for storing collection data
     std::fstream file; // File stream for reading/writing to the file
     Collection<T>* collection{ nullptr }; // Pointer to the collection object
 
