@@ -18,12 +18,9 @@ OBJS := $(patsubst $(SRC_DIR)/%,$(BUILD_DIR)/%,$(SRCS:.cpp=.o)) $(patsubst $(SRC
 
 all: $(EXEC)
 
-# Clean
-clean:
-	rm -rf $(BUILD_DIR) $(EXEC).exe
-
 run: $(EXEC)
 	./$(EXEC)
+	rm -rf $(BUILD_DIR)
 	
 # Main target
 $(EXEC): $(OBJS)
@@ -38,6 +35,9 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.tpp
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+
+clean:
+	rm -rf $(BUILD_DIR) $(EXEC).exe
 
 # Phony target
 .PHONY: clean
