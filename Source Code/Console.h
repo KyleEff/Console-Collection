@@ -1,9 +1,8 @@
 #pragma once
 
+#include "Exceptions.cpp"
 #include <string>
 #include <stdexcept>
-
-using namespace std;
 
 // Class representing a console
 class Console {
@@ -18,10 +17,6 @@ public:
     // Constructors
     Console(); // Default constructor
     Console(string, string, int); // Parameterized constructor
-
-    // Exception Object
-    class InvalidInput : public domain_error
-        { public: InvalidInput(const char* what) : domain_error(what) {} };
 
     // Member Functions
     void setManufacturer(string); // Setter for manufacturer
@@ -38,8 +33,6 @@ public:
 
     int getYear() const // Getter for year
         { return year; }
-
-    
 
     friend ostream& operator<<(ostream&, const Console&); // Overloaded output operator for storage
     friend bool operator<(const Console&, const Console&); // Overloaded less than operator

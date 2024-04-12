@@ -2,6 +2,8 @@
 #include <iostream>
 #include <iomanip>
 
+using namespace std;
+
 // Constructor definitions
 // Default constructor
 Console::Console() :

@@ -2,21 +2,11 @@
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
 
-// Constructor
-Menu::Menu() :
-    choice(0) {
-
-        disk.setCollection(&collection); // Setting the collection for storage
-
-        greeting(); // Displaying greeting message
-
-        // Main menu loop
-        while (choice >= 0)
-            mainMenu();
-    }
+using namespace std;
 
 // Method to display the main menu
-void Menu::mainMenu() {
+template <typename T>
+void Menu<T>::mainMenu() {
 
     cout
         << "\n------------ Main Menu ------------\n"
@@ -52,7 +42,8 @@ void Menu::mainMenu() {
 }
 
 // Method to view information about the collection
-void Menu::viewCollection() {
+template <typename T>
+void Menu<T>::viewCollection() {
     try {
 
         collection.size(); // Throws an exception if the collection is empty
@@ -112,13 +103,14 @@ void Menu::viewCollection() {
         }
     }
 
-    catch (Collection::EmptyCollection& e) // Catch and handle the exception if the collection is empty
+    catch (EmptyCollection& e) // Catch and handle the exception if the collection is empty
         { cout << e.what() << endl; }
 }
 
 
 // Method to edit the collection
-void Menu::editCollection() {
+template <typename T>
+void Menu<T>::editCollection() {
 
     while (choice >= 0) {
 
@@ -148,14 +140,14 @@ void Menu::editCollection() {
             case 3:
                 try
                     { disk.readCollection(); } // Read collection from file
-                catch (Storage::InvalidFile& e)
+                catch (InvalidFile& e)
                     { cout << e.what() << endl; }
                 break;
 
             case 4:
                 try
                     { disk.storeCollection(); } // Store collection to file
-                catch (Storage::InvalidFile& e)
+                catch (InvalidFile& e)
                     { cout << e.what() << endl; }
                 break;
 
@@ -170,14 +162,15 @@ void Menu::editCollection() {
 }
 
 // Method to add a console to the collection
-void Menu::addToCollection() {
+template <typename T>
+void Menu<T>::addToCollection() {
 
     string
         manufacturer,
         name;
 
     int year = 0;
-    Console* temp{ nullptr };
+    T* temp{ nullptr };
 
     cout << "Enter the manufacturer of the console\n>> ";
     cin.ignore(); // Ignore leading whitespace on the input buffer
@@ -189,11 +182,11 @@ void Menu::addToCollection() {
     cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
-    temp = new Console(manufacturer, name, year);
+    temp = new T(manufacturer, name, year);
 
     try
         { collection.addItem(temp); }
-    catch (Console::InvalidInput& e)
+    catch (InvalidInput& e)
         { cout << e.what() << endl; }
 
     collection.print();
@@ -202,7 +195,8 @@ void Menu::addToCollection() {
 }
 
 // Method to remove a console from the collection
-void Menu::removeFromCollection() {
+template <typename T>
+void Menu<T>::removeFromCollection() {
 
     try {
 
@@ -218,12 +212,13 @@ void Menu::removeFromCollection() {
         cout << "\n------------ Edited Collection ------------" << endl;
         collection.print();
     }
-    catch (Collection::EmptyCollection& e)
+    catch (EmptyCollection& e)
         { cout << e.what() << endl; }
 }
 
 // Method to search the collection for a console
-void Menu::searchCollection() {
+template <typename T>
+void Menu<T>::searchCollection() {
 
     string nameSearch;
     choice = 0;
@@ -252,7 +247,7 @@ void Menu::searchCollection() {
                     // Search for consoles by name and print the details
                     collection.searchByName(nameSearch).print();
                 }
-                catch (Collection::ItemNotFound& e) // Catch and handle the exception if console not found
+                catch (ItemNotFound& e) // Catch and handle the exception if console not found
                     { cout << e.what() << endl; }
                 catch (exception& e)// Catch and handle any other exceptions
                     { cout << e.what() << endl; }
@@ -270,7 +265,7 @@ void Menu::searchCollection() {
                         i.print();
                 }
                 
-                catch (Collection::ItemNotFound& e) // Catch and handle the exception if console not found
+                catch (ItemNotFound& e) // Catch and handle the exception if console not found
                     { cout << e.what() << endl; }
                 break;
 

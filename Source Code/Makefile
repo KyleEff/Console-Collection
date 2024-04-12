@@ -1,8 +1,8 @@
 # Compiler
-CXX = c++
+CXX := g++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS := -std=c++11 -Wall -Wextra
 
 # Source files
 SRCS := $(wildcard *.cpp)

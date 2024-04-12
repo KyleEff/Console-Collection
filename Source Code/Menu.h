@@ -1,18 +1,27 @@
 #include "Collection.h" // Including the header file for the Collection class
 #include "Storage.h" // Including the header file for the Storage class
+#include "Exceptions.cpp"
 #include <iostream>
 
-using namespace std;
-
+template <typename T>
 class Menu {
     // Attributes
-    Collection collection; // Object to manage the collection of consoles
-    Storage disk; // Object to manage storing and retrieving collection data from disk
+    Collection<T> collection; // Object to manage the collection of consoles
+    Storage<T> disk; // Object to manage storing and retrieving collection data from disk
     int choice; // User's menu choice
 
 public:
     // Constructor
-    Menu();
+    Menu() : choice(0) {
+
+        disk.setCollection(&collection); // Setting the collection for storage
+
+        greeting(); // Displaying greeting message
+
+        // Main menu loop
+        while (choice >= 0)
+            mainMenu();
+    }
 
     // Method to display greeting message
     void greeting() const {

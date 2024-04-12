@@ -2,24 +2,31 @@
 #include <vector> // Standard vector container
 #include <sstream> // String stream operations
 #include <iostream>
+#include <chrono>
+
+using namespace std;
 
 // Default constructor
-Storage::Storage() :
+template <typename T>
+Storage<T>::Storage() :
     collection(nullptr) { }
 
 // Constructor with reference to Collection object
-Storage::Storage(Collection& collection) :
+template <typename T>
+Storage<T>::Storage(Collection<T>& collection) :
     collection(&collection) { }
 
 // Destructor
-Storage::~Storage() {
+template <typename T>
+Storage<T>::~Storage() {
 
     delete collection; // Deallocating memory for the collection
     collection = nullptr; // Resetting pointer to nullptr
 }
 
 // Method to store the collection data to a file
-void Storage::storeCollection() {
+template <typename T>
+void Storage<T>::storeCollection() {
 
     string line; // string to place the data that is written to disk
 
@@ -38,7 +45,7 @@ void Storage::storeCollection() {
 
             cout << "!!! Collection Saved !!!" << endl;
         }
-        catch (Collection::EmptyCollection& e) { // Handling empty collection exception
+        catch (EmptyCollection& e) { // Handling empty collection exception
         
             cout << e.what() << endl;
             file.close();
@@ -52,7 +59,8 @@ void Storage::storeCollection() {
 }
 
 // Method to read the collection data from a file
-void Storage::readCollection() {
+template <typename T>
+void Storage<T>::readCollection() {
 
     string line; // string containing the csv line
 
@@ -78,9 +86,9 @@ void Storage::readCollection() {
 
                 try {
                     // Adding console to collection based on CSV data
-                    if (stoi(row[2]) > 0) // If the year value is greater than zero
+                    if (stoi(row[2]) > 0 || stoi(row[2]) < (int)chrono::system_clock::now()) // If the year value is greater than zero
                         collection->addItem( // Add Item
-                            new Console(
+                            new T(
                                 row[0],      // Manufacturer
                                 row[1],      // Name
                                 stoi(row[2]) // use the year value
@@ -89,7 +97,7 @@ void Storage::readCollection() {
 
                     else // else year is less than zero
                         collection->addItem(
-                            new Console(
+                            new T(
                                 row[0], // Manufacturer
                                 row[1], // Name
                                 0       // Put a zero as a year value
@@ -97,7 +105,7 @@ void Storage::readCollection() {
                         );
                 }
                 // If a console exists already, catch the exception
-                catch (Console::InvalidInput& e)
+                catch (InvalidInput& e)
                     { cout << e.what() << endl; }
 
                 // Handling exception thrown by stoi() function

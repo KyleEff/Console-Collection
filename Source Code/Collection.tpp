@@ -2,8 +2,11 @@
 #include <iostream>
 #include <iomanip>
 
+using namespace std;
+
 // Method to sort the collection by year
-void Collection::sortByYear(bool choice) {
+template <typename T>
+void Collection<T>::sortByYear(bool choice) {
     // Sorting the collection based on the choice (ascending or descending)
     if (choice)
         sort(layerOne.begin(), layerOne.end(), sortYearAsc); // Sorting in ascending order
@@ -12,7 +15,8 @@ void Collection::sortByYear(bool choice) {
 }
 
 // Method to sort the collection by name
-void Collection::sortByName(bool choice) {
+template <typename T>
+void Collection<T>::sortByName(bool choice) {
     // Sorting the collection based on the choice (ascending or descending)
     if (choice)
         sort(layerOne.begin(), layerOne.end(), sortNameAsc); // Sorting in ascending order
@@ -21,7 +25,8 @@ void Collection::sortByName(bool choice) {
 }
 
 // Method to search for a console by name
-Console& Collection::searchByName(string name) {
+template <typename T>
+T& Collection<T>::searchByName(string name) {
     // Checking if the console with the given name exists in the collection
     if (nameTable.count(name) > 0)
         return nameTable[name]; // Returning the console if found
@@ -30,7 +35,8 @@ Console& Collection::searchByName(string name) {
 }
 
 // Method to search for a console by year
-vector<Console>* Collection::searchByYear(int year) {
+template <typename T>
+vector<T>* Collection<T>::searchByYear(int year) {
     // Checking if the console with the given year exists in the collection
     if (yearTable.count(year) > 0)
         return yearTable[year]; // Returning vector of consoles 
@@ -38,7 +44,8 @@ vector<Console>* Collection::searchByYear(int year) {
         throw ItemNotFound("!!! Item Not Found !!!"); // Throwing an exception if not found
 }
 
-int Collection::yearTableBinarySearch(Console& value) {
+template <typename T>
+int Collection<T>::yearTableBinarySearch(T& value) {
     
     sortYearTable(); // Sort the year table to ensure binary search works correctly
 
@@ -63,7 +70,8 @@ int Collection::yearTableBinarySearch(Console& value) {
 }
 
 // Method that uses a pointer to add a Console object to the collection
-void Collection::addItem(Console* add) {
+template <typename T>
+void Collection<T>::addItem(T* add) {
     // Check if the console already exists in the collection
     if (!quickSearch(add)) {
         // Check if the year table has an entry for the console's year
@@ -71,7 +79,7 @@ void Collection::addItem(Console* add) {
             // If not, create a new entry with the console as the first element of a vector
             yearTable.insert({
                 add->getYear(),
-                new vector<Console>(1, *add)
+                new vector<T>(1, *add)
             });
         else // If an entry already exists, push the console into the vector for that year
             yearTable[add->getYear()]->push_back(*add);
@@ -82,14 +90,15 @@ void Collection::addItem(Console* add) {
     }
 
     else // If the console already exists, throw an exception
-        throw Console::InvalidInput("\n!!! Item already exists inside collection !!!");
+        throw InvalidInput("\n!!! Item already exists inside collection !!!");
 }
 
 // NOT USED
-void Collection::addItem(Console add) {
+template <typename T>
+void Collection<T>::addItem(T add) {
 
     if (yearTable.count(add.getYear()) == 0) 
-        yearTable.insert({ add.getYear(), new vector<Console>(1, add) });
+        yearTable.insert({ add.getYear(), new vector<T>(1, add) });
     else
         yearTable[add.getYear()]->push_back(add);
 
@@ -98,7 +107,8 @@ void Collection::addItem(Console add) {
 }
 
 // Method to remove an item from 
-void Collection::removeItem(int choice) {
+template <typename T>
+void Collection<T>::removeItem(int choice) {
     // Find the index of the console to be removed in the vector
     int tempIndex{ yearTableBinarySearch(*(layerOne.begin() + (choice - 1))) };
     // Get the release year of the console to be removed
@@ -120,7 +130,8 @@ void Collection::removeItem(int choice) {
 }
 
 // Method to print all Consoles in the collection
-void Collection::print() const {
+template <typename T>
+void Collection<T>::print() const {
     // Displaying header for the console listing
     cout
         << "  # |                   Manufacturer                  |                     Name                        | Year \n"
@@ -146,7 +157,8 @@ void Collection::print() const {
 }
 
 // Method to get the size of the collection
-int Collection::size() const {
+template <typename T>
+int Collection<T>::size() const {
     // Check if the collection is empty
     if (layerOne.size() < 1) {
         // Throw exception if the collection is empty
@@ -160,7 +172,8 @@ int Collection::size() const {
 }
 
 // DEBUG FUNCTIONS NOT USED IN NORMAL OPERATIONS
-void Collection::yearTableTest() { // DEBUG FUNCTION
+template <typename T>
+void Collection<T>::yearTableTest() { // DEBUG FUNCTION
 
     cout << "!!!!!!!!!!!!!!! YEAR TABLE TEST !!!!!!!!!!!!!!!" << endl;
     /*
@@ -181,7 +194,8 @@ void Collection::yearTableTest() { // DEBUG FUNCTION
     //cout << yearTableBinarySearch(&temp->at(0)) << endl;
 }
 
-void Collection::yearTablePrint() { // DEBUG FUNCITON
+template <typename T>
+void Collection<T>::yearTablePrint() { // DEBUG FUNCITON
 
     cout << "!!! YEAR TABLE PRINT !!!" << endl;
 
