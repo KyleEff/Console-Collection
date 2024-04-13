@@ -66,6 +66,7 @@ void Menu<T>::viewCollection() {
             cin >> choice; // Get user's choice
 
             switch (choice) {
+                
                 case 1: // Sort and print the collection by year in ascending order
                     collection.sortByYear(true);
                     cout << "\n----------------------------------------- Collection By Year, Ascending ----------------------------------------" << endl;
@@ -202,7 +203,6 @@ void Menu<T>::removeFromCollection() {
     try {
 
         collection.size(); // Will throw an exception if the collection is empty
-
         collection.print();
 
         cout << "Enter the list number of the item to remove\n>> ";
@@ -226,21 +226,30 @@ void Menu<T>::searchCollection() {
 
     while (choice >= 0) {
         // Displaying the menu options for searching the collection
-        cout << "\n------------ Search Collection ------------\n"
-             << "How would you like to search?\n"
-             << "1: By Name\n"
-             << "2: By Year\n"
-             << "0: Back to previous menu"
-             << endl
-             << ">> ";
+        cout
+            << "\n------------ Search Collection ------------\n"
+            << "How would you like to search?\n"
+            << "1: By Name\n"
+            << "2: By Year\n"
+            << "0: Back to previous menu"
+            << endl
+            << ">> ";
+
         cin >> choice; // Get user's choice
 
         switch (choice) {
 
             case 1: // Search for consoles by name
+                
                 cout << "Enter the name\n>> ";
                 cin.ignore();
                 getline(cin, nameSearch);
+                transform( // transform the user input into lower case
+                    nameSearch.begin(),
+                    nameSearch.end(),
+                    nameSearch.begin(),
+                    ::tolower
+                );
 
                 try {
                     

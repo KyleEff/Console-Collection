@@ -87,7 +87,7 @@ void Collection<T>::addItem(T* add) {
 
         // Add the console to the main vector and name table
         layerOne.push_back(*add);
-        nameTable.insert({ add->getName(), *add });
+        nameTable.insert({ add->getLowerCase(), *add });
     }
 
     else // If the console already exists, throw an exception

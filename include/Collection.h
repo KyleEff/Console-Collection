@@ -1,20 +1,17 @@
 #pragma once
 
 #include "Exceptions.h"
-#include <stdexcept> // Standard Exception classes
 #include <vector> // Vector (dynamic storage array)
 #include <algorithm> // sort() and binary_search()
 #include <unordered_map> // Hash table
-
-using namespace std;
 
 // Class representing a collection of consoles
 template <typename T>
 class Collection {
 
-    vector<T> layerOne; // Vector to store Console objects
-    unordered_map<string, T> nameTable; // Hash table for fast search by name
-    unordered_map<int, vector<T>*> yearTable; // Hash table for fast search by year
+    std::vector<T> layerOne; // Vector to store Console objects
+    std::unordered_map<string, T> nameTable; // Hash table for fast search by name
+    std::unordered_map<int, vector<T>*> yearTable; // Hash table for fast search by year
 
     // Function objects for sort function
     // NOTE: Function objects are used for custom comparison functions for the sort() function

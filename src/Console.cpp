@@ -1,6 +1,7 @@
 #include "../include/Console.h" // Include the header file for Console class
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
@@ -19,7 +20,14 @@ Console::Console(
     ) :
         manufacturer(manufacturer),
         name(name),
-        year(year) { }
+        lowerName(name),
+        year(year) {
+            transform(
+                lowerName.begin(),
+                lowerName.end(),
+                lowerName.begin(),
+                ::tolower);
+            }
 
 // Setter for manufacturer
 void Console::setManufacturer(string manufacturer) {

@@ -2,14 +2,14 @@
 
 #include "Exceptions.h"
 #include <string>
-#include <stdexcept>
 
 // Class representing a console
 class Console {
     // Attributes
     string
         manufacturer, // The company that manufactured the hardware 
-        name; // The name of the console
+        name, // The name of the console
+        lowerName;
 
     int year; // Year produced
 
@@ -30,6 +30,9 @@ public:
 
     string getName() const // Getter for name
         { return name; }
+
+    string getLowerCase() const
+        { return lowerName; }
 
     int getYear() const // Getter for year
         { return year; }
