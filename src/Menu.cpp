@@ -288,4 +288,7 @@ void Menu<T>::searchCollection() {
     }
 }
 
-template class Menu<Console>;
+template class Menu<Console>; // This line of code makes it all work.
+// The program did not know where to find a class that operated with the Console
+//  class as an input.
+// A similar line of code is repeated in every template class implementation. 

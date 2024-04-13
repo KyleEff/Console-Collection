@@ -12,16 +12,17 @@ class Menu {
 
 public:
     // Constructor
-    Menu() : choice(0) {
+    Menu() :
+        choice(0) {
 
-        disk.setCollection(&collection); // Setting the collection for storage
+            disk.setCollection(&collection); // Setting the collection for storage
 
-        greeting(); // Displaying greeting message
+            greeting(); // Display greeting message
 
-        // Main menu loop
-        while (choice >= 0)
-            mainMenu();
-    }
+            // Main menu loop
+            while (choice >= 0)
+                mainMenu();
+        }
 
     // Method to display greeting message
     void greeting() const {

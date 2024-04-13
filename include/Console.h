@@ -11,7 +11,7 @@ class Console {
         name, // The name of the console
         lowerName;
 
-    int year; // Year produced
+    int year; // Year released
 
 public:
     // Constructors
@@ -31,7 +31,7 @@ public:
     string getName() const // Getter for name
         { return name; }
 
-    string getLowerCase() const
+    string getLowerCase() const // Returns the name of the console in lowercase (for name table search)
         { return lowerName; }
 
     int getYear() const // Getter for year
