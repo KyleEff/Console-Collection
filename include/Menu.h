@@ -63,4 +63,7 @@ public:
 
     // Method to search the collection for a console
     void searchCollection();
+
+    // Confirms the user's input
+    bool confirmInput(T*);
 };

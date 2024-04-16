@@ -2,6 +2,7 @@
 #include "../include/Console.h"
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
+#include <type_traits>
 
 using namespace std;
 
@@ -243,8 +244,27 @@ void Menu<T>::addToCollection() {
     cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
+      // USER INPUT CONFIRMATION
+       cout
+          << "\n---------- CONFIRM INPUT ----------\n";
+      /*
+          << "You have entered:\n"
+          << manufacturer << " "
+          << name << ", "
+          << year << endl
+          << "Is this correct? (Enter 1 or 0)\n>>";
+
+      cin >> choice;
+
+      if (!(bool)choice)
+         return;
+   */
+   
     temp = new T(manufacturer, name, year);
 
+   if (!confirmInput(temp)
+      return;
+   
     try
         { collection.addItem(temp); }
     catch (InvalidInput& e)
@@ -387,6 +407,23 @@ void Menu<T>::searchCollection() {
                 return; // Fail safe
         }
     }
+}
+
+// Confirmation Function
+template <typename T>
+bool Menu<T>::confirmInput(T* input) {
+
+   if (is_same<T, Console>::value)
+      input->print();
+   else if (is_same<T, int>::value)
+      switch (input) {
+
+         0: return false;
+         1: return true;
+         default: cout << "INVALID INPUT" << endl; break;
+      }
+
+   return false;
 }
 
 /**
