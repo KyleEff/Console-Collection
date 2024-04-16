@@ -227,7 +227,6 @@ The `Storage` class in the Console Collection program is responsible for managin
 
 #### Dependencies
 - **Collection**: The `Storage` class depends on the `Collection` class to store and retrieve collection data.
-
 #### Example Usage
 ```cpp
 // Creating a Storage object with a Collection object
@@ -241,14 +240,15 @@ storage.storeCollection();
 storage.readCollection();
 ```
 
-#### Time Complexity Analysis
+### Time Complexity Analysis
 - The time complexity of the `storeCollection()` method is O(n), where n is the number of items in the collection.
 - The time complexity of the `readCollection()` method depends on the size of the collection and the number of records in the file. In the worst-case scenario, where the file contains m records and each record results in the creation of a new `Console` object, the time complexity is O(m).
 
-#### File Format
+### File Format
 - The collection data is stored in a CSV (Comma-Separated Values) format.
 - Each line in the file represents a console, with attributes separated by commas.
 - The format is as follows: `manufacturer, name, year`.
+
 
 ### 12.D Menu Class
 
@@ -295,3 +295,4 @@ This single line of code runs the whole program due to the loop in the construct
 
 #### Time Complexity Analysis
 - The time complexity of each method depends on the operations performed within them and the size of the collection. Methods involving sorting or searching the collection may have time complexities of O(n log n) or O(n) depending on the algorithm used. Methods involving file I/O operations may have time complexities proportional to the size of the file or collection data.
+
