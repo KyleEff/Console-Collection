@@ -3,6 +3,17 @@
 #include "Exceptions.h"
 #include <iostream>
 
+/**
+ * Template Class: Menu
+ * 
+ * Manages the user interface and interaction with the Console Collection Manager.
+ * This class provides a menu-driven interface for users to interact with the collection of consoles.
+ * It encapsulates functionalities such as displaying a greeting message, presenting the main menu, viewing information about the collection,
+ * making changes to the collection, adding a console to the collection, removing a console from the collection, and searching the collection.
+ * 
+ * @tparam T The type of elements stored in the collection managed by the menu (Console or its derived classes).
+ */
+
 template <typename T>
 class Menu {
     // Attributes
@@ -27,12 +38,12 @@ public:
     // Method to display greeting message
     void greeting() const {
         
-        cout
+        std::cout
             << "\n------------ Welcome to the Console Collection Manager ------------\n"
             << "This software is used to manage the user's collection of video game consoles.\n"
             << "Start off by editing your collection to either add a Console, or load a \n"
             << "collection if there is one saved to disk."
-            << endl;
+            << std::endl;
     }
     
     // Method to display the main menu
