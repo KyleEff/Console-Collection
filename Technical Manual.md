@@ -91,6 +91,7 @@ The `Console` class is defined in the header file `Console.h` and consists of th
 - **Attributes**:
   - `manufacturer`: Represents the company that manufactured the console.
   - `name`: Represents the name of the console.
+  - `lowerName`: Represents the name of the console for name searching.
   - `year`: Represents the year the console was produced.
 
 - **Constructors**:

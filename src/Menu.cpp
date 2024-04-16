@@ -138,7 +138,6 @@ void Menu<T>::viewCollection() {
         { cout << e.what() << endl; }
 }
 
-
 /**
  * Method: editCollection
  * 
