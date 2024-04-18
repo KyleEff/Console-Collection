@@ -16,11 +16,6 @@ using namespace std;
  * - name: Empty string.
  * - year: 0.
  */
-Console::Console() :
-    manufacturer(""),
-    name(""),
-    year(0) { }
-
 /**
  * Parameterized Constructor for Console
  * 
@@ -40,17 +35,9 @@ Console::Console(
     string name,
     int year = 0 /* default value for year */
     ) :
-        manufacturer(manufacturer),
-        name(name),
-        lowerName(name),
-        year(year) {
+        Collectable(name, year),
+        manufacturer(manufacturer) {
             
-            transform( // Convert the console name to lowercase for name table search
-                lowerName.begin(),
-                lowerName.end(),
-                lowerName.begin(),
-                ::tolower
-            );
         }
 
 /**

@@ -14,3 +14,5 @@ Collectable::Collectable(string name, int year) :
             ::tolower
         );
     }
+
+

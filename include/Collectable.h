@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class Collectable {
 
@@ -21,5 +22,5 @@ public:
     int getYear() const // Getter for year
         { return year; }
 
-
+    virtual void print() const = 0;
 };

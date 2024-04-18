@@ -37,18 +37,12 @@
  * - operator== (const Console&, const Console&): Overloaded equality operator, needed for custom binary search.
  */
 
-class Console : protected Collectable {
+class Console : public Collectable {
     // Attributes
-    std::string
-        manufacturer, // The company that manufactured the hardware 
-        name, // The name of the console
-        lowerName; // Lowercase name for search optimization
-
-    int year; // Year released
+    std::string manufacturer; // The company that manufactured the hardware
 
 public:
     // Constructors
-    Console(); // Default constructor
     Console(std::string, std::string, int); // Parameterized constructor
 
     // Member Functions
