@@ -38,19 +38,20 @@ Console::Console() :
 Console::Console(
     string manufacturer,
     string name,
-    int year = 0 /* default value for year */ 
+    int year = 0 /* default value for year */
     ) :
         manufacturer(manufacturer),
         name(name),
         lowerName(name),
         year(year) {
-            // Convert the console name to lowercase for name table search
-            transform(
+            
+            transform( // Convert the console name to lowercase for name table search
                 lowerName.begin(),
                 lowerName.end(),
                 lowerName.begin(),
-                ::tolower);
-            }
+                ::tolower
+            );
+        }
 
 /**
  * Setter for Manufacturer
@@ -111,8 +112,8 @@ void Console::setYear(int year) {
  * - Year: If the year is valid (greater than 0), it is printed; otherwise, a newline is printed for formatting.
  * 
  * Output Format:
- *  Manufacturer            | Name                                          | Year
- * ----+-------------------------------------------------+-------------------------------------------------+-------
+ *  Manufacturer                                    | Name                                            | Year
+ * -------------------------------------------------+-------------------------------------------------+-------
  * 
  * Note: The output format aligns the manufacturer and name within a 48-character width and separates each 
  * column with a vertical bar. The horizontal divider indicates the end of each console's details.
@@ -138,14 +139,6 @@ void Console::print() const {
             << endl;
     // Otherwise, just output a newline for formatting
     else cout << endl;
-
-    // Divider
-    cout
-        << "----+"
-        << "-------------------------------------------------+"
-        << "-------------------------------------------------+"
-        << "-------"
-        << endl;
 }
 
 /**

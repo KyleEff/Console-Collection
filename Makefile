@@ -31,7 +31,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
-	rm -rf $(BUILD_DIR) $(EXEC).exe
+	rm -rf $(BUILD_DIR)
 
 # Phony target
 .PHONY: clean

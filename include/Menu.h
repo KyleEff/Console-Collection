@@ -65,5 +65,6 @@ public:
     void searchCollection();
 
     // Confirms the user's input
-    bool confirmInput(T*);
+    bool confirmInput(T&);
+
 };

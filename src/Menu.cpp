@@ -3,6 +3,8 @@
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
 #include <type_traits>
+#include <chrono>
+#include <format>
 
 using namespace std;
 
@@ -231,8 +233,10 @@ void Menu<T>::addToCollection() {
         manufacturer,
         name;
 
-    int year = 0;
+    int year;
     T* temp{ nullptr };
+
+    auto now = chrono::system_clock::now();
 
     cout << "Enter the manufacturer of the console\n>> ";
     cin.ignore(); // Ignore leading whitespace on the input buffer
@@ -244,26 +248,16 @@ void Menu<T>::addToCollection() {
     cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
-      // USER INPUT CONFIRMATION
-       cout
-          << "\n---------- CONFIRM INPUT ----------\n";
-      /*
-          << "You have entered:\n"
-          << manufacturer << " "
-          << name << ", "
-          << year << endl
-          << "Is this correct? (Enter 1 or 0)\n>>";
+    while (year < 0 || year > stoi(format("{:%Y}", now))) {
 
-      cin >> choice;
-
-      if (!(bool)choice)
-         return;
-   */
+        cout << "\n!!!The year you have entered is invalid!!!\nTry Again\n>> ";
+        cin >> year;
+    }
    
     temp = new T(manufacturer, name, year);
 
-   if (!confirmInput(temp)
-      return;
+    if (!confirmInput(*temp))
+        return;
    
     try
         { collection.addItem(temp); }
@@ -306,6 +300,9 @@ void Menu<T>::removeFromCollection() {
         cout << "Enter the list number of the item to remove\n>> ";
         cin >> choice;
         
+        if (!confirmInput(collection.getItem(choice - 1)))
+            return;
+
         collection.removeItem(choice); // Remove console from collection
 
         cout << "\n------------ Edited Collection ------------" << endl;
@@ -411,20 +408,41 @@ void Menu<T>::searchCollection() {
 
 // Confirmation Function
 template <typename T>
-bool Menu<T>::confirmInput(T* input) {
+bool Menu<T>::confirmInput(T& input) {
 
-   if (is_same<T, Console>::value)
-      input->print();
-   else if (is_same<T, int>::value)
-      switch (input) {
+    unordered_map<char, bool> choices = {
+        {'n', false},
+        {'y', true}
+    };
 
-         0: return false;
-         1: return true;
-         default: cout << "INVALID INPUT" << endl; break;
-      }
+    char choice;
 
-   return false;
+    cout
+        << "\n---------- CONFIRM INPUT ----------\n"
+        << "You have entered:\n"
+        << "                  Manufacturer                   |                     Name                        | Year \n"
+        << "-------------------------------------------------+-------------------------------------------------+-------\n ";
+
+    input.print();
+
+    cout
+        << "-------------------------------------------------+"
+        << "-------------------------------------------------+"
+        << "-------"
+        << endl;
+
+    cout << "Is this correct? (Y/N)\n>> ";
+    cin >> choice;
+
+    cout
+        << "CHOICE: " << choice
+        << endl
+        << choices[tolower(choice)] << endl;
+
+    return choices[tolower(choice)];
+    
 }
+
 
 /**
  * Explicit Template Instantiation: Menu<Console>

@@ -234,7 +234,7 @@ void Collection<T>::print() const {
     // Displaying header for the console listing
     cout
         << "  # |                   Manufacturer                  |                     Name                        | Year \n"
-        << "----------------------------------------------------------------------------------------------------------------"
+        << "----+-------------------------------------------------+-------------------------------------------------+-------"
         << endl;
 
     try {
@@ -248,6 +248,13 @@ void Collection<T>::print() const {
                 << " | ";
             // Printing the details of the console using its print method
             layerOne[i].print();
+
+            cout
+                << "----+"
+                << "-------------------------------------------------+"
+                << "-------------------------------------------------+"
+                << "-------"
+                << endl;
         }
     }
     // Catching exception if the collection is empty
