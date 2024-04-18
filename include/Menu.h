@@ -13,7 +13,6 @@
  * 
  * @tparam T The type of elements stored in the collection managed by the menu (Console or its derived classes).
  */
-
 template <typename T>
 class Menu {
     // Attributes

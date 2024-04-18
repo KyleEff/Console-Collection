@@ -2,7 +2,6 @@
 #include "../include/Console.h"
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
-#include <type_traits>
 #include <chrono>
 #include <format>
 
@@ -253,7 +252,7 @@ void Menu<T>::addToCollection() {
         cout << "\n!!!The year you have entered is invalid!!!\nTry Again\n>> ";
         cin >> year;
     }
-   
+
     temp = new T(manufacturer, name, year);
 
     if (!confirmInput(*temp))
@@ -410,11 +409,6 @@ void Menu<T>::searchCollection() {
 template <typename T>
 bool Menu<T>::confirmInput(T& input) {
 
-    unordered_map<char, bool> choices = {
-        {'n', false},
-        {'y', true}
-    };
-
     char choice;
 
     cout
@@ -434,15 +428,8 @@ bool Menu<T>::confirmInput(T& input) {
     cout << "Is this correct? (Y/N)\n>> ";
     cin >> choice;
 
-    cout
-        << "CHOICE: " << choice
-        << endl
-        << choices[tolower(choice)] << endl;
-
-    return choices[tolower(choice)];
-    
+    return (tolower(choice) == 'y');
 }
-
 
 /**
  * Explicit Template Instantiation: Menu<Console>
