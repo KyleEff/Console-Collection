@@ -16,6 +16,10 @@ using namespace std;
  * - name: Empty string.
  * - year: 0.
  */
+Console::Console() :
+    Collectable("", 0),
+    manufacturer("") {}
+
 /**
  * Parameterized Constructor for Console
  * 

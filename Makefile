@@ -1,7 +1,7 @@
 # Compiler
 CC := g++
 # Compiler flags
-CFLAGS := -Wall -Wextra -std=c++23
+CFLAGS := -Wall -Wextra -Wpedantic -std=c++23
 # Source directory
 SRC_DIR := src
 # Header directory

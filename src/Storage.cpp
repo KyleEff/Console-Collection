@@ -131,7 +131,7 @@ void Storage<T>::readCollection() {
 
                 try {
                     // Adding console to collection based on CSV data
-                    if (stoi(row[2]) > 0)// || stoi(row[2]) < (int)chrono::system_clock::now()) // If the year value is greater than zero
+                    if (stoi(row[2]) > 0 && stoi(row[2]) < 2025)// If the year value is greater than zero
                         collection->addItem( // Add Item
                             new T(
                                 row[0],      // Manufacturer

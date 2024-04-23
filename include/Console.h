@@ -43,7 +43,10 @@ class Console : public Collectable {
 
 public:
     // Constructors
+    Console(); // Default Constructor
     Console(std::string, std::string, int); // Parameterized constructor
+
+    virtual ~Console() {}
 
     // Member Functions
     void setManufacturer(std::string); // Setter for manufacturer
@@ -54,6 +57,15 @@ public:
     // Accessors
     std::string getManufacturer() const // Getter for manufacturer
         { return manufacturer; }
+
+    std::string getName() const // Getter for name
+        { return name; }
+
+    std::string getLowerCase() const // Returns the name of the console in lowercase (for name table search)
+        { return lowerName; }
+
+    int getYear() const // Getter for year
+        { return year; }
 
     friend std::ostream& operator<<(std::ostream&, const Console&); // Overloaded output operator for storage
     friend bool operator<(const Console&, const Console&); // Overloaded less than operator

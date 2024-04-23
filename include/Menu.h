@@ -21,11 +21,11 @@ class Menu {
     int choice; // User's menu choice
 
 public:
-    // Constructor
+    // Inline Constructor, runs the whole program.
     Menu() :
         choice(0) {
 
-            disk.setCollection(&collection); // Setting the collection for storage
+            disk.setCollection(&collection);
 
             greeting(); // Display greeting message
 
@@ -34,7 +34,7 @@ public:
                 mainMenu();
         }
 
-    // Method to display greeting message
+    // Inline Method to display greeting message
     void greeting() const {
         
         std::cout
@@ -65,5 +65,4 @@ public:
 
     // Confirms the user's input
     bool confirmInput(T&);
-
 };

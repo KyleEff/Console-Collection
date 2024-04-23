@@ -2,8 +2,8 @@
 #include "../include/Console.h"
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
-#include <chrono>
-#include <format>
+//#include <chrono>
+//#include <ctime>
 
 using namespace std;
 
@@ -235,8 +235,10 @@ void Menu<T>::addToCollection() {
     int year;
     T* temp{ nullptr };
 
-    auto now = chrono::system_clock::now();
-
+/*
+    auto now = chrono::system_clock::to_time_T(chrono::system_clock::now());
+    auto localTime = *localtime(&now);
+*/
     cout << "Enter the manufacturer of the console\n>> ";
     cin.ignore(); // Ignore leading whitespace on the input buffer
     getline(cin, manufacturer);
@@ -247,7 +249,7 @@ void Menu<T>::addToCollection() {
     cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
-    while (year < 0 || year > stoi(format("{:%Y}", now))) {
+    while (year < 0 || year > 2025) {//localTime.tm_year + 1900) {
 
         cout << "\n!!!The year you have entered is invalid!!!\nTry Again\n>> ";
         cin >> year;
@@ -357,7 +359,6 @@ void Menu<T>::searchCollection() {
         switch (choice) {
 
             case 1: // Search for consoles by name
-                
                 cout << "Enter the name\n>> ";
                 cin.ignore();
                 getline(cin, nameSearch);

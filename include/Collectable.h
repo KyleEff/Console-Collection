@@ -13,14 +13,13 @@ protected:
 public:
     Collectable(std::string, int);
 
-    std::string getName() const // Getter for name
-        { return name; }
+    virtual ~Collectable() {}
 
-    std::string getLowerCase() const // Returns the name of the console in lowercase (for name table search)
-        { return lowerName; }
+    virtual std::string getName() const = 0;
 
-    int getYear() const // Getter for year
-        { return year; }
+    virtual std::string getLowerCase() const = 0;
+
+    virtual int getYear() const = 0;
 
     virtual void print() const = 0;
 };
