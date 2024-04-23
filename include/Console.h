@@ -37,7 +37,7 @@
  * - operator== (const Console&, const Console&): Overloaded equality operator, needed for custom binary search.
  */
 
-class Console : public Collectable {
+class Console : protected Collectable {
     // Attributes
     std::string manufacturer; // The company that manufactured the hardware
 

@@ -18,7 +18,7 @@ using namespace std;
  */
 Console::Console() :
     Collectable("", 0),
-    manufacturer("") {}
+    manufacturer("") {  }
 
 /**
  * Parameterized Constructor for Console
