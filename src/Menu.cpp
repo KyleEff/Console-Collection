@@ -2,8 +2,8 @@
 #include "../include/Console.h"
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
-//#include <chrono>
-//#include <ctime>
+#include <chrono>
+//#include <format>
 
 using namespace std;
 
@@ -428,6 +428,7 @@ bool Menu<T>::confirmInput(T& input) {
         << endl;
 
     cout << "Is this correct? (Y/N)\n>> ";
+    cin.ignore();
     cin >> choice;
 
     return (tolower(choice) == 'y');
