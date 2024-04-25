@@ -3,7 +3,7 @@
 #include <iostream> // Input/output stream
 #include <cassert> // Assertion support
 #include <chrono>
-#include <format>
+//#include <format>
 
 using namespace std;
 
@@ -235,7 +235,7 @@ void Menu<T>::addToCollection() {
     int year;
     T* temp{ nullptr };
 
-    auto now = chrono::system_clock::now();
+    //auto now = chrono::system_clock::now();
 
     cout << "Enter the manufacturer of the console\n>> ";
     cin.ignore(); // Ignore leading whitespace on the input buffer
@@ -247,7 +247,7 @@ void Menu<T>::addToCollection() {
     cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
-    while (year < 0 || year > stoi(format("{:%Y}", now))) {
+    while (year < 0 || year > 2025) { //|| year > stoi(format("{:%Y}", now))) {
 
         cout << "\n!!!The year you have entered is invalid!!!\nTry Again\n>> ";
         cin >> year;
@@ -426,6 +426,7 @@ bool Menu<T>::confirmInput(T& input) {
         << endl;
 
     cout << "Is this correct? (Y/N)\n>> ";
+    cin.ignore();
     cin >> choice;
 
     return (tolower(choice) == 'y');
