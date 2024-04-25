@@ -85,7 +85,7 @@ void Console::setName(string name) {
  */
 void Console::setYear(int year) {
     // Check if the input year is valid (1972 or later)
-    if (year >= 1972)
+    if (year >= 1972 && year <= 2025)
         // If valid, assign it to the member variable 'year'
         this->year = year;
     // If not valid, throw an exception indicating invalid input

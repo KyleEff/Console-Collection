@@ -8,12 +8,10 @@ protected:
         name,
         lowerName;
     
-    int year;
+    unsigned short year;
 
 public:
     Collectable(std::string, int);
-
-    virtual ~Collectable() {}
 
     virtual std::string getName() const = 0;
 

@@ -232,7 +232,7 @@ void Menu<T>::addToCollection() {
         manufacturer,
         name;
 
-    int year;
+    unsigned short year;
     T* temp{ nullptr };
 
 /*
@@ -249,8 +249,9 @@ void Menu<T>::addToCollection() {
     cout << "If you know the year of release, enter it here. Otherwise enter zero\n>> ";
     cin >> year;
 
-    while (year < 0 || year > 2025) {//localTime.tm_year + 1900) {
+    while (year < 1972 || year > 2025) {//localTime.tm_year + 1900) {
 
+        year = 0;
         cout << "\n!!!The year you have entered is invalid!!!\nTry Again\n>> ";
         cin >> year;
     }

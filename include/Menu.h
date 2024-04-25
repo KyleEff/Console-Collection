@@ -18,7 +18,7 @@ class Menu {
     // Attributes
     Collection<T> collection; // Object to manage the collection of consoles
     Storage<T> disk; // Object to manage storing and retrieving collection data from disk
-    int choice; // User's menu choice
+    unsigned short choice; // User's menu choice
 
 public:
     // Inline Constructor, runs the whole program.
