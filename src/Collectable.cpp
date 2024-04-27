@@ -5,11 +5,12 @@ using namespace std;
 
 Collectable::Collectable(string name, int year) :
     name(name),
-    year(year) {
+    year(year),
+    lowerName(name) {
 
         transform(
-            name.begin(),
-            name.end(),
+            lowerName.begin(),
+            lowerName.end(),
             lowerName.begin(),
             ::tolower
         );
