@@ -16,9 +16,7 @@ using namespace std;
  * - name: Empty string.
  * - year: 0.
  */
-Console::Console() :
-    Collectable("", 0),
-    manufacturer("") {  }
+Console::Console() : Collectable("", 0) {  }
 
 /**
  * Parameterized Constructor for Console
@@ -40,9 +38,7 @@ Console::Console(
     int year = 0 /* default value for year */
     ) :
         Collectable(name, year),
-        manufacturer(manufacturer) {
-            
-        }
+        manufacturer(manufacturer) { }
 
 /**
  * Setter for Manufacturer
