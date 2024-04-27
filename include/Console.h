@@ -37,7 +37,7 @@
  * - operator== (const Console&, const Console&): Overloaded equality operator, needed for custom binary search.
  */
 
-class Console : protected Collectable {
+class Console : public Collectable {
     // Attributes
     std::string manufacturer; // The company that manufactured the hardware
 
@@ -57,16 +57,7 @@ public:
     // Accessors
     std::string getManufacturer() const // Getter for manufacturer
         { return manufacturer; }
-
-    std::string getName() const // Getter for name
-        { return name; }
-
-    std::string getLowerCase() const // Returns the name of the console in lowercase (for name table search)
-        { return lowerName; }
-
-    int getYear() const // Getter for year
-        { return year; }
-
+    
     friend std::ostream& operator<<(std::ostream&, const Console&); // Overloaded output operator for storage
     friend bool operator<(const Console&, const Console&); // Overloaded less than operator
     friend bool operator==(const Console&, const Console&); // Needed for custom binary search
