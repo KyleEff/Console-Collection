@@ -6,44 +6,32 @@
 #include <unordered_map> // Hash table
 
 /**
- * Collection Class
+ * @class Collection
+ * @brief A template class representing a collection of objects of type T.
  * 
- * The Collection class is a templated container designed to manage a collection of objects of type T. 
- * In this context, it is specifically tailored for managing a collection of Console objects.
+ * This class manages a collection of objects of type T, where T is typically a derived class
+ * of the Collectable class. It provides various methods for sorting, searching, adding, and removing
+ * items from the collection. The collection is stored internally in a vector and two hash tables,
+ * allowing for efficient search and retrieval operations.
  * 
- * Data Members:
- * - layerOne: A vector to store objects of type T, which in this context are Console objects.
- * - nameTable: An unordered map (std::unordered_map) facilitating fast searching of consoles by name.
- * - yearTable: An unordered map used for efficient searching of consoles by year. It maps integer keys 
- *              (representing years) to pointers to vectors of type T (consoles of the same year).
- * 
- * Function Objects for Sorting:
- * - sortYearAsc: A function object for sorting consoles by year in ascending order.
- * - sortYearDesc: A function object for sorting consoles by year in descending order.
- * - sortNameAsc: A function object for sorting consoles by name in ascending order.
- * - sortNameDesc: A function object for sorting consoles by name in descending order.
+ * The class defines several function objects for custom comparison functions used in sorting operations.
+ * These function objects facilitate sorting the collection by name or year in ascending or descending order.
  * 
  * Public Methods:
- * - sortByName(bool): Sorts the collection by name in ascending or descending order.
- * - sortByYear(bool): Sorts the collection by year in ascending or descending order.
- * - sortYearTable(): Inline method to sort the hash table of vectors by name ascending.
- * - searchByName(string): Searches for a console by name and returns a reference to the matched console.
- * - searchByYear(int): Searches for consoles by year and returns a pointer to the vector containing 
- *                      consoles from the same year.
- * - yearTableBinarySearch(T&): Custom binary search that returns the index of the matched console in 
- *                              the year table.
- * - quickSearch(T*): Inline method to search for a console using binary search, defaulting to name 
- *                    search and ensuring the collection is sorted by name.
- * - addItem(T*): Adds a console to the collection using a pointer.
- * - addItem(T): Overloaded method to add a console to the collection (not used).
- * - removeItem(int): Removes a console from the collection based on the specified index.
- * - print(): Method to print all consoles in the collection.
- * - size(): Method to get the size of the collection.
- * - getItem(int): Method to get a console at a specific index, used for Storage.
- * 
- * Debug Methods (Not Used in Normal Operations):
- * - yearTableTest(): Debug function to test the year table.
- * - yearTablePrint(): Debug function to print the year table.
+ *  - sortByName(bool ascending): Sorts the collection by name in ascending or descending order.
+ *  - sortByYear(bool ascending): Sorts the collection by year in ascending or descending order.
+ *  - searchByName(std::string name): Searches the collection for an item by its name.
+ *  - searchByYear(int year): Searches the collection for items released in a specific year.
+ *  - yearTableBinarySearch(T& item): Performs a binary search on the collection's year table.
+ *  - quickSearch(T* value): Searches for an item in the collection using binary search (by name).
+ *  - addItem(T* item): Adds an item to the collection using a pointer.
+ *  - addItem(T item): Overloaded method to add an item to the collection.
+ *  - removeItem(int index): Removes an item from the collection at the specified index.
+ *  - print(): Prints all items in the collection.
+ *  - size(): Returns the size of the collection.
+ *  - getItem(int index): Retrieves an item from the collection at the specified index.
+ *  - yearTableTest(): Debug function to test the year table.
+ *  - yearTablePrint(): Debug function to print the contents of the year table.
  */
 template <typename T>
 class Collection {
@@ -53,7 +41,7 @@ class Collection {
     std::unordered_map<int, std::vector<T>*> yearTable; // Hash table for fast search by year
 
     // Function objects for sort function
-    // NOTE: Function objects are used for custom comparison functions for the sort() function
+    // NOTE: Function objects are used for custom comparison functions for the std::sort() function
     struct {
         bool operator()(const T& a, const T& b) const
             { return a.getYear() < b.getYear(); }

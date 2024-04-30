@@ -43,7 +43,7 @@ Storage<T>::~Storage() {
 /**
  * Method to Store Collection Data to a File
  * 
- * Writes the data of the collection to a file. Each item in the collection is written as a separate line in the file.
+ * @brief Writes the data of the collection to a file. Each item in the collection is written as a separate line in the file.
  * 
  * This method first attempts to open the file specified by the file name for writing. If the file opening is successful,
  * it iterates over each item in the collection, retrieving the details of each item using the `getItem` method of the
@@ -91,7 +91,7 @@ void Storage<T>::storeCollection() {
 /**
  * Method to Read Collection Data from a File
  * 
- * Reads the data of the collection from a file. Each line in the file represents an item in the collection.
+ * @brief Reads the data of the collection from a file. Each line in the file represents an item in the collection.
  * 
  * This method first attempts to open the file specified by the file name for reading. If the file opening is successful,
  * it reads each line from the file, parsing it as a CSV line to extract the details of each item in the collection.

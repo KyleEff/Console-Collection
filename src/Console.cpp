@@ -9,7 +9,7 @@ using namespace std;
 /**
  * Default Constructor for Console
  * 
- * Initializes a Console object with default values.
+ * @brief Initializes a Console object with default values.
  * 
  * Attributes Initialized:
  * - manufacturer: Empty string.
@@ -21,7 +21,7 @@ Console::Console() : Collectable("", 0) {  }
 /**
  * Parameterized Constructor for Console
  * 
- * Initializes a Console object with specified values for its attributes.
+ * @brief Initializes a Console object with specified values for its attributes.
  * 
  * Parameters:
  * - manufacturer: The company that manufactured the hardware.
@@ -43,7 +43,7 @@ Console::Console(
 /**
  * Setter for Manufacturer
  * 
- * Sets the manufacturer of the console to the specified value.
+ * @brief Sets the manufacturer of the console to the specified value.
  * 
  * @param manufacturer The company name to set as the manufacturer.
  * @throws InvalidInput If the input manufacturer is empty.
@@ -58,7 +58,7 @@ void Console::setManufacturer(string manufacturer) {
 /**
  * Setter for Name
  * 
- * Sets the name of the console to the specified value.
+ * @brief Sets the name of the console to the specified value.
  * 
  * @param name The name to set for the console.
  * @throws InvalidInput If the input name is empty.
@@ -74,7 +74,7 @@ void Console::setName(string name) {
 /**
  * Setter for Year
  * 
- * Sets the release year of the console to the specified value.
+ * @brief Sets the release year of the console to the specified value.
  * 
  * @param year The year to set for the console.
  * @throws InvalidInput If the input year is earlier than 1972.
@@ -91,7 +91,7 @@ void Console::setYear(int year) {
 /**
  * Print Console Details
  * 
- * Prints the details of the console, including its manufacturer, name, and release year.
+ * @brief Prints the details of the console, including its manufacturer, name, and release year.
  * 
  * The console details are formatted as follows:
  * - Manufacturer: Left-aligned within a 48-character width.
@@ -131,7 +131,7 @@ void Console::print() const {
 /**
  * Overloaded Output Operator for Console Class
  * 
- * Overloads the output operator (<<) to allow streaming the details of a console to an output stream.
+ * @brief Overloads the output operator (<<) to allow streaming the details of a console to an output stream.
  * 
  * @param out The output stream to stream the console details to.
  * @param c The console object whose details are to be streamed.
@@ -156,7 +156,7 @@ ostream& operator<<(ostream& out, const Console& c) {
 /**
  * Overloaded Less Than Operator for Console Class (Used for Binary Search)
  * 
- * Overloads the less than operator (<) to compare two console objects based on their names.
+ * @brief Overloads the less than operator (<) to compare two console objects based on their names.
  * 
  * @param c1 The first console object to compare.
  * @param c2 The second console object to compare.
@@ -170,7 +170,7 @@ bool operator<(const Console& c1, const Console& c2) {
 /**
  * Overloaded Equality Operator for Console Class
  * 
- * Overloads the equality operator (==) to compare two console objects based on their names.
+ * @brief Overloads the equality operator (==) to compare two console objects based on their names.
  * 
  * @param c1 The first console object to compare.
  * @param c2 The second console object to compare.

@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * Sorts the elements of the collection by year.
+ * @brief Sorts the elements of the collection by year.
  * 
  * This method sorts the elements of the collection based on their year attribute. 
  * It allows sorting in both ascending and descending order, determined by the 
@@ -29,7 +29,7 @@ void Collection<T>::sortByYear(bool choice) {
 }
 
 /**
- * Sorts the elements of the collection by name.
+ * @brief Sorts the elements of the collection by name.
  * 
  * This method sorts the elements of the collection based on their name attribute. 
  * It allows sorting in both ascending and descending order, determined by the 
@@ -52,7 +52,7 @@ void Collection<T>::sortByName(bool choice) {
 }
 
 /**
- * Searches for a console by name in the collection.
+ * @brief Searches for a console by name in the collection.
  * 
  * This method searches for a console within the collection based on its name attribute.
  * It takes a string parameter `name` representing the name of the console to search for.
@@ -76,7 +76,7 @@ T& Collection<T>::searchByName(string name) {
 /**
  * Method to Search for Consoles by Year
  * 
- * Searches for consoles within the collection based on their release year.
+ * @brief Searches for consoles within the collection based on their release year.
  * 
  * @tparam T The type of elements stored in the collection (Console or its derived classes).
  * @param year The year to search for consoles.
@@ -93,7 +93,7 @@ vector<T>* Collection<T>::searchByYear(int year) {
 }
 
 /**
- * Method to perform binary search on the year table for a specified value.
+ * @brief Method to perform binary search on the year table for a specified value.
  * 
  * Performs binary search on the year table for a specified value.
  * It first sorts the year table to ensure binary search works correctly.
@@ -134,7 +134,7 @@ int Collection<T>::yearTableBinarySearch(T& value) {
 }
 
 /**
- * Method to add a Console object to the collection using a pointer.
+ * @brief Method to add a Console object to the collection using a pointer.
  * 
  * Adds a Console object to the collection using a pointer to the object.
  * This method checks if the console already exists in the collection using a quick search.
@@ -184,7 +184,7 @@ void Collection<T>::addItem(T add) {
 }
 
 /**
- * Method to remove an item from the collection.
+ * @brief Method to remove an item from the collection.
  * 
  * Removes an item from the collection based on the specified choice.
  * It finds the index of the item to be removed in the main vector,
@@ -219,7 +219,7 @@ void Collection<T>::removeItem(int choice) {
 }
 
 /**
- * Method to print all Consoles in the collection.
+ * @brief Method to print all Consoles in the collection.
  * 
  * Prints all Consoles in the collection along with their details.
  * It displays a header for the console listing and then iterates through
@@ -263,7 +263,7 @@ void Collection<T>::print() const {
 }
 
 /**
- * Method to get the size of the collection.
+ * @brief Method to get the size of the collection.
  * 
  * Returns the number of items in the collection.
  * If the collection is empty, it throws an EmptyCollection exception.
