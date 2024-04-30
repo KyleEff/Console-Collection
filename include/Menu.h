@@ -4,7 +4,7 @@
 #include <iostream>
 
 /**
- * Template Class: Menu
+ * @class Menu
  * 
  * Manages the user interface and interaction with the Console Collection Manager.
  * This class provides a menu-driven interface for users to interact with the collection of consoles.

@@ -6,7 +6,7 @@
 #include <string> // String manipulation
 
 /**
- * Storage Class Template
+ * @class Storage
  * 
  * The Storage class provides functionality to store and retrieve collection data from a file.
  * It is templated to work with any type of collection.

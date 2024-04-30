@@ -5,7 +5,7 @@
 #include <string>
 
 /**
- * Console Class
+ * @class Console
  * 
  * The Console class represents a gaming console, encapsulating attributes such as manufacturer, name, and release year.
  * 
